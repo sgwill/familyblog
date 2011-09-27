@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<VisualState xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ShowCheckBoxes="false">
+  <TopNode>[0-1000]C:\Projects\williamsonfamily\branches\Summer09Revamp\Solutions\williamsonfamily.nunit</TopNode>
+  <SelectedNode>[0-1000]C:\Projects\williamsonfamily\branches\Summer09Revamp\Solutions\williamsonfamily.nunit</SelectedNode>
+  <ExcludeCategories>false</ExcludeCategories>
+  <Nodes>
+    <Node UniqueName="[0-1000]C:\Projects\williamsonfamily\branches\Summer09Revamp\Solutions\williamsonfamily.nunit" Expanded="true" />
+    <Node UniqueName="[0-1069]C:\Projects\williamsonfamily\branches\Summer09Revamp\Tests\WilliamsonFamiliy.Models.Data.Test\bin\Debug\WilliamsonFamily.Tests.Models.Data.dll" Expanded="true" />
+    <Node UniqueName="[0-1074]Williamsonfamily" Expanded="true" />
+    <Node UniqueName="[0-1075]Williamsonfamily.Models" Expanded="true" />
+    <Node UniqueName="[0-1076]Williamsonfamily.Models.Tests" Expanded="true" />
+    <Node UniqueName="[0-1070]WilliamsonFamily" Expanded="true" />
+    <Node UniqueName="[0-1071]WilliamsonFamily.Tests" Expanded="true" />
+    <Node UniqueName="[0-1072]WilliamsonFamily.Tests.Models" Expanded="true" />
+    <Node UniqueName="[0-1073]WilliamsonFamily.Tests.Models.Data" Expanded="true" />
+    <Node UniqueName="[0-1091]C:\Projects\williamsonfamily\branches\Summer09Revamp\Tests\WilliamsonFamily.Library.Test\bin\Debug\WilliamsonFamily.Tests.Library.dll" Expanded="true" />
+    <Node UniqueName="[0-1092]WilliamsonFamily" Expanded="true" />
+    <Node UniqueName="[0-1093]WilliamsonFamily.Tests" Expanded="true" />
+    <Node UniqueName="[0-1094]WilliamsonFamily.Tests.Library" Expanded="true" />
+    <Node UniqueName="[0-1095]WilliamsonFamily.Tests.Library.Caching" Expanded="true" />
+    <Node UniqueName="[0-1096]WilliamsonFamily.Tests.Library.Web" Expanded="true" />
+    <Node UniqueName="[0-1097]WilliamsonFamily.Tests.Library.Web.Filters" Expanded="true" />
+  </Nodes>
+</VisualState>

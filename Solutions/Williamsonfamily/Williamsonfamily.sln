@@ -1,0 +1,166 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Tests", "Tests", "{010E78E9-E84C-4D93-B2CC-639D587935EA}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{BA814A8A-4070-4C4E-AFF1-7A1EDE4921CB}"
+	ProjectSection(SolutionItems) = preProject
+		LocalTestRun.testrunconfig = LocalTestRun.testrunconfig
+		Williamsonfamily4.vsmdi = Williamsonfamily4.vsmdi
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WilliamsonFamily.Tests.Library", "..\..\Tests\WilliamsonFamily.Library.Test\WilliamsonFamily.Tests.Library.csproj", "{672D7C26-CDBC-4D62-8055-7C1F18521966}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WilliamsonFamily.Tests.Models.Data", "..\..\Tests\WilliamsonFamiliy.Models.Data.Test\WilliamsonFamily.Tests.Models.Data.csproj", "{CCCB6BA5-F70E-49C7-8D85-D8A88B73DA6C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WilliamsonFamily.Tests.Web", "WilliamsonFamily.Web.Test\WilliamsonFamily.Tests.Web.csproj", "{EDC6C63B-06F1-40A4-8772-93C85CE5C6E8}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Libraries", "Libraries", "{44178320-5CCF-45F4-A3C2-85D181F0CADE}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WilliamsonFamily.Library", "..\..\Libraries\Williamsonfamily.Library\WilliamsonFamily.Library.csproj", "{EA2676B3-05EE-4BC6-9F9E-56F84CA9B15F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WilliamsonFamily.Models", "..\..\Libraries\WilliamsonFamily.Models\WilliamsonFamily.Models.csproj", "{2F2771C1-6D66-4BA6-8ED1-5937AE8A779D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Williamsonfamily.Models.Data", "..\..\Libraries\WilliamsonFamily.Models.Data\Williamsonfamily.Models.Data.csproj", "{940ECCD3-8FD7-41CD-9ED3-CF511DD0393C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WilliamsonFamily.Models.FlickrPhoto", "..\..\Libraries\WilliamsonFamily.Models.FlickrPhoto\WilliamsonFamily.Models.FlickrPhoto.csproj", "{B2C77A83-DDAB-423A-BE6E-823B02B837F1}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ThirdPartyAssemblies", "ThirdPartyAssemblies", "{B8EEF942-B0D2-4D4A-AA34-DD7CED8FAC9A}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MVC", "MVC", "{7303DC46-D9B3-4D4F-8F18-BCE0C9954B55}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\ThirdPartyAssemblies\MVC\Microsoft.Web.Mvc.dll = ..\..\ThirdPartyAssemblies\MVC\Microsoft.Web.Mvc.dll
+		..\..\ThirdPartyAssemblies\MVC\System.Web.Abstractions.dll = ..\..\ThirdPartyAssemblies\MVC\System.Web.Abstractions.dll
+		..\..\ThirdPartyAssemblies\MVC\System.Web.Mvc.dll = ..\..\ThirdPartyAssemblies\MVC\System.Web.Mvc.dll
+		..\..\ThirdPartyAssemblies\MVC\System.Web.Routing.dll = ..\..\ThirdPartyAssemblies\MVC\System.Web.Routing.dll
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SQLite", "SQLite", "{8C51D8D3-AD26-4932-9C48-6E4C5C9429E7}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\ThirdPartyAssemblies\SQLite\DbMetal.exe.config = ..\..\ThirdPartyAssemblies\SQLite\DbMetal.exe.config
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "DI", "DI", "{BEDD2746-C7B1-4D44-9CF7-A9CECD6BE820}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\ThirdPartyAssemblies\Spring\Common.Logging.dll = ..\..\ThirdPartyAssemblies\Spring\Common.Logging.dll
+		..\..\ThirdPartyAssemblies\Spring\Spring.Core.dll = ..\..\ThirdPartyAssemblies\Spring\Spring.Core.dll
+		..\..\ThirdPartyAssemblies\Structuremap\StructureMap.dll = ..\..\ThirdPartyAssemblies\Structuremap\StructureMap.dll
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "MvcContrib", "MvcContrib", "{DF68B3D8-CE3F-41C3-9F22-A400D8A06D7D}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\ThirdPartyAssemblies\MvcContrib\MvcContrib.dll = ..\..\ThirdPartyAssemblies\MvcContrib\MvcContrib.dll
+		..\..\ThirdPartyAssemblies\MvcContrib\MvcContrib.FluentHtml.dll = ..\..\ThirdPartyAssemblies\MvcContrib\MvcContrib.FluentHtml.dll
+		..\..\ThirdPartyAssemblies\MvcContrib\MvcContrib.TestHelper.dll = ..\..\ThirdPartyAssemblies\MvcContrib\MvcContrib.TestHelper.dll
+		..\..\ThirdPartyAssemblies\Testing\Rhino.Mocks.dll = ..\..\ThirdPartyAssemblies\Testing\Rhino.Mocks.dll
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "SquishIt", "SquishIt", "{9047B423-5A9F-44E2-8403-1A57E79A59C2}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\ThirdPartyAssemblies\SquishIt\dotless.Core.dll = ..\..\ThirdPartyAssemblies\SquishIt\dotless.Core.dll
+		..\..\ThirdPartyAssemblies\SquishIt\EcmaScript.NET.modified.dll = ..\..\ThirdPartyAssemblies\SquishIt\EcmaScript.NET.modified.dll
+		..\..\ThirdPartyAssemblies\SquishIt\SquishIt.Framework.dll = ..\..\ThirdPartyAssemblies\SquishIt\SquishIt.Framework.dll
+		..\..\ThirdPartyAssemblies\SquishIt\Yahoo.Yui.Compressor.dll = ..\..\ThirdPartyAssemblies\SquishIt\Yahoo.Yui.Compressor.dll
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Testing", "Testing", "{6F6DE80B-AAE6-4A3B-B733-204BFB8F4026}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\ThirdPartyAssemblies\Testing\NUnit-2.5.7.10213\bin\net-2.0\framework\nunit.framework.dll = ..\..\ThirdPartyAssemblies\Testing\NUnit-2.5.7.10213\bin\net-2.0\framework\nunit.framework.dll
+		..\..\ThirdPartyAssemblies\Testing\Rhino.Mocks.dll = ..\..\ThirdPartyAssemblies\Testing\Rhino.Mocks.dll
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Scripts", "Scripts", "{3E8E845F-3525-420A-B1F4-B84E42EA001D}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\Scripts\UpdateDB.bat = ..\..\Scripts\UpdateDB.bat
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database", "Database", "{1F205527-5BEE-44E8-97C3-7A8E398DCC13}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "00-IniitalCreation", "00-IniitalCreation", "{6102FFF3-B9FE-4670-99A6-B501C91B3AA7}"
+	ProjectSection(SolutionItems) = preProject
+		..\..\Scripts\Database\00-InitialCreation\InitialCreation.sql = ..\..\Scripts\Database\00-InitialCreation\InitialCreation.sql
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WilliamsonFamily.Web", "..\..\Webs\Williamsonfamily\WilliamsonFamily.Web.csproj", "{C1DC5F94-6F58-4E8D-B015-3166149DD34B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WilliamsonFamily.Models.ShutterflyPhoto", "..\..\Libraries\WilliamsonFamily.Models.ShutterflyPhoto\WilliamsonFamily.Models.ShutterflyPhoto.csproj", "{C1528FE9-6047-4224-9B5F-20F1F07F9814}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{672D7C26-CDBC-4D62-8055-7C1F18521966}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{672D7C26-CDBC-4D62-8055-7C1F18521966}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{672D7C26-CDBC-4D62-8055-7C1F18521966}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{672D7C26-CDBC-4D62-8055-7C1F18521966}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCCB6BA5-F70E-49C7-8D85-D8A88B73DA6C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCCB6BA5-F70E-49C7-8D85-D8A88B73DA6C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCCB6BA5-F70E-49C7-8D85-D8A88B73DA6C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCCB6BA5-F70E-49C7-8D85-D8A88B73DA6C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EDC6C63B-06F1-40A4-8772-93C85CE5C6E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EDC6C63B-06F1-40A4-8772-93C85CE5C6E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EDC6C63B-06F1-40A4-8772-93C85CE5C6E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EDC6C63B-06F1-40A4-8772-93C85CE5C6E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EA2676B3-05EE-4BC6-9F9E-56F84CA9B15F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EA2676B3-05EE-4BC6-9F9E-56F84CA9B15F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EA2676B3-05EE-4BC6-9F9E-56F84CA9B15F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EA2676B3-05EE-4BC6-9F9E-56F84CA9B15F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2F2771C1-6D66-4BA6-8ED1-5937AE8A779D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2F2771C1-6D66-4BA6-8ED1-5937AE8A779D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2F2771C1-6D66-4BA6-8ED1-5937AE8A779D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2F2771C1-6D66-4BA6-8ED1-5937AE8A779D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{940ECCD3-8FD7-41CD-9ED3-CF511DD0393C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{940ECCD3-8FD7-41CD-9ED3-CF511DD0393C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{940ECCD3-8FD7-41CD-9ED3-CF511DD0393C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{940ECCD3-8FD7-41CD-9ED3-CF511DD0393C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B2C77A83-DDAB-423A-BE6E-823B02B837F1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B2C77A83-DDAB-423A-BE6E-823B02B837F1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B2C77A83-DDAB-423A-BE6E-823B02B837F1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B2C77A83-DDAB-423A-BE6E-823B02B837F1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1DC5F94-6F58-4E8D-B015-3166149DD34B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1DC5F94-6F58-4E8D-B015-3166149DD34B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1DC5F94-6F58-4E8D-B015-3166149DD34B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1DC5F94-6F58-4E8D-B015-3166149DD34B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1528FE9-6047-4224-9B5F-20F1F07F9814}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1528FE9-6047-4224-9B5F-20F1F07F9814}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1528FE9-6047-4224-9B5F-20F1F07F9814}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1528FE9-6047-4224-9B5F-20F1F07F9814}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{BA814A8A-4070-4C4E-AFF1-7A1EDE4921CB} = {010E78E9-E84C-4D93-B2CC-639D587935EA}
+		{672D7C26-CDBC-4D62-8055-7C1F18521966} = {010E78E9-E84C-4D93-B2CC-639D587935EA}
+		{CCCB6BA5-F70E-49C7-8D85-D8A88B73DA6C} = {010E78E9-E84C-4D93-B2CC-639D587935EA}
+		{EDC6C63B-06F1-40A4-8772-93C85CE5C6E8} = {010E78E9-E84C-4D93-B2CC-639D587935EA}
+		{EA2676B3-05EE-4BC6-9F9E-56F84CA9B15F} = {44178320-5CCF-45F4-A3C2-85D181F0CADE}
+		{2F2771C1-6D66-4BA6-8ED1-5937AE8A779D} = {44178320-5CCF-45F4-A3C2-85D181F0CADE}
+		{940ECCD3-8FD7-41CD-9ED3-CF511DD0393C} = {44178320-5CCF-45F4-A3C2-85D181F0CADE}
+		{B2C77A83-DDAB-423A-BE6E-823B02B837F1} = {44178320-5CCF-45F4-A3C2-85D181F0CADE}
+		{C1528FE9-6047-4224-9B5F-20F1F07F9814} = {44178320-5CCF-45F4-A3C2-85D181F0CADE}
+		{7303DC46-D9B3-4D4F-8F18-BCE0C9954B55} = {B8EEF942-B0D2-4D4A-AA34-DD7CED8FAC9A}
+		{8C51D8D3-AD26-4932-9C48-6E4C5C9429E7} = {B8EEF942-B0D2-4D4A-AA34-DD7CED8FAC9A}
+		{BEDD2746-C7B1-4D44-9CF7-A9CECD6BE820} = {B8EEF942-B0D2-4D4A-AA34-DD7CED8FAC9A}
+		{DF68B3D8-CE3F-41C3-9F22-A400D8A06D7D} = {B8EEF942-B0D2-4D4A-AA34-DD7CED8FAC9A}
+		{9047B423-5A9F-44E2-8403-1A57E79A59C2} = {B8EEF942-B0D2-4D4A-AA34-DD7CED8FAC9A}
+		{6F6DE80B-AAE6-4A3B-B733-204BFB8F4026} = {B8EEF942-B0D2-4D4A-AA34-DD7CED8FAC9A}
+		{1F205527-5BEE-44E8-97C3-7A8E398DCC13} = {3E8E845F-3525-420A-B1F4-B84E42EA001D}
+		{6102FFF3-B9FE-4670-99A6-B501C91B3AA7} = {1F205527-5BEE-44E8-97C3-7A8E398DCC13}
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = ..\..\Webs\Williamsonfamily\WilliamsonFamily.Web.csproj
+		Policies = $0
+		$0.TextStylePolicy = $1
+		$1.TabWidth = 4
+		$1.inheritsSet = Mono
+		$1.inheritsScope = text/plain
+		$1.scope = text/x-csharp
+		$0.CSharpFormattingPolicy = $2
+		$2.inheritsSet = Mono
+		$2.inheritsScope = text/x-csharp
+		$2.scope = text/x-csharp
+	EndGlobalSection
+EndGlobal

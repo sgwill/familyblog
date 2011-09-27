@@ -1,0 +1,68 @@
+﻿@model WilliamsonFamily.Web.Models.Blog.BlogListModel
+@{
+	ViewBag.Title = Model.Author.FirstName + "'s Blog - Edit";
+}
+
+@section HeaderImage
+{
+    @if (Model.Author.FirstName == "Bekah")
+    {
+        <div id="bekahlogo">
+		    <h1>
+                <a href='@Url.Action("List", "Blog", new { user = "bekah" }, null)'>Bekah's Blog
+                
+                </a>
+            </h1>
+		    <p>
+			    <em>Oregon Adventure</em>
+		    </p>
+        </div>
+    }
+    else
+    { 
+        <div class="logodiv">
+	        <a href='@Url.Action("List", "Blog", new { user = "sammichele" }, null)'>
+                <img src='@Href("~/Content/images/try3.jpg")' alt="logo" />
+	        </a>
+        </div>
+    }
+}
+
+
+	<div id="content">
+	
+		<div class="content_header">
+			<p><em>Edit or View your existing entries</em></p>
+		</div>
+
+		<div class="contentTable">
+			<table>
+				<tr class="noHover">
+					<th>Entry Name</th>
+					<th>Date Published</th>
+					<th></th>
+				</tr>
+
+			@foreach (var item in Model.BlogEntries) {
+			
+				<tr @(item.IsPublished ? "" : "class=unpublished")>
+					<td class="blogName">@item.Title</td>
+					<td class="blogDate">@(item.IsPublished ? Html.Encode(item.DatePublished) : "Not Published")</td>
+					<td class="controls">
+						@Html.ActionLink("Edit", "Edit", new { user = Model.Author.UrlName, slug = item.Slug }) |
+						@Html.ActionLink("View", "Detail", new { title = item.Slug, user = string.IsNullOrEmpty(Model.Family) ? Model.Author.UrlName : Model.Family }, new { target = "_blank" })
+					</td>
+				</tr>
+			
+			}
+
+			</table>
+		</div>
+
+		<p>
+			@Html.ActionLink("Create New Entry", "Create", new { user = Model.Author.UrlName })
+		</p>
+	
+	</div>
+
+	<div style="clear: both;">&nbsp;</div>

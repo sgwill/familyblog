@@ -1,0 +1,43 @@
+﻿@model WilliamsonFamily.Web.Models.Blog.BlogCreateModel     
+
+            <div class="block">
+                <h3>Title</h3>
+                @{ var textError = Html.ValidationMessage("Title");
+                   var titleError = Html.ValidationMessage("DuplicateTitle"); 
+                }
+                @if (Model.IsEdit) { 
+                <input type="text" class='wideText' disabled="disabled" value="@Model.Title" />
+                @Html.Hidden("Title", Model.Title) 
+                <p><em>Note: You cannot edit the title. This is the URL of your post, so it must be unique.</em></p>
+                } else {
+                @Html.TextBox("Title", Model.Title ?? "", new { Class = "wideText " + (string.IsNullOrEmpty(textError.ToString()) && string.IsNullOrEmpty(titleError.ToString())  ? "" : "error") })
+                <p><em>This will also be the URL of your post, so it must be unique. Don't worry; we'll warn you if this title conflicts with another you've already written.</em></p>
+                } 
+                
+            </div>
+            
+            @{var entryError = Html.ValidationMessage("Entry");}
+            <div class="block @(string.IsNullOrEmpty(entryError.ToHtmlString()) ? "" : "error")">
+                <h3>Entry</h3>
+                
+                @Html.TextArea("Entry", Model.Entry, 25, 102, new { id = "textEntry" })
+            </div>
+            
+            <div class="block">
+                <h3>Tags</h3>
+                @Html.TextBox("Tags", Model.Tags, new { Class = "wideText" }) 
+                <p><em>Tagging a post allows you to categorize your posts for easier searching. You can use multiple tags by seperating them with spaces.</em></p>
+            </div>
+            
+            <div class="block">
+                <h3>Publish this Entry?</h3>
+                @if (!Model.IsPublished) { 
+                <p>If you check this box, this Entry will be published to the blog. If you leave this emtpy you simply save the Entry as is. <b>Publishing
+                    an Entry cannot be undone. Once it's published you may still edit it, but you cannot unpublish.</b></p>
+                } else { 
+                <p><em>This Entry is already published. You can still edit and make updates to it.</em></p>
+                } 
+                @Html.CheckBox("IsPublished", Model.IsPublished, new { @class = Model.IsPublished ? "disabled" : ""})  Publish
+            </div>
+            
+            @Html.Hidden("AuthorID", Model.AuthorID) 

@@ -1,0 +1,137 @@
+2011-08-08T15:45:08.7668134Z - 10320 - Debug - Getting 'fiftyOne/redirect' configuration from file 'C:\projects\williamsonfamily\branches\MVC3\Webs\WilliamsonFamily.Web\App_Data\51Degrees.mobi.config'.
+2011-08-08T15:45:08.7828150Z - 10320 - Debug - Constructing MobileCapabilitiesProvider - Default
+2011-08-08T15:45:12.6532020Z - 10320 - Debug - Initialising redirection module
+2011-08-08T15:45:12.6542021Z - 10320 - Debug - Initialising redirection module static fields.
+2011-08-08T15:45:12.6552022Z - 10320 - Debug - Initialising redirection module event handlers
+2011-08-08T15:45:12.7552122Z - 10320 - Debug - Getting 'fiftyOne/wurfl' configuration from file 'C:\projects\williamsonfamily\branches\MVC3\Webs\WilliamsonFamily.Web\App_Data\51Degrees.mobi.config'.
+2011-08-08T15:45:14.6634030Z - 10320 - Info - Loaded 13925 devices using 11787 strings in 866ms
+2011-08-08T15:45:16.7626129Z - 10320 - Debug - Initialising redirection module
+2011-08-08T15:45:16.7626129Z - 10320 - Debug - Initialising redirection module event handlers
+2011-08-08T15:45:16.7686135Z - 10320 - Debug - Initialising redirection module
+2011-08-08T15:45:16.7686135Z - 10320 - Debug - Initialising redirection module event handlers
+2011-08-08T15:45:16.7816148Z - 10320 - Debug - Initialising redirection module
+2011-08-08T15:45:16.7816148Z - 10320 - Debug - Initialising redirection module event handlers
+2011-08-08T15:45:16.8066173Z - 10320 - Debug - Initialising redirection module
+2011-08-08T15:45:16.8066173Z - 10320 - Debug - Initialising redirection module event handlers
+2011-08-08T15:46:08.9998361Z - 10320 - Debug - Disposing Redirection Module
+2011-08-08T15:46:08.9998361Z - 10320 - Debug - Disposing Redirection Module
+2011-08-08T15:46:08.9998361Z - 10320 - Debug - Disposing Redirection Module
+2011-08-08T15:46:08.9998361Z - 10320 - Debug - Disposing Redirection Module
+2011-08-08T15:46:08.9998361Z - 10320 - Debug - Disposing Redirection Module
+2011-08-08T15:46:13.4132774Z - 10320 - Debug - Getting 'fiftyOne/redirect' configuration from file 'C:\projects\williamsonfamily\branches\MVC3\Webs\WilliamsonFamily.Web\App_Data\51Degrees.mobi.config'.
+2011-08-08T15:46:13.4172778Z - 10320 - Debug - Constructing MobileCapabilitiesProvider - Default
+2011-08-08T15:46:14.9884349Z - 10320 - Debug - Initialising redirection module
+2011-08-08T15:46:14.9894350Z - 10320 - Debug - Initialising redirection module static fields.
+2011-08-08T15:46:14.9904351Z - 10320 - Debug - Initialising redirection module event handlers
+2011-08-08T15:46:15.0144375Z - 10320 - Debug - Getting 'fiftyOne/wurfl' configuration from file 'C:\projects\williamsonfamily\branches\MVC3\Webs\WilliamsonFamily.Web\App_Data\51Degrees.mobi.config'.
+2011-08-08T15:46:16.8026163Z - 10320 - Info - Loaded 13925 devices using 11787 strings in 767ms
+2011-08-08T15:46:30.2099569Z - 10320 - Debug - Initialising redirection module
+2011-08-08T15:46:30.2099569Z - 10320 - Debug - Initialising redirection module event handlers
+2011-08-08T15:46:30.2099569Z - 10320 - Debug - Initialising redirection module
+2011-08-08T15:46:30.2099569Z - 10320 - Debug - Initialising redirection module event handlers
+2011-08-08T15:46:30.2109570Z - 10320 - Debug - Initialising redirection module
+2011-08-08T15:46:30.2109570Z - 10320 - Debug - Initialising redirection module event handlers
+2011-08-08T15:46:30.2279587Z - 10320 - Debug - Initialising redirection module
+2011-08-08T15:46:30.2279587Z - 10320 - Debug - Initialising redirection module event handlers
+2011-08-08T15:46:30.2279587Z - 10320 - Debug - Initialising redirection module
+2011-08-08T15:46:30.2279587Z - 10320 - Debug - Initialising redirection module event handlers
+2011-08-08T15:47:13.3522707Z - 10320 - Debug - Disposing Redirection Module
+2011-08-08T15:47:43.3682720Z - 10320 - Debug - Disposing Redirection Module
+2011-08-08T15:48:13.3832732Z - 10320 - Debug - Disposing Redirection Module
+2011-08-08T15:48:43.3992745Z - 10320 - Debug - Disposing Redirection Module
+2011-08-08T15:49:13.4152758Z - 10320 - Debug - Disposing Redirection Module
+2011-08-08T15:52:54.2923613Z - 10320 - Debug - Disposing Redirection Module
+2011-08-08T15:52:56.3195640Z - 10320 - Debug - Getting 'fiftyOne/redirect' configuration from file 'C:\projects\williamsonfamily\branches\MVC3\Webs\WilliamsonFamily.Web\App_Data\51Degrees.mobi.config'.
+2011-08-08T15:52:56.3225643Z - 10320 - Debug - Constructing MobileCapabilitiesProvider - Default
+2011-08-08T15:52:57.9907311Z - 10320 - Debug - Initialising redirection module
+2011-08-08T15:52:57.9917312Z - 10320 - Debug - Initialising redirection module static fields.
+2011-08-08T15:52:57.9927313Z - 10320 - Debug - Initialising redirection module event handlers
+2011-08-08T15:52:58.0157336Z - 10320 - Debug - Getting 'fiftyOne/wurfl' configuration from file 'C:\projects\williamsonfamily\branches\MVC3\Webs\WilliamsonFamily.Web\App_Data\51Degrees.mobi.config'.
+2011-08-08T15:52:59.7159036Z - 10320 - Info - Loaded 13925 devices using 11787 strings in 679ms
+2011-08-08T15:53:00.1049425Z - 10320 - Debug - Initialising redirection module
+2011-08-08T15:53:00.1049425Z - 10320 - Debug - Initialising redirection module event handlers
+2011-08-08T15:53:00.1079428Z - 10320 - Debug - Initialising redirection module
+2011-08-08T15:53:00.1079428Z - 10320 - Debug - Initialising redirection module event handlers
+2011-08-08T15:53:00.1219442Z - 10320 - Debug - Initialising redirection module
+2011-08-08T15:53:00.1219442Z - 10320 - Debug - Initialising redirection module event handlers
+2011-08-08T15:53:00.1219442Z - 10320 - Debug - Initialising redirection module
+2011-08-08T15:53:00.1219442Z - 10320 - Debug - Initialising redirection module event handlers
+2011-08-08T15:53:00.1229443Z - 10320 - Debug - Initialising redirection module
+2011-08-08T15:53:00.1229443Z - 10320 - Debug - Initialising redirection module event handlers
+2011-08-08T15:53:56.2575572Z - 10320 - Debug - Disposing Redirection Module
+2011-08-08T15:54:26.2735585Z - 10320 - Debug - Disposing Redirection Module
+2011-08-08T15:54:56.2895598Z - 10320 - Debug - Disposing Redirection Module
+2011-08-08T15:55:07.1176425Z - 10320 - Debug - Disposing Redirection Module
+2011-08-08T15:55:07.1176425Z - 10320 - Debug - Disposing Redirection Module
+2011-08-08T15:55:07.1176425Z - 10320 - Debug - Disposing Redirection Module
+2011-08-08T15:55:11.2380545Z - 10320 - Debug - Getting 'fiftyOne/redirect' configuration from file 'C:\projects\williamsonfamily\branches\MVC3\Webs\WilliamsonFamily.Web\App_Data\51Degrees.mobi.config'.
+2011-08-08T15:55:11.2420549Z - 10320 - Debug - Constructing MobileCapabilitiesProvider - Default
+2011-08-08T15:55:12.7432050Z - 10320 - Debug - Initialising redirection module
+2011-08-08T15:55:12.7442051Z - 10320 - Debug - Initialising redirection module static fields.
+2011-08-08T15:55:12.7442051Z - 10320 - Debug - Initialising redirection module event handlers
+2011-08-08T15:55:12.7712078Z - 10320 - Debug - Getting 'fiftyOne/wurfl' configuration from file 'C:\projects\williamsonfamily\branches\MVC3\Webs\WilliamsonFamily.Web\App_Data\51Degrees.mobi.config'.
+2011-08-08T15:55:14.5973904Z - 10320 - Info - Loaded 13925 devices using 11787 strings in 802ms
+2011-08-08T15:55:14.6093916Z - 10320 - Debug - Initialising redirection module
+2011-08-08T15:55:14.6093916Z - 10320 - Debug - Initialising redirection module event handlers
+2011-08-08T15:55:16.0425349Z - 10320 - Debug - Initialising redirection module
+2011-08-08T15:55:16.0425349Z - 10320 - Debug - Initialising redirection module event handlers
+2011-08-08T15:55:16.0445351Z - 10320 - Debug - Initialising redirection module
+2011-08-08T15:55:16.0445351Z - 10320 - Debug - Initialising redirection module event handlers
+2011-08-08T15:55:16.0465353Z - 10320 - Debug - Initialising redirection module
+2011-08-08T15:55:16.0465353Z - 10320 - Debug - Initialising redirection module event handlers
+2011-08-08T15:55:16.0495356Z - 10320 - Debug - Initialising redirection module
+2011-08-08T15:55:16.0495356Z - 10320 - Debug - Initialising redirection module event handlers
+2011-08-08T15:55:45.9635267Z - 10320 - Debug - Disposing Redirection Module
+2011-08-08T15:55:45.9635267Z - 10320 - Debug - Disposing Redirection Module
+2011-08-08T15:55:45.9635267Z - 10320 - Debug - Disposing Redirection Module
+2011-08-08T15:55:45.9635267Z - 10320 - Debug - Disposing Redirection Module
+2011-08-08T15:55:45.9635267Z - 10320 - Debug - Disposing Redirection Module
+2011-08-08T15:55:45.9635267Z - 10320 - Debug - Disposing Redirection Module
+2011-08-08T15:59:09.2228506Z - 8400 - Debug - Getting 'fiftyOne/redirect' configuration from file 'C:\projects\williamsonfamily\branches\MVC3\Webs\WilliamsonFamily.Web\App_Data\51Degrees.mobi.config'.
+2011-08-08T15:59:09.2268510Z - 8400 - Debug - Constructing MobileCapabilitiesProvider - Default
+2011-08-08T16:05:19.3368583Z - 8400 - Debug - Getting 'fiftyOne/redirect' configuration from file 'C:\projects\williamsonfamily\branches\MVC3\Webs\WilliamsonFamily.Web\App_Data\51Degrees.mobi.config'.
+2011-08-08T16:05:19.3398586Z - 8400 - Debug - Constructing MobileCapabilitiesProvider - Default
+2011-08-08T16:09:19.1660273Z - 10320 - Debug - Getting 'fiftyOne/redirect' configuration from file 'C:\projects\williamsonfamily\branches\MVC3\Webs\WilliamsonFamily.Web\App_Data\51Degrees.mobi.config'.
+2011-08-08T16:09:19.1700273Z - 10320 - Debug - Constructing MobileCapabilitiesProvider - Default
+2011-08-08T16:09:20.5770273Z - 10320 - Debug - Initialising redirection module
+2011-08-08T16:09:20.5780273Z - 10320 - Debug - Initialising redirection module static fields.
+2011-08-08T16:09:20.5780273Z - 10320 - Debug - Initialising redirection module event handlers
+2011-08-08T16:09:20.6030273Z - 10320 - Debug - Getting 'fiftyOne/wurfl' configuration from file 'C:\projects\williamsonfamily\branches\MVC3\Webs\WilliamsonFamily.Web\App_Data\51Degrees.mobi.config'.
+2011-08-08T16:09:22.2740273Z - 10320 - Info - Loaded 13925 devices using 11787 strings in 651ms
+2011-08-08T16:09:23.7300273Z - 10320 - Debug - Initialising redirection module
+2011-08-08T16:09:23.7300273Z - 10320 - Debug - Initialising redirection module event handlers
+2011-08-08T16:09:23.7310273Z - 10320 - Debug - Initialising redirection module
+2011-08-08T16:09:23.7310273Z - 10320 - Debug - Initialising redirection module event handlers
+2011-08-08T16:09:23.7330273Z - 10320 - Debug - Initialising redirection module
+2011-08-08T16:09:23.7330273Z - 10320 - Debug - Initialising redirection module event handlers
+2011-08-08T16:09:23.7330273Z - 10320 - Debug - Initialising redirection module
+2011-08-08T16:09:23.7330273Z - 10320 - Debug - Initialising redirection module event handlers
+2011-08-08T16:09:23.7340273Z - 10320 - Debug - Initialising redirection module
+2011-08-08T16:09:23.7340273Z - 10320 - Debug - Initialising redirection module event handlers
+2011-08-08T16:10:48.0777338Z - 10320 - Debug - Disposing Redirection Module
+2011-08-08T16:10:51.9011161Z - 10320 - Debug - Disposing Redirection Module
+2011-08-08T16:10:51.9011161Z - 10320 - Debug - Disposing Redirection Module
+2011-08-08T16:10:51.9011161Z - 10320 - Debug - Disposing Redirection Module
+2011-08-08T16:10:51.9011161Z - 10320 - Debug - Disposing Redirection Module
+2011-08-08T16:10:51.9021162Z - 10320 - Debug - Disposing Redirection Module
+2011-08-08T16:10:54.1453405Z - 10320 - Debug - Getting 'fiftyOne/redirect' configuration from file 'C:\projects\williamsonfamily\branches\MVC3\Webs\WilliamsonFamily.Web\App_Data\51Degrees.mobi.config'.
+2011-08-08T16:10:54.1483408Z - 10320 - Debug - Constructing MobileCapabilitiesProvider - Default
+2011-08-08T16:10:55.2384498Z - 10320 - Debug - Initialising redirection module
+2011-08-08T16:10:55.2384498Z - 10320 - Debug - Initialising redirection module static fields.
+2011-08-08T16:10:55.2394499Z - 10320 - Debug - Initialising redirection module event handlers
+2011-08-08T16:10:55.2644524Z - 10320 - Debug - Getting 'fiftyOne/wurfl' configuration from file 'C:\projects\williamsonfamily\branches\MVC3\Webs\WilliamsonFamily.Web\App_Data\51Degrees.mobi.config'.
+2011-08-08T16:10:57.0226282Z - 10320 - Info - Loaded 13925 devices using 11787 strings in 737ms
+2011-08-08T16:10:57.2906550Z - 10320 - Debug - Initialising redirection module
+2011-08-08T16:10:57.2906550Z - 10320 - Debug - Initialising redirection module event handlers
+2011-08-08T16:10:57.2906550Z - 10320 - Debug - Initialising redirection module
+2011-08-08T16:10:57.2906550Z - 10320 - Debug - Initialising redirection module event handlers
+2011-08-08T16:10:57.2916551Z - 10320 - Debug - Initialising redirection module
+2011-08-08T16:10:57.2916551Z - 10320 - Debug - Initialising redirection module event handlers
+2011-08-08T16:11:10.1899448Z - 10320 - Debug - Disposing Redirection Module
+2011-08-08T16:11:10.1899448Z - 10320 - Debug - Disposing Redirection Module
+2011-08-08T16:11:10.1899448Z - 10320 - Debug - Disposing Redirection Module
+2011-08-08T16:11:10.1899448Z - 10320 - Debug - Disposing Redirection Module
+2011-08-08T16:16:30.3209547Z - 8400 - Debug - Getting 'fiftyOne/redirect' configuration from file 'C:\projects\williamsonfamily\branches\MVC3\Webs\WilliamsonFamily.Web\App_Data\51Degrees.mobi.config'.
+2011-08-08T16:16:30.3239550Z - 8400 - Debug - Constructing MobileCapabilitiesProvider - Default
+2011-08-16T13:57:11.7590143Z - 8944 - Debug - Getting 'fiftyOne/redirect' configuration from file 'C:\projects\williamsonfamily\branches\MVC3\Webs\WilliamsonFamily.Web\App_Data\51Degrees.mobi.config'.
+2011-08-16T13:57:11.7630147Z - 8944 - Debug - Constructing MobileCapabilitiesProvider - Default

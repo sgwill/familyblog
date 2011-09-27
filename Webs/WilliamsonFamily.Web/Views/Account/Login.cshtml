@@ -1,0 +1,39 @@
+﻿@{
+	ViewBag.Title = "Login Page";
+}
+
+@section HeaderImage
+{
+	<div id="logo">
+		<h1>@Html.ActionLink("The Williamsons", "Index", "Home")</h1>
+		<p>
+			<em>The Awesome Williamson Family</em>
+		</p>
+	</div>
+}
+
+	<h2>Please Login First</h2>
+
+	<br />
+
+	<form action='@Url.Action("Login")' method="post">
+	<div>
+		<fieldset>
+		<label for="userName">User Name</label><br />
+		<input type="text" id="userName" name="userName" />
+		
+		<br /><br />
+		
+		<label for="password">Password:</label><br />
+		<input type="password" id="password" name="password" />
+		<br /><br />
+		
+		@Html.CheckBox("rememberMe", true)<label for="rememberMe">Remember Me:</label>
+		
+		<br /><br />
+		<input type="submit" value="Login" />
+		</fieldset>
+	</div>
+	</form>
+
+	<br /><br />

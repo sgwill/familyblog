@@ -1,0 +1,102 @@
+﻿@model WilliamsonFamily.Web.Models.Blog.BlogModel
+@{
+	ViewBag.Title = Model.BlogEntry.Title;
+}
+
+@section HeaderImage
+{
+    @if (Model.Author.FirstName == "Bekah")
+    {
+        <div id="bekahlogo">
+		    <h1>
+                <a href='@Url.Action("List", "Blog", new { user = "bekah" }, null)'>Bekah's Blog
+                
+                </a>
+            </h1>
+		    <p>
+			    <em>Oregon Adventure</em>
+		    </p>
+        </div>
+    }
+    else
+    { 
+        <div class="logodiv">
+	        <a href='@Url.Action("List", "Blog", new { user = "sammichele" }, null)'>
+                <img src='@Href("~/Content/images/try3.jpg")' alt="logo" />
+	        </a>
+        </div>
+    }
+}
+
+	<div class="left_column">
+		
+		<article>
+			<div class="article_content">
+				<h1>@Model.BlogEntry.Title</h1>
+			
+				<div class="article_info clearfix">
+					<p class="article_timestamp">Posted @Model.BlogEntry.DatePublished.Value.FriendlyDate()</p>
+					<p class="article_comment_now">
+						<a href="#disqus_thread" data-disqus-identifier="@Model.BlogEntry.Slug.Replace("\"", "")" class="comments">Comment Now</a>
+					</p>
+				</div>    
+				
+				<div class="article_text">@Html.Raw(Model.BlogEntry.Entry)</div>
+			</div>   
+		
+			@{ if (!string.IsNullOrEmpty(Model.BlogEntry.Tags)) {
+			<span class="post_footer clearfix">
+				<span class="tags">Tags: @Model.BlogEntry.Tags</span>
+			</span>
+			}}
+		
+		</article>
+		
+		<div class="comments">
+			<a name="disqus_thread"></a>
+				<div id="disqus_thread"></div>
+				<noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+				<a href="http://disqus.com" class="dsq-brlink">blog comments powered by <span class="logo-disqus">Disqus</span></a>
+				<br /><br />
+		</div>
+		
+	</div>
+	
+	<div class="right_column">
+	</div>
+
+@section ScriptSection
+{
+    <script type="text/javascript">
+        var disqus_shortname = 'williamsonfamily';
+        var disqus_identifier = '@Model.BlogEntry.Slug.Replace("\"", "")';
+        var disqus_url = 'http://www.williamsonfamily.com/sammichele/blog/@(Model.BlogEntry.Slug).aspx';
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function () {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = 'http://' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+
+        (function () {
+            var s = document.createElement('script'); s.async = true;
+            s.type = 'text/javascript';
+            s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        } ());
+    </script>
+}
+
+
+@*@section AnalyticsSection
+{
+    <script type="text/javascript">
+        _gaq.push(['_setCustomVar',
+            1,                          // This custom var is set to slot #1.
+            'AuthorName',               // The top-level name for your online content categories.
+            '@Model.Author.UrlName',  // User or Family
+            3                           // Sets the scope to page-level.
+        ]);
+    </script>
+}*@

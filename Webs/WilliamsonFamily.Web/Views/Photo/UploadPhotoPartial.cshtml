@@ -1,0 +1,17 @@
+﻿@{
+    Layout = null;
+}
+
+    <div class="photoUpload">
+        <h2>Upload Photo</h2>
+        
+        @{Html.BeginForm("upload", "photo", FormMethod.Post, new { enctype = "multipart/form-data", id = "PhotoUpload" });}
+            <input type="file" name="thefile" id="thefile" class="multi"/>
+            <input type="submit" value="Upload" id="uploadButton" name="uploadButton"/>
+        @{Html.EndForm();}
+        
+        <p id="MessageText">Click Browse and find your image. Then click Upload. The process takes awhile.</p>
+
+        <span id="CloseButton" class="nyroModalClose">Cancel</span>
+        
+    </div>

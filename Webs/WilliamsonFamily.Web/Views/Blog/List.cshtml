@@ -1,0 +1,178 @@
+﻿@model WilliamsonFamily.Web.Models.Blog.BlogListModel
+@{
+	ViewBag.Title = Model.Author.FirstName + "'s Blog";
+}
+
+@section ExtraHeader
+{
+	<link rel="alternate" type="application/rss+xml" title="@Model.Author.FirstName RSS Feed" href="http://www.williamsonfamily.com@(Url.Action("Feed", new { user = Model.Author.UrlName }))" />
+}
+
+@section HeaderImage
+{
+    @if (Model.Author.FirstName == "Bekah")
+    {
+        <div id="bekahlogo">
+		    <h1>
+                <a href='@Url.Action("List", "Blog", new { user = "bekah" }, null)'>Bekah's Blog
+                
+                </a>
+            </h1>
+		    <p>
+			    <em>Oregon Adventure</em>
+		    </p>
+        </div>
+    }
+    else
+    { 
+        <div class="logodiv">
+	        <a href='@Url.Action("List", "Blog", new { user = "sammichele" }, null)'>
+                <img src='@Href("~/Content/images/try3.jpg")' alt="logo" />
+	        </a>
+        </div>
+    }
+}
+
+		<section id="content">
+			<div class="content_header">
+				@*<%--<h1><%= Html.Encode(Model.Author.FirstName) %>'s Blog</h1>--%>
+				<%--<p class="tags">Popular Tags: <a href="#">Life</a>, <a href="#">Baby</a>, <a href="#">Politics</a></p>--%>*@
+			</div>
+ 
+		@foreach (var item in Model.BlogEntries)
+  {
+			<article class="post">
+				<h2 class="title">@Html.ActionLink(item.Title, "Detail", new { title = item.Slug })</h2>
+				<p class="meta">
+					Posted @item.DatePublished.Value.FriendlyDate()<br />
+					<span>Posted by @item.AuthorName</span>
+				</p>
+				<div class="entry">
+					@Html.Raw(item.Entry)
+					<p class="links">
+						@if (!string.IsNullOrEmpty(item.Tags))
+      { 
+							@Html.Raw("Tags: ") @item.Tags <br />
+      }
+						<br />
+						<a href="@(Url.Action("Detail", new { title = item.Slug }))#disqus_thread" data-disqus-identifier="@item.Slug" class="comments">Comment Now</a>
+					</p>
+				</div>
+			</article>        
+  }
+
+		 @if (Model.PageCount > 1)
+   {
+			<div class="pagination">
+				<div class="page-nav">
+					@Html.Raw(Html.RenderPager(Model.PageCount, Model.PageIndex, Url.Action("list")))
+				</div>
+			</div>
+			<div style="clear: both;">&nbsp;</div>
+   }
+
+		</section>
+
+		<section id="sidebar">
+			<ul>
+				@if (Model.Author.FirstName.ToLower() == "sam and michele")
+    {
+				<li>
+					<h2>About Us</h2>
+					<p>Hi! We're Sam and Michele. We have a beautiful new baby boy, Luke. Welcome to our little spot in the world.</p>
+				</li>
+    }
+    else
+    {
+                <li>
+                    <p>I'm living in Oregon for four months. No, it won't be a hunter/gatherer society. Yes, I do rely on wood-stove heat.</p>
+                    <p>&nbsp;</p>
+                    <p>Here are my stories.</p>
+                </li>
+    }
+
+				@{Html.RenderPartial("~/Views/Blog/BlogSidebarList.cshtml", Model.BlogTitles);}
+			   @*<%-- <li>
+					<h2>Tags</h2>
+					<ul>
+						<li><a href="#"></a><a href="#">Nec metus sed donec</a></li>
+						<li><a href="#">Magna lacus bibendum mauris</a></li>
+						<li><a href="#">Velit semper nisi molestie</a></li>
+						<li><a href="#">Eget tempor eget nonummy</a></li>
+						<li><a href="#">Nec metus sed donec</a></li>
+					</ul>
+				</li>
+				<li>
+					<h2>Date</h2>
+					<ul>
+						<li><a href="#"></a><a href="#">Nec metus sed donec</a></li>
+						<li><a href="#">Magna lacus bibendum mauris</a></li>
+						<li><a href="#">Velit semper nisi molestie</a></li>
+						<li><a href="#">Eget tempor eget nonummy</a></li>
+					</ul>
+				</li>
+				<li>
+					<h2>Twitter</h2>
+					<ul>
+						<li><a href="#"></a><a href="#">Nec metus sed donec</a></li>
+						<li><a href="#">Magna lacus bibendum mauris</a></li>
+						<li><a href="#">Velit semper nisi molestie</a></li>
+						<li><a href="#">Eget tempor eget nonummy</a></li>
+					</ul>
+				</li>--%>*@
+			</ul>
+		</section>
+		<!-- end #sidebar -->
+		<div style="clear: both;">&nbsp;</div>
+
+@section ScriptSection
+{
+    <script type="text/javascript">
+        var disqus_shortname = 'williamsonfamily';
+
+        /* * * DON'T EDIT BELOW THIS LINE * * */
+        (function () {
+            var s = document.createElement('script'); s.async = true;
+            s.type = 'text/javascript';
+            s.src = 'http://' + disqus_shortname + '.disqus.com/count.js';
+            (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+        } ());
+
+        $(document).ready(function () {
+            $('#sidebardates').jqcollapse({ slide: true, speed: 1000, easing: 'easeOutCubic' });
+
+
+            var $sidebar = $("#sidebar"),
+            $window = $(window),
+            offset = $sidebar.offset(),
+            topPadding = 0,
+            originalTop = 300;
+
+            $window.scroll(function () {
+                if ($window.scrollTop() > originalTop) {
+                    $sidebar.stop().animate({
+                        marginTop: $window.scrollTop() - 350
+                    });
+                } else {
+                    $sidebar.stop().animate({
+                        marginTop: 0
+                    });
+                }
+            });
+
+
+        });
+    </script>
+}
+
+@*@section AnalyticsSection
+{
+    <script type="text/javascript">
+        _gaq.push(['_setCustomVar',
+            1,                          // This custom var is set to slot #1.
+            'AuthorName',               // The top-level name for your online content categories.
+            '@Model.Author.UrlName',  // User or Family
+            3                           // Sets the scope to page-level.
+        ]);
+    </script>
+}*@

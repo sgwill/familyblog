@@ -1,0 +1,23 @@
+﻿@model IDictionary<string, IDictionary<string, IEnumerable<WilliamsonFamily.Models.Blog.IBlog>>>
+
+                <li>
+                    <h2>All Entries</h2>
+                    <ul id="sidebardates">
+                    @foreach (var year in Model) {
+                        <li>
+                        <b>@year.Key</b>
+                        <ul>
+                        @foreach (var month in year.Value) {
+                            <li><b>@month.Key</b>
+                            <ul>
+                            @foreach (var blog in month.Value) {
+                                <li>@Html.ActionLink(blog.Title, "Detail", new { title= blog.Slug })</li>
+                            }
+                            </ul>
+                            </li>
+                        }
+                        </ul>
+                        </li>
+                    }
+                    </ul>
+                </li>

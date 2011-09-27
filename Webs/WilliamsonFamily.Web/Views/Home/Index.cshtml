@@ -1,0 +1,20 @@
+﻿@{
+	ViewBag.Title = "Home Page";
+}
+
+@section HeaderImage
+{
+	<div id="logo">
+		<h1>@Html.ActionLink("The Williamsons", "Index", "Home")</h1>
+		<p>
+			<em>The Awesome Williamson Family</em>
+		</p>
+	</div>
+}
+
+	<h2>Welcome to the home of the Williamson Family</h2>
+	<p>&nbsp;</p>
+	<p>Sam and Michele's blog is @Html.ActionLink("over here", "List", "Blog", new { user = "sammichele" }, null).</p>
+    <p>Bekah's blog is @Html.ActionLink("over here", "List", "Blog", new { user = "bekah" }, null).</p>
+	<p>&nbsp;</p>
+	<div class="clear">&nbsp;</div>

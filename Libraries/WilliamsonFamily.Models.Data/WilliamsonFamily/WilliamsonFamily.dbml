@@ -1,0 +1,65 @@
+<?xml version="1.0"?>
+<Database xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" Name="main" EntityNamespace="WilliamsonFamily.Models.Data" ContextNamespace="WilliamsonFamily.Models.Data" Class="Main" BaseType="DbLinq.Data.Linq.DataContext" Provider="SQLite" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Table Name="main.Blog" Member="Blog">
+    <Type Name="Blog">
+      <Column Name="AuthorID" Member="AuthorID" Storage="_authorID" Type="System.String" DbType="varchar(36)" IsPrimaryKey="false" IsDbGenerated="false" CanBeNull="false" />
+      <Column Name="DatePublished" Member="DatePublished" Storage="_datePublished" Type="System.DateTime" DbType="TIMESTAMP" IsPrimaryKey="false" IsDbGenerated="false" CanBeNull="true" />
+      <Column Name="Entry" Member="Entry" Storage="_entry" Type="System.String" DbType="TEXT" IsPrimaryKey="false" IsDbGenerated="false" CanBeNull="true" />
+      <Column Name="PkID" Member="PkID" Storage="_pkID" Type="System.Int32" DbType="INTEGER" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Tags" Member="Tags" Storage="_tags" Type="System.String" DbType="VARCHAR(50)" IsPrimaryKey="false" IsDbGenerated="false" CanBeNull="true" />
+      <Column Name="Title" Member="Title" Storage="_title" Type="System.String" DbType="VARCHAR(50)" IsPrimaryKey="false" IsDbGenerated="false" CanBeNull="false" />
+	  <Column Name="Slug" Member="Slug" Storage="_slug" Type="System.String" DbType="VARCHAR(50)" IsPrimaryKey="false" IsDbGenerated="false" CanBeNull="false" />
+	  <Column Name="AuthorName" Member="AuthorName" Storage="_authorName" Type="System.String" DbType="VARCHAR(50)" IsPrimaryKey="false" IsDbGenerated="false" CanBeNull="true" />
+	  <Column Name="IsPublished" Member="IsPublished" Storage="_isPublished" Type="System.Boolean" DbType="BOOLEAN" IsPrimaryKey="false" IsDbGenerated="false" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="main.BlogComment" Member="BlogComment">
+    <Type Name="BlogComment">
+      <Column Name="AuthorID" Member="AuthorID" Storage="_authorID" Type="System.String" DbType="varchar(36)" IsPrimaryKey="false" IsDbGenerated="false" CanBeNull="false" />
+      <Column Name="BlogID" Member="BlogID" Storage="_blogID" Type="System.Int32" DbType="INTEGER" IsPrimaryKey="false" IsDbGenerated="false" CanBeNull="false" />
+      <Column Name="Comment" Member="Comment" Storage="_comment" Type="System.String" DbType="TEXT" IsPrimaryKey="false" IsDbGenerated="false" CanBeNull="false" />
+      <Column Name="DatePublished" Member="DatePublished" Storage="_datePublished" Type="System.DateTime" DbType="TIMESTAMP" IsPrimaryKey="false" IsDbGenerated="false" CanBeNull="true" />
+      <Column Name="PkID" Member="PkID" Storage="_pkID" Type="System.Int32" DbType="INTEGER" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="main.Family" Member="Family">
+    <Type Name="Family">
+      <Column Name="Description" Member="Description" Storage="_description" Type="System.String" DbType="TEXT" IsPrimaryKey="false" IsDbGenerated="false" CanBeNull="true" />
+      <Column Name="FamilyName" Member="FamilyName" Storage="_familyName" Type="System.String" DbType="VARCHAR(20)" IsPrimaryKey="false" IsDbGenerated="false" CanBeNull="false" />
+      <Column Name="PkID" Member="PkID" Storage="_pkID" Type="System.Int32" DbType="INTEGER" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="main.UserFamily" Member="UserFamily">
+    <Type Name="UserFamily">
+      <Column Name="FamilyID" Member="FamilyID" Storage="_familyID" Type="System.Int32" DbType="INTEGER" IsPrimaryKey="false" IsDbGenerated="false" CanBeNull="true" />
+      <Column Name="UserID" Member="UserID" Storage="_userID" Type="System.String" DbType="varchar(36)" IsPrimaryKey="false" IsDbGenerated="false" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="main.users" Member="User">
+    <Type Name="User">
+      <Column Name="ApplicationName" Member="ApplicationName" Storage="_applicationName" Type="System.String" DbType="varchar(100)" IsPrimaryKey="false" IsDbGenerated="false" CanBeNull="false" />
+      <Column Name="Birthdate" Member="Birthdate" Storage="_birthdate" Type="System.DateTime" DbType="DATE" IsPrimaryKey="false" IsDbGenerated="false" CanBeNull="true" />
+      <Column Name="Comment" Member="Comment" Storage="_comment" Type="System.String" DbType="varchar(255)" IsPrimaryKey="false" IsDbGenerated="false" CanBeNull="true" />
+      <Column Name="CreationDate" Member="CreationDate" Storage="_creationDate" Type="System.DateTime" DbType="datetime" IsPrimaryKey="false" IsDbGenerated="false" CanBeNull="true" />
+      <Column Name="Email" Member="Email" Storage="_email" Type="System.String" DbType="varchar(100)" IsPrimaryKey="false" IsDbGenerated="false" CanBeNull="false" />
+      <Column Name="FailedPasswordAnswerAttemptCount" Member="FailedPasswordAnswerAttemptCount" Storage="_failedPasswordAnswerAttemptCount" Type="System.Int32" DbType="int(11)" IsPrimaryKey="false" IsDbGenerated="false" CanBeNull="true" />
+      <Column Name="FailedPasswordAnswerAttemptWindowStart" Member="FailedPasswordAnswerAttemptWindowStart" Storage="_failedPasswordAnswerAttemptWindowStart" Type="System.DateTime" DbType="datetime" IsPrimaryKey="false" IsDbGenerated="false" CanBeNull="true" />
+      <Column Name="FailedPasswordAttemptCount" Member="FailedPasswordAttemptCount" Storage="_failedPasswordAttemptCount" Type="System.Int32" DbType="int(11)" IsPrimaryKey="false" IsDbGenerated="false" CanBeNull="true" />
+      <Column Name="FailedPasswordAttemptWindowStart" Member="FailedPasswordAttemptWindowStart" Storage="_failedPasswordAttemptWindowStart" Type="System.DateTime" DbType="datetime" IsPrimaryKey="false" IsDbGenerated="false" CanBeNull="true" />
+      <Column Name="FirstName" Member="FirstName" Storage="_firstName" Type="System.String" DbType="VARCHAR(50)" IsPrimaryKey="false" IsDbGenerated="false" CanBeNull="true" />
+      <Column Name="IsApproved" Member="IsApproved" Storage="_isApproved" Type="System.Boolean" DbType="tinyint(1)" IsPrimaryKey="false" IsDbGenerated="false" CanBeNull="true" />
+      <Column Name="IsLockedOut" Member="IsLockedOut" Storage="_isLockedOut" Type="System.Boolean" DbType="tinyint(1)" IsPrimaryKey="false" IsDbGenerated="false" CanBeNull="true" />
+      <Column Name="IsOnLine" Member="IsOnLine" Storage="_isOnLine" Type="System.Boolean" DbType="tinyint(1)" IsPrimaryKey="false" IsDbGenerated="false" CanBeNull="true" />
+      <Column Name="LastActivityDate" Member="LastActivityDate" Storage="_lastActivityDate" Type="System.DateTime" DbType="datetime" IsPrimaryKey="false" IsDbGenerated="false" CanBeNull="true" />
+      <Column Name="LastLockedOutDate" Member="LastLockedOutDate" Storage="_lastLockedOutDate" Type="System.DateTime" DbType="datetime" IsPrimaryKey="false" IsDbGenerated="false" CanBeNull="true" />
+      <Column Name="LastLoginDate" Member="LastLoginDate" Storage="_lastLoginDate" Type="System.DateTime" DbType="datetime" IsPrimaryKey="false" IsDbGenerated="false" CanBeNull="true" />
+      <Column Name="LastName" Member="LastName" Storage="_lastName" Type="System.String" DbType="VARCHAR(50)" IsPrimaryKey="false" IsDbGenerated="false" CanBeNull="true" />
+      <Column Name="LastPasswordChangedDate" Member="LastPasswordChangedDate" Storage="_lastPasswordChangedDate" Type="System.DateTime" DbType="datetime" IsPrimaryKey="false" IsDbGenerated="false" CanBeNull="true" />
+      <Column Name="Password" Member="Password" Storage="_password" Type="System.String" DbType="varchar(128)" IsPrimaryKey="false" IsDbGenerated="false" CanBeNull="false" />
+      <Column Name="PasswordAnswer" Member="PasswordAnswer" Storage="_passwordAnswer" Type="System.String" DbType="varchar(255)" IsPrimaryKey="false" IsDbGenerated="false" CanBeNull="true" />
+      <Column Name="PasswordQuestion" Member="PasswordQuestion" Storage="_passwordQuestion" Type="System.String" DbType="varchar(255)" IsPrimaryKey="false" IsDbGenerated="false" CanBeNull="true" />
+      <Column Name="PKID" Member="PkID" Storage="_pkID" Type="System.String" DbType="varchar(36)" IsPrimaryKey="false" IsDbGenerated="false" CanBeNull="false" />
+      <Column Name="Username" Member="Username" Storage="_username" Type="System.String" DbType="varchar(255)" IsPrimaryKey="false" IsDbGenerated="false" CanBeNull="false" />
+    </Type>
+  </Table>
+</Database>

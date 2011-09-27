@@ -1,0 +1,74 @@
+﻿@MvcHtmlString.Create(SquishIt.Framework.Bundle.JavaScript()
+    .Add("~/Scripts/jHtmlArea-0.7.0.js")
+    .Add("~/Scripts/jHtmlArea.ColorPickerMenu-0.7.0.js")
+    .Add("~/Scripts/jquery.nyroModal-1.6.2.min.js")
+    .Add("~/Scripts/jquery.form.js")
+    .Render("~/Scripts/combined_editor_#.js"))
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $('#textEntry').htmlarea({
+            toolbar: [
+                        ["html"],
+                        ["bold", "italic", "underline"],
+                        ["h1", "h2", "h3"],
+                        ["orderedlist", "unorderedlist"],
+                        ["indent", "outdent"],
+                        ["justifyleft", "justifycenter", "justifyright"],
+                        ["link", "unlink", "horizontalrule"],
+                        ["image"],
+                        ["forecolor"],
+                        [{
+                            css: "imageupload",
+                            text: "Upload Image",
+                            action: function (btn) {
+
+                                var theEditor = this;
+                                $.nyroModalManual({
+                                    type: 'iframe',
+                                    url: '@(Url.Action("Upload", "Photo"))',
+                                    width: 50,
+                                    modal: true,
+                                    endShowContent: function (elts, settings) {
+                                        var options = {
+                                            success: showResponse,
+                                            beforeSubmit: showBeforeSubmit,
+                                            url: '@(Url.Action("upload", "photo"))?__ajax=true',
+                                            dataType: 'json',
+                                            iframe: true
+                                        };
+
+                                        // bind form using 'ajaxForm'
+                                        $('#PhotoUpload').ajaxForm(options);
+                                        //$('#PhotoUpload').MultiFile();
+
+                                        function showBeforeSubmit(arr, $form, options) {
+                                            $('#MessageText').html('Please wait. Uploading image now');
+                                            $('#CloseButton').hide();
+                                            $('#CloseButton').html('Close');
+                                        }
+                                        function showResponse(responseText, statusText, xhr, $form) {
+                                            window.parent.PhotoUrl = responseText.Url;
+                                            $('#MessageText').html('Image uploaded. You may now close the uploader.');
+                                            $('#CloseButton').show();
+                                            $('#uploadButton').attr('disabled', 'disabled');
+                                            $('#theButton').attr('disabled', 'disabled');
+                                            return false;
+                                        }
+                                    },
+                                    hideContent: function (elts, settings, callback) {
+                                        if (window.PhotoUrl) {
+                                            theEditor.image(window.PhotoUrl);
+                                        }
+                                        callback();
+                                    }
+                                });
+                            }
+                        }]
+                    ]
+        });
+
+        $('#Title').focus();
+        $('.disabled').attr('disabled', 'disabled');
+    });
+</script>

@@ -1,0 +1,59 @@
+﻿@model WilliamsonFamily.Web.Models.Blog.BlogCreateModel
+@{
+	ViewBag.Title = "Write a Blog Entry";
+}
+
+@section ExtraHeader
+{
+	@{Html.RenderPartial("~/Views/Blog/CreateEditCSS.cshtml");}
+}
+
+@section HeaderImage
+{
+    @if (Model.AuthorID == "0ae3050a-1b8e-4cf2-b759-e729e31e45d7")
+    {
+        <div id="bekahlogo">
+		    <h1>
+                <a href='@Url.Action("List", "Blog", new { user = "bekah" }, null)'>Bekah's Blog
+                
+                </a>
+            </h1>
+		    <p>
+			    <em>Oregon Adventure</em>
+		    </p>
+        </div>
+    }
+    else
+    { 
+        <div class="logodiv">
+	        <a href='@Url.Action("List", "Blog", new { user = "sammichele" }, null)'>
+                <img src='@Href("~/Content/images/try3.jpg")' alt="logo" />
+	        </a>
+        </div>
+    }
+}
+
+	<div class="createBlog">
+		<h2>Write a Blog Entry</h2>
+		
+		<br />
+
+		@Html.ValidationSummary("Create was unsuccessful. Please correct the errors and try again.")
+		
+		@{Html.BeginForm("Create", "Blog", FormMethod.Post);}
+			@{Html.RenderPartial("~/Views/Blog/EditShared.cshtml");}
+			<div class="block">
+				<input type="submit" value="Create Entry" />
+			</div>
+		@{Html.EndForm();}
+
+		<div class="block">
+			@Html.ActionLink("Back to List", "Index")
+		</div>
+	
+	</div>
+
+@section ScriptSection
+{
+	@{Html.RenderPartial("~/Views/Blog/CreateEditJS.cshtml");}
+}

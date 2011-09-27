@@ -1,0 +1,14 @@
+﻿@if (Request.IsAuthenticated)
+{
+    <div id="userMenu">
+        <div id="userNavigation">
+            <a href="@Url.Action("UserList", "Blog", new { user = User.Identity.Name })">My Entries</a> | 
+            <a href="@Url.Action("Create", "Blog", new { user = User.Identity.Name })">New Entry</a> | 
+        </div>
+    
+        <div id="login">
+            Logged in as: <b>@Html.Encode(User.Identity.Name)</b> |
+            <a href="@Url.Action("Logout", "Account")">Logout</a>
+        </div>
+    </div>    
+}
