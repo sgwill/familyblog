@@ -54,17 +54,15 @@ task Checkout-Release -Description "Checkout master branch" {
 }
 
 task Build-Debug -Description "Build in DEBUG mode" {
-    msbuild $sln "/nologo" "/t:Rebuild" "/p:Configuration=Debug" "/fileLogger"
+    exec { msbuild $sln "/nologo" "/t:Rebuild" "/p:Configuration=Debug" "/fileLogger" } "Build Failed"
 }
 
 task Build-Release -Description "Build in RELEASE mode" {
-    msbuild $sln "/nologo" "/t:Rebuild" "/p:Configuration=Release" "/fileLogger" 
+    exec { msbuild $sln "/nologo" "/t:Rebuild" "/p:Configuration=Release" "/fileLogger" } "Build Failed"
 }
 
 task Test -depends Checkout-Develop,Clean-Debug,Build-Debug -Description "Runs tests in DEBUG mode" {
-	# Build
-    #msbuild $sln "/nologo" "/t:Rebuild" "/p:Configuration=Debug" "/fileLogger"
-    
+	    
     # Ensure Test Folder
     $pathExists = test-path $test_debug_dir
     if (-not $pathExists) {
@@ -76,7 +74,7 @@ task Test -depends Checkout-Develop,Clean-Debug,Build-Debug -Description "Runs t
     
     # Test
 	$tests = ls $test_debug_dir *.Tests.dll | foreach { '/testcontainer:' + $test_debug_dir + $_ }
-	mstest $tests
+	exec { mstest $tests } "Testing failed"
 }
 
 task Test-release -depends Checkout-Release,Clean-Release,Build-Release -Description "Runs tests in RELEASE mode" {
@@ -95,6 +93,7 @@ task Test-release -depends Checkout-Release,Clean-Release,Build-Release -Descrip
     # Test
 	$tests = ls $test_release_dir *.Tests.dll | foreach { '/testcontainer:' + $test_release_dir + $_ }
 	mstest $tests
+    $lastExitCode
 }
 
 task list-ftp -Description "List the files of the home directory" {
