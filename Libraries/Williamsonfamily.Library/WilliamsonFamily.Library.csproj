@@ -100,8 +100,6 @@
     <Compile Include="Web\Membership\SQLiteProviders\SQLiteProfileProvider.cs" />
     <Compile Include="Web\Membership\SQLiteProviders\SQLiteRoleProvider.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Web\MobileViewEngine.cs" />
-    <Compile Include="Web\RouteHelper.cs" />
     <Compile Include="Web\RssResult.cs" />
     <Compile Include="Web\TitleCleaner.cs" />
   </ItemGroup>
