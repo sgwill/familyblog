@@ -27,7 +27,7 @@ namespace WilliamsonFamily.Web.Tests.Controllers
     {
         #region List Tests
         [TestMethod]
-        public void BlogController_List_InvalidUserAndFamily_RedirectsToHomeIndex()
+        public void List_InvalidUserAndFamily_RedirectsToHomeIndex()
         {
             // Assert
             _controller.List("", "")
