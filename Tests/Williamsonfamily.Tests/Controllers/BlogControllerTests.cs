@@ -458,14 +458,14 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 //        }
         #endregion
 
-//        #region Feed Tests
+        #region Feed Tests
 //        // TODO: Yeah yeah, I didn't test feeds. Damn.
-//        #endregion
+        #endregion
 
 //        // Todo: Tags
 //        // Todo: Dates
 
-//        #region List - Date Range
+        #region List - Date Range
 //        [TestMethod]
 //        public void BlogController_List_DateRange_ReturnsBlogEntries()
 //        {
@@ -497,9 +497,9 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 //            Assert.AreEqual(blogentry, ((BlogListModel)_controller.ViewData.Model).BlogEntries.FirstOrDefault());
 //        }
 
-//        #endregion
+        #endregion
 
-//        #region List - Admin
+        #region List - Admin
 //        [TestMethod]
 //        public void BlogController_UserList_InvalidUser_RedirectsToAccountIndex()
 //        {
@@ -729,22 +729,9 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 //            Assert.AreEqual(username, ((BlogListModel)_controller.ViewData.Model).Author.UrlName);
 //        }
 
-//        #endregion
+        #endregion
 
-//        #region Details
-//        [TestMethod]
-//        public void BlogController_Details_InvalidBlogIDReturnsToBlogList()
-//        {
-//            // Act
-//            var result = _controller.Details(1);
-
-//            // Assert
-//            result.AssertActionRedirect().ToAction("List");
-//            _controller.TempData["Message"].ShouldBe("No Blog");
-//        }
-//        #endregion
-
-//        #region Detail
+        #region Detail
 //        [TestMethod]
 //        public void BlogController_Detail_ViewData_IsBlogModel()
 //        {
@@ -917,9 +904,9 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 //                .TempData["Message"]
 //                .ShouldBe("No Blog");
 //        }
-//        #endregion
+        #endregion
 
-//        #region Create - Get
+        #region Create - Get
 //        [TestMethod]
 //        public void Blogcontroller_CreateGet_RendersCreate()
 //        {
@@ -1124,9 +1111,9 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 //            // Assert
 //            Assert.IsFalse(((BlogCreateModel)_controller.ViewData.Model).IsPublished);
 //        }
-//        #endregion
+        #endregion
 
-//        #region Create - Post
+        #region Create - Post
 //        [TestMethod]
 //        public void BlogController_CreatePost_InsertsNewBlogEntry()
 //        {
@@ -1238,9 +1225,9 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 //            Assert.IsFalse(_controller.ModelState.IsValid);
 //            Assert.IsTrue(_controller.ModelState.ContainsKey("DuplicateTitle"));
 //        }
-//        #endregion
+        #endregion
 
-//        #region Edit - Get
+        #region Edit - Get
 //        [TestMethod]
 //        public void BlogController_EditGet_EmptySlug_RedirectsHome()
 //        {
@@ -1374,9 +1361,9 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 //        //        .ToAction("Index")
 //        //        .ToController("Home");
 //        //}
-//        #endregion
+        #endregion
 
-//        #region Edit - Post
+        #region Edit - Post
 //        [TestMethod]
 //        public void BlogController_EditPost_RendersUserList()
 //        {
@@ -1501,7 +1488,7 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 //                .AssertWasCalled(b => b.Save(Arg<IBlog>
 //                    .Matches(a => a.IsPublished == true)));
 //        }
-//        #endregion
+        #endregion
 
         #region Setup
         private BlogController _controller;
