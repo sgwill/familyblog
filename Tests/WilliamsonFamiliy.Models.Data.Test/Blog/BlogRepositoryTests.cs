@@ -775,13 +775,6 @@ namespace WilliamsonFamily.Models.Data.Tests
 
 			Assert.AreEqual(3, blogs.PageCount);
 		}
-        
-        [TestMethod]
-        public void Test()
-        {
-            Assert.Fail();
-        }
-		
 		#endregion
 
 		#region Helpers

@@ -732,140 +732,109 @@ namespace WilliamsonFamily.Web.Tests.Controllers
         #endregion
 
         #region Detail
-//        [TestMethod]
-//        public void BlogController_Detail_ViewData_IsBlogModel()
-//        {
-//            // Arrange
-//            var entry = MockRepository.GenerateStub<IBlog>();
-//            entry
-//                .Expect(e => e.Slug)
-//                .Return("blog");
-//            entry.AuthorID = "blah";
-//            _controller.BlogRepository
-//                .Expect(b => b.LoadBySlug("blog"))
-//                .Return(entry);
-//            _controller.BlogCommentRepository
-//                .Expect(b => b.LoadList(Arg<int>.Is.Anything))
-//                .Return(new List<IBlogComment> { MockRepository.GenerateStub<IBlogComment>() });
+		private IBlog Setup_Detail_Blog(string title)
+		{
+			return Setup_Detail_Blog(title, "blah");
+		}
 
-//            // Act
-//            _controller.Detail("blog");
+		private IBlog Setup_Detail_Blog(string title, string author)
+		{
+			var entry = MockRepository.GenerateStub<IBlog>();
+			entry
+				.Expect(e => e.Slug)
+				.Return(title);
+			entry.AuthorID = author;
+			_controller.BlogRepository
+				.Expect(b => b.LoadBySlug(title))
+				.Return(entry);
 
-//            // Assert
-//            Assert.IsInstanceOfType(_controller.ViewData.Model, typeof(BlogModel));
-//        }
+			return entry;
+		}
 
-//        [TestMethod]
-//        public void BlogController_Detail_RendersDetails()
-//        {
-//            // Arrange
-//            var entry = MockRepository.GenerateStub<IBlog>();
-//            entry
-//                .Expect(e => e.Slug)
-//                .Return("blog");
-//            entry.AuthorID = "blah";
-//            _controller.BlogRepository
-//                .Expect(b => b.LoadBySlug("blog"))
-//                .Return(entry);
-//            _controller.BlogCommentRepository
-//                .Expect(b => b.LoadList(Arg<int>.Is.Anything))
-//                .Return(new List<IBlogComment> { MockRepository.GenerateStub<IBlogComment>() });
+		[TestMethod]
+		public void Detail_ViewData_IsBlogModel()
+		{
+			// Arrange
+			Setup_Detail_Blog("blog");
 
-//            // Act
-//            var result = _controller.Detail("blog");
+			// Act
+			_controller.Detail("blog");
 
-//            // Assert
-//            result
-//                .AssertViewRendered()
-//                .ForView("Details");
-//        }
+			// Assert
+			Assert.IsInstanceOfType(_controller.ViewData.Model, typeof(BlogModel));
+		}
 
-//        [TestMethod]
-//        public void BlogController_Detail_EmptyTitle_RedirectsToList()
-//        {
-//            // Assert
-//            _controller.Detail("")
-//                .AssertActionRedirect()
-//                .ToAction("List");
-//        }
+		[TestMethod]
+		public void Detail_RendersDetailsView()
+		{
+			// Arrange
+			Setup_Detail_Blog("blog");
 
-//        [TestMethod]
-//        public void BlogController_Detail_Initializes_Author()
-//        {
-//            // Arrange
-//            var entry = MockRepository.GenerateStub<IBlog>();
-//            entry
-//                .Expect(e => e.Slug)
-//                .Return("blog");
-//            entry.AuthorID = "blah";
-//            _controller.BlogRepository
-//                .Expect(b => b.LoadBySlug("blog"))
-//                .Return(entry);
-//            _controller.BlogCommentRepository
-//                .Expect(b => b.LoadList(Arg<int>.Is.Anything))
-//                .Return(new List<IBlogComment> { MockRepository.GenerateStub<IBlogComment>() });
+			// Act
+			var result = _controller.Detail("blog");
 
-//            // Act
-//            var result = _controller.Detail("blog");
+			// Assert
+			result
+				.AssertViewRendered()
+				.ForView("Details");
+		}
 
-//            // Assert
-//            Assert.IsNotNull(((BlogModel)_controller.ViewData.Model).Author);
-//        }
+        [TestMethod]
+        public void Detail_EmptyTitle_RedirectsToList()
+        {
+            // Assert
+            _controller.Detail("")
+                .AssertActionRedirect()
+                .ToAction("List");
+        }
 
-//        [TestMethod]
-//        public void BlogController_Detail_Sets_Author()
-//        {
-//            // Arrange
-//            var entry = MockRepository.GenerateStub<IBlog>();
-//            entry
-//                .Expect(e => e.Slug)
-//                .Return("blog");
-//            entry.AuthorID = "user";
-//            _controller.BlogRepository
-//                .Expect(b => b.LoadBySlug("blog"))
-//                .Return(entry);
-//            _controller.BlogCommentRepository
-//                .Expect(b => b.LoadList(Arg<int>.Is.Anything))
-//                .Return(new List<IBlogComment> { MockRepository.GenerateStub<IBlogComment>() });
-//            IUser user = MockRepository.GenerateStub<IUser>();
-//            user.Username = "user";
-//            user.FirstName = "sam";
-//            _controller.UserRepository
-//                .Expect(u => u.Load("user"))
-//                .Return(user);
+		[TestMethod]
+		public void Detail_Initializes_Author()
+		{
+			// Arrange
+			Setup_Detail_Blog("blog");
 
-//            // Act
-//            var result = _controller.Detail("blog");
+			// Act
+			var result = _controller.Detail("blog");
 
-//            // Assert
-//            Assert.AreEqual("sam", ((BlogModel)_controller.ViewData.Model).Author.FirstName);
-//            Assert.AreEqual("user", ((BlogModel)_controller.ViewData.Model).Author.UrlName);
-//        }
+			// Assert
+			Assert.IsNotNull(((BlogModel)_controller.ViewData.Model).Author);
+		}
 
-//        [TestMethod]
-//        public void BlogController_Detail_Title_ReturnsBlogEntry()
-//        {
-//            string title = "title";
-          
-//            // Arrange
-//            var entry = MockRepository.GenerateStub<IBlog>();
-//            entry
-//                .Expect(e => e.Slug)
-//                .Return(title);
-//            entry.AuthorID = "blah";
-//            _controller.BlogRepository
-//                .Expect(b => b.LoadBySlug(title))
-//                .Return(entry);
-//            _controller.BlogCommentRepository
-//                .Expect(b => b.LoadList(Arg<int>.Is.Anything))
-//                .Return(new List<IBlogComment> { MockRepository.GenerateStub<IBlogComment>() });
+		[TestMethod]
+		public void Detail_Sets_Author()
+		{
+			// Arrange
+			Setup_Detail_Blog("blog", "user");
+			IUser user = MockRepository.GenerateStub<IUser>();
+			user.Username = "user";
+			user.FirstName = "sam";
+			_controller.UserRepository
+				.Expect(u => u.Load("user"))
+				.Return(user);
 
-//            // Act
-//            _controller.Detail(title);
+			// Act
+			var result = _controller.Detail("blog");
 
-//            // Assert
-//            Assert.AreEqual(entry, ((BlogModel)_controller.ViewData.Model).BlogEntry);
-//        }
+			// Assert
+			Assert.AreEqual("sam", ((BlogModel)_controller.ViewData.Model).Author.FirstName);
+			Assert.AreEqual("user", ((BlogModel)_controller.ViewData.Model).Author.UrlName);
+		}
+
+		[TestMethod]
+		public void Detail_Title_ReturnsBlogEntry()
+		{
+			string title = "title";
+
+			// Arrange
+			var entry = Setup_Detail_Blog(title, "user");
+
+			// Act
+			_controller.Detail(title);
+
+			// Assert
+			Assert.AreEqual(entry, ((BlogModel)_controller.ViewData.Model).BlogEntry);
+		}
 
 //        [TestMethod]
 //        public void BlogController_Detail_LoadsFamilyEntriesFromCacheIfCacheIsNotNull()
@@ -894,16 +863,16 @@ namespace WilliamsonFamily.Web.Tests.Controllers
             
 //        }
 
-//        [TestMethod]
-//        public void BlogController_Detail_InvalidTitle_RedirectsToList()
-//        {
-//            _controller.Detail("title")
-//                .AssertActionRedirect()
-//                .ToAction("List");
-//            _controller
-//                .TempData["Message"]
-//                .ShouldBe("No Blog");
-//        }
+        [TestMethod]
+        public void Detail_InvalidTitle_RedirectsToList()
+        {
+            _controller.Detail("title")
+                .AssertActionRedirect()
+                .ToAction("List");
+            _controller
+                .TempData["Message"]
+                .ShouldBe("No Blog");
+        }
         #endregion
 
         #region Create - Get

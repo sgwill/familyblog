@@ -220,8 +220,8 @@ namespace WilliamsonFamily.Web.Controllers
                     viewData.Author.FirstName = user.FirstName;
                 }
 
-                ICacheKey cacheKey = new BlogListCacheKey();
-                viewData.FamilyEntries = Cache.Get<IEnumerable<IBlog>>(cacheKey.GenerateKey(""), null);
+				//ICacheKey cacheKey = new BlogListCacheKey();
+				//viewData.FamilyEntries = Cache.Get<IEnumerable<IBlog>>(cacheKey.GenerateKey(""), null);
 
                 return View("Details", viewData);
             }
