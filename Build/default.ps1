@@ -79,7 +79,7 @@ task Test -depends Checkout-Develop,Clean-Debug,Build-Debug -Description "Runs t
 	mstest $tests
 }
 
-task Test-release -depends Clean-Release,Build-Release -Description "Runs tests in RELEASE mode" {
+task Test-release -depends Checkout-Release,Clean-Release,Build-Release -Description "Runs tests in RELEASE mode" {
 	# Build
     #msbuild $sln "/nologo" "/t:Rebuild" "/p:Configuration=Release" "/fileLogger"
     
