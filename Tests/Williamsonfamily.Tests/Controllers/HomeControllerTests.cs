@@ -13,7 +13,7 @@ namespace WilliamsonFamily.Web.Tests.Controllers
     {
 
         [TestMethod]
-        public void HomeController_Home_CanGetThere()
+        public void Home_CanGetThere()
         {
             _builder.InitializeController(_controller);
             _controller.Index().AssertViewRendered().ForView("Index");
