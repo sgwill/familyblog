@@ -46,7 +46,7 @@ task Init -depends Clean -Description "Ensure folders exist" {
 }
 
 task Checkout-Develop -Description "Checkout develop branch" {
-    git checkout develop
+    # git checkout develop
 }
 
 task Checkout-Release -Description "Checkout master branch" {

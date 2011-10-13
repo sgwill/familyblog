@@ -66,6 +66,7 @@
   <ItemGroup>
     <Compile Include="Caching\CacheKeyTests.cs" />
     <Compile Include="Caching\HttpCacheTests.cs" />
+    <Compile Include="ExtensionMethodsTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Web\Filters\CompressActionFilterTests.cs" />
     <Compile Include="Web\TitleCleanerTests.cs" />
