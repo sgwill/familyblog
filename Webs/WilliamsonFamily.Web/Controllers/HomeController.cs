@@ -1,13 +1,14 @@
 ﻿using System;
 using System.Web.Mvc;
 using MvcMiniProfiler;
-using System.Threading;
-using WilliamsonFamily.Models.Blog;
+using WilliamsonFamily.Library.Web.Routing;
 
 namespace WilliamsonFamily.Web.Controllers
 {
     public class HomeController : BaseController
     {
+		[Route("", RoutePriority.High)]
+		[Route("home")]
         public ActionResult Index()
         {
             return View("Index");

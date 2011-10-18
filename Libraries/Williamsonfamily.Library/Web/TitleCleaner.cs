@@ -9,7 +9,7 @@ namespace WilliamsonFamily.Library.Web
 
         public string CleanTitle(string title)
         {
-            return title
+            return (title ?? "")
                 .Replace(":", "")
                 .Replace("/", "")
                 .Replace("?", "")

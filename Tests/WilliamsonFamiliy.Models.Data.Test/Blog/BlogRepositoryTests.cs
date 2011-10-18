@@ -775,7 +775,6 @@ namespace WilliamsonFamily.Models.Data.Tests
 
 			Assert.AreEqual(3, blogs.PageCount);
 		}
-		
 		#endregion
 
 		#region Helpers

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Web.Mvc;
 using WilliamsonFamily.Models.Web;
+using WilliamsonFamily.Library.Web.Routing;
 
 namespace WilliamsonFamily.Web.Controllers
 {
@@ -23,12 +24,14 @@ namespace WilliamsonFamily.Web.Controllers
         }
         #endregion
 
+		[Route("home/login")]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Login()
         {
             return View("Login");
         }
 
+		[Route("home/login")]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Login(string userName, string password, bool? rememberMe, string returnUrl)
         {
@@ -50,6 +53,7 @@ namespace WilliamsonFamily.Web.Controllers
             }
         }
 
+		[Route("home/logout")]
         public ActionResult Logout()
         {
             MembershipService.Logout();

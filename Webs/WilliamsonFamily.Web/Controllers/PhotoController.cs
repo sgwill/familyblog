@@ -7,6 +7,7 @@ using WilliamsonFamily.Models.Photo;
 using WilliamsonFamily.Library.Exceptions;
 using WilliamsonFamily.Library.Web;
 using MvcMiniProfiler;
+using WilliamsonFamily.Library.Web.Routing;
 
 namespace WilliamsonFamily.Web.Controllers
 {
@@ -21,6 +22,7 @@ namespace WilliamsonFamily.Web.Controllers
         }
         #endregion
 
+		[Route("{user}/photo/upload.aspx")]
         public ActionResult Upload()
         {
             string view = "UploadPhoto";
@@ -32,6 +34,7 @@ namespace WilliamsonFamily.Web.Controllers
 
         [ValidateInput(false)]
         [AcceptVerbs(HttpVerbs.Post)]
+		[Route("{user}/photo/upload.aspx", HttpVerbs.Post)]
         public ActionResult Upload(HttpPostedFileBase theFile)
         {
             EnsureInjectables();

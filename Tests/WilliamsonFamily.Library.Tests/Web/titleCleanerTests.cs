@@ -163,6 +163,15 @@ namespace WilliamsonFamily.Library.Tests.Web
             Assert.AreEqual("title", cleaner.CleanTitle(title));
         }
 
+		[TestMethod]
+		public void TitleCleaner_NullReturnsEmptyString()
+		{
+			string title = null;
+			var cleaner = GetCleaner();
+
+			Assert.AreEqual("", cleaner.CleanTitle(title));
+		}
+
         TitleCleaner GetCleaner()
         {
             return new TitleCleaner();
