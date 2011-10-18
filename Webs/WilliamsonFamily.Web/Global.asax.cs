@@ -28,15 +28,15 @@ namespace WilliamsonFamily.Web
 
 			RouteAttribute.MapDecoratedRoutes(RouteTable.Routes);
 
-            // MUST be the last route as a catch-all!
-            //RouteTable.Routes.MapRoute("", "{*url}", new { controller = "Error", action = "PageNotFound" })
+            // MUST be the last route as a catch-all! --> Not ready for it yet
+			//RouteTable.Routes.MapRoute("", "{*url}", new { controller = "Error", action = "PageNotFound" });
 
             // 404
-            RouteTable.Routes.MapRoute(
-                "404-Catch",
-                "{*url}",
-                new { controller = "Base", action = "MissingPage" }
-            );
+			//RouteTable.Routes.MapRoute(
+			//    "404-Catch",
+			//    "{*url}",
+			//    new { controller = "Base", action = "MissingPage" }
+			//);
         }
 
         protected void Application_Start()
