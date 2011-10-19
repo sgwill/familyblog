@@ -24,14 +24,14 @@ namespace WilliamsonFamily.Web.Controllers
         }
         #endregion
 
-		[Route("home/login")]
+		[Route("home/login", RoutePriority.High)]
         [AcceptVerbs(HttpVerbs.Get)]
         public ActionResult Login()
         {
             return View("Login");
         }
 
-		[Route("home/login")]
+		[Route("home/login", RoutePriority.High)]
         [AcceptVerbs(HttpVerbs.Post)]
         public ActionResult Login(string userName, string password, bool? rememberMe, string returnUrl)
         {
@@ -53,7 +53,7 @@ namespace WilliamsonFamily.Web.Controllers
             }
         }
 
-		[Route("home/logout")]
+		[Route("home/logout", RoutePriority.High)]
         public ActionResult Logout()
         {
             MembershipService.Logout();
