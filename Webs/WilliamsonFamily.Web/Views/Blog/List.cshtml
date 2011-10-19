@@ -140,27 +140,6 @@
 
         $(document).ready(function () {
             $('#sidebardates').jqcollapse({ slide: true, speed: 1000, easing: 'easeOutCubic' });
-
-
-            var $sidebar = $("#sidebar"),
-            $window = $(window),
-            offset = $sidebar.offset(),
-            topPadding = 0,
-            originalTop = 300;
-
-            $window.scroll(function () {
-                if ($window.scrollTop() > originalTop) {
-                    $sidebar.stop().animate({
-                        marginTop: $window.scrollTop() - 350
-                    });
-                } else {
-                    $sidebar.stop().animate({
-                        marginTop: 0
-                    });
-                }
-            });
-
-
         });
     </script>
 }
