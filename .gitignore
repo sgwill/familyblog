@@ -32,7 +32,6 @@ obj/
 Ankh.NoLoad
 *.Publish.xml
 
-*.db
 
 #Tooling
 _ReSharper*/
