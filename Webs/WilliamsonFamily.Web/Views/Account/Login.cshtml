@@ -29,6 +29,8 @@
 		<br /><br />
 		
 		@Html.CheckBox("rememberMe", true)<label for="rememberMe">Remember Me:</label>
+
+		<input type="hidden" id="returnUrl" name="returnUrl" value="@Url.RequestContext.HttpContext.Request.QueryString["ReturnUrl"]" />
 		
 		<br /><br />
 		<input type="submit" value="Login" />
