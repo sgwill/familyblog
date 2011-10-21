@@ -86,7 +86,7 @@
     <Compile Include="IModelPersister.cs" />
     <Compile Include="IModelRepository.cs" />
     <Compile Include="IUniqueKey.cs" />
-    <Compile Include="Log\ILogCleaner.cs" />
+    <Compile Include="Log\ILogManager.cs" />
     <Compile Include="Photo\IPhoto.cs" />
     <Compile Include="Photo\IPhotoRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

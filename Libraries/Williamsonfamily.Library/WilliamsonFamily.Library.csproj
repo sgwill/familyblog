@@ -79,7 +79,7 @@
     <Compile Include="Communication\Email\GmailEmail.cs" />
     <Compile Include="Exceptions\InjectableProperyNullException.cs" />
     <Compile Include="ExtensionMethods.cs" />
-    <Compile Include="Log\ElmahLogCleaner.cs" />
+    <Compile Include="Log\ElmahLogManager.cs" />
     <Compile Include="Web\AreaViewEngine.cs" />
     <Compile Include="Web\Caching\BlogEntryCacheKey.cs" />
     <Compile Include="Web\Caching\BlogListCacheKey.cs" />

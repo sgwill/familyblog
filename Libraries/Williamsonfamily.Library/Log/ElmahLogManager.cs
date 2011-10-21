@@ -1,0 +1,83 @@
+﻿using System;
+using WilliamsonFamily.Models.Log;
+using System.Data.SQLite;
+using System.Data;
+using MvcMiniProfiler;
+
+namespace WilliamsonFamily.Library.Log
+{
+	public class ElmahLogManager : ILogManager
+	{
+		public string ConnectionString { get; set; }
+
+		private void EnsureInjectables()
+		{
+			if (string.IsNullOrEmpty(ConnectionString)) throw new ApplicationException("ConnectionString required");
+		}
+
+		public void RemoveOldLogs(int daysToKeep)
+		{
+			using (MiniProfiler.Current.Step("ElmahLogManager.RemoveOldLogs"))
+			{
+				EnsureInjectables();
+
+				if (daysToKeep < 30)
+					throw new ArgumentException("Must specify more than 30 days to delete");
+
+				using (SQLiteConnection conn = new SQLiteConnection(ConnectionString))
+				{
+					SQLiteCommand cmd = new SQLiteCommand("DELETE FROM [Error] WHERE TimeUtc < '$Day'", conn);
+
+					cmd.Parameters.Add("$Day", DbType.String).Value = DateTime.Now.AddDays(-daysToKeep).ToString("yyyy-MM-dd");
+
+					try
+					{
+						conn.Open();
+						cmd.ExecuteNonQuery();
+					}
+					catch (SQLiteException e)
+					{
+					    throw e;
+					}
+					finally
+					{
+						conn.Close();
+					}
+				}
+			}
+		}
+
+		public int LogsCount()
+		{
+			using (MiniProfiler.Current.Step("ElmahLogManager.LogsCount"))
+			{
+				EnsureInjectables();
+				int count = 0;
+
+				using (SQLiteConnection conn = new SQLiteConnection(ConnectionString))
+				{
+					SQLiteCommand cmd = new SQLiteCommand("SELECT COUNT(ErrorId) FROM [Error]", conn);
+
+					try
+					{
+						conn.Open();
+						using (var reader = cmd.ExecuteReader())
+						{
+							count = Convert.ToInt32(reader[0]);
+						}
+					}
+					catch (SQLiteException e)
+					{
+						throw e;
+					}
+					finally
+					{
+						conn.Close();
+					}
+				}
+
+				return count;
+			}
+		}
+	}
+}

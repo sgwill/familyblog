@@ -112,6 +112,7 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Admin\AdminLogModel.cs" />
     <Compile Include="Models\Blog\BlogAuthorModel.cs" />
     <Compile Include="Models\Blog\BlogCreateModel.cs" />
     <Compile Include="Models\Blog\BlogListModel.cs" />
@@ -226,6 +227,7 @@
     <Content Include="Views\Photo\UploadPhoto.cshtml" />
     <Content Include="Views\Blog\CreateEditJS.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
+    <Content Include="Views\Admin\Logs.cshtml" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />

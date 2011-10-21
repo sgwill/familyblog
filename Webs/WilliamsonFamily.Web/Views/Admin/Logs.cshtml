@@ -1,0 +1,19 @@
+﻿@model WilliamsonFamily.Web.Models.Admin.AdminLogModel
+@{
+	ViewBag.Title = "/Admin/Logs";
+}
+
+@section HeaderImage
+{
+	<div id="logo">
+		<h1>Admin Log Manager</h1>
+	</div>
+}
+
+	<h3>Admin Log Manager</h3>
+	<br />
+	<p>Total Logs: @Model.LogCount</p>
+
+	<p><a href='@Url.Action("ClearLogs", "Admin")'>Clear old Logs</a></p>
+
+	<p><a href='@Url.Action("Index", "Admin")'>Admin Home</a></p>
