@@ -53,6 +53,9 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Elmah">
+      <HintPath>..\..\packages\elmah.corelibrary.1.2\lib\Elmah.dll</HintPath>
+    </Reference>
     <Reference Include="MvcMiniProfiler, Version=1.9.0.0, Culture=neutral, PublicKeyToken=b44f9351044011a3, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\MiniProfiler.1.9\lib\net40\MvcMiniProfiler.dll</HintPath>
@@ -81,6 +84,7 @@
     <Compile Include="ExtensionMethods.cs" />
     <Compile Include="Log\ElmahLogManager.cs" />
     <Compile Include="Web\AreaViewEngine.cs" />
+    <Compile Include="Web\Attributes\HandleErrorAttribute.cs" />
     <Compile Include="Web\Caching\BlogEntryCacheKey.cs" />
     <Compile Include="Web\Caching\BlogListCacheKey.cs" />
     <Compile Include="Web\Caching\CacheKeyBase.cs" />
