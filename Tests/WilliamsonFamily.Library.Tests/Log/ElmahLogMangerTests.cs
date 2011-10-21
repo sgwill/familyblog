@@ -9,12 +9,12 @@ using WilliamsonFamily.Library.Log;
 namespace WilliamsonFamily.Library.Tests.Log
 {
 	[TestClass]
-	public class ElmahLogCleanerTests
+	public class ElmahLogMangerTests
 	{
-		ElmahLogCleaner cleaner = null;
+		ElmahLogManager cleaner = null;
 
 		[TestMethod]
-		public void EmptyConnectionString_ThrowsException()
+		public void RemoveOldLogs_EmptyConnectionString_ThrowsException()
 		{
 			// Arrange
 			cleaner.ConnectionString = "";
@@ -31,7 +31,7 @@ namespace WilliamsonFamily.Library.Tests.Log
 		}
 
 		[TestMethod]
-		public void LessThan30DaysToKeep_ThrowsException()
+		public void RemoveOldLogs_LessThan30DaysToKeep_ThrowsException()
 		{
 			// Arrange
 			cleaner.ConnectionString = "string";
@@ -47,10 +47,44 @@ namespace WilliamsonFamily.Library.Tests.Log
 			}			
 		}
 
+		[TestMethod]
+		public void LogCount_EmptyConnectionString_ThrowsException()
+		{
+			// Arrange
+			cleaner.ConnectionString = "";
+
+			// Assert
+			try
+			{
+				cleaner.LogsCount();
+			}
+			catch (Exception ex)
+			{
+				Assert.AreEqual("ConnectionString required", ex.Message);
+			}
+		}
+
+		[TestMethod]
+		public void Compact_EmptyConnectionString_ThrowsException()
+		{
+			// Arrange
+			cleaner.ConnectionString = "";
+
+			// Assert
+			try
+			{
+				cleaner.Compact();
+			}
+			catch (Exception ex)
+			{
+				Assert.AreEqual("ConnectionString required", ex.Message);
+			}
+		}
+
 		[TestInitialize]
 		public void Init()
 		{
-			cleaner = new ElmahLogCleaner();
+			cleaner = new ElmahLogManager();
 		}
 	}
 }

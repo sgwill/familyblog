@@ -74,9 +74,13 @@
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js" type="text/javascript"></script> 
     <script>window.jQuery || document.write("<script type='text/javascript' src='@Url.Content("~/scripts/jquery-1.6.3.min.js")'>\x3C/script>")</script>
 
+	<script type="text/javascript">
+		var logErrorUrl = 'exception/log'; 
+	</script>
     @MvcHtmlString.Create(SquishIt.Framework.Bundle.JavaScript()
         .Add("~/Scripts/jquery.easing.js")
         .Add("~/Scripts/jquery.collapse.js")
+		.Add("~/Scripts/errorhandler.js")
         .Render("~/Scripts/combined_#.js"))
 
     <!-- Page Level scripts -->
