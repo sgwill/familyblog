@@ -63,16 +63,9 @@
     </Reference>
     <Reference Include="System.Data" />
     <Reference Include="System.ServiceModel" />
-    <Reference Include="System.ServiceModel.Web">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
     <Reference Include="System.Web" />
-    <Reference Include="System.Web.Abstractions">
-      <RequiredTargetFramework>3.5</RequiredTargetFramework>
-    </Reference>
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.Web.Mvc, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
-    <Reference Include="System.Web.Routing" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Data.SQLite, Version=1.0.61.0, Culture=neutral, PublicKeyToken=db937bc2d44ff139">
@@ -86,6 +79,7 @@
     <Compile Include="Communication\Email\GmailEmail.cs" />
     <Compile Include="Exceptions\InjectableProperyNullException.cs" />
     <Compile Include="ExtensionMethods.cs" />
+    <Compile Include="Log\ElmahLogCleaner.cs" />
     <Compile Include="Web\AreaViewEngine.cs" />
     <Compile Include="Web\Caching\BlogEntryCacheKey.cs" />
     <Compile Include="Web\Caching\BlogListCacheKey.cs" />
