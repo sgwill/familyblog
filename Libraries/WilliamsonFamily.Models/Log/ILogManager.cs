@@ -6,5 +6,6 @@ namespace WilliamsonFamily.Models.Log
 	{
 		int LogsCount();
 		void RemoveOldLogs(int daysToKeep);
+		void Compact();
 	}
 }

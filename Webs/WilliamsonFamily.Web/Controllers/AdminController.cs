@@ -30,7 +30,7 @@ namespace WilliamsonFamily.Web.Controllers
 			}
 		}
 
-		[Route("admin/clearlogs")]
+		[Route("admin/logs/clear")]
 		public ActionResult ClearLogs()
 		{
 			using (MiniProfiler.Current.Step("AdminController.ClearLogs"))
@@ -40,5 +40,17 @@ namespace WilliamsonFamily.Web.Controllers
 				return RedirectToAction("Logs");
 			}
 		}
+
+		[Route("admin/logs/compact")]
+		public ActionResult CompactLogs()
+		{
+			using (MiniProfiler.Current.Step("AdminController.CompactLogs"))
+			{
+				LogManager.Compact();
+
+				return RedirectToAction("Logs");
+			}
+		}
+
     }
 }

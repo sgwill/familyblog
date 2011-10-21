@@ -64,6 +64,23 @@ namespace WilliamsonFamily.Library.Tests.Log
 			}
 		}
 
+		[TestMethod]
+		public void Compact_EmptyConnectionString_ThrowsException()
+		{
+			// Arrange
+			cleaner.ConnectionString = "";
+
+			// Assert
+			try
+			{
+				cleaner.Compact();
+			}
+			catch (Exception ex)
+			{
+				Assert.AreEqual("ConnectionString required", ex.Message);
+			}
+		}
+
 		[TestInitialize]
 		public void Init()
 		{

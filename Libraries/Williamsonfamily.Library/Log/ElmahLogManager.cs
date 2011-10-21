@@ -1,8 +1,8 @@
 ﻿using System;
 using WilliamsonFamily.Models.Log;
 using System.Data.SQLite;
-using System.Data;
 using MvcMiniProfiler;
+using System.Data;
 
 namespace WilliamsonFamily.Library.Log
 {
@@ -26,10 +26,10 @@ namespace WilliamsonFamily.Library.Log
 
 				using (SQLiteConnection conn = new SQLiteConnection(ConnectionString))
 				{
-					SQLiteCommand cmd = new SQLiteCommand("DELETE FROM [Error] WHERE TimeUtc < '$Day'", conn);
-
-					cmd.Parameters.Add("$Day", DbType.String).Value = DateTime.Now.AddDays(-daysToKeep).ToString("yyyy-MM-dd");
-
+					SQLiteCommand cmd = new SQLiteCommand("DELETE FROM [Error] WHERE TimeUtc < @Day", conn);
+					
+					cmd.Parameters.Add(new SQLiteParameter("@Day", DateTime.Now.AddDays(-30).ToString("yyyy-MM-dd")));
+					
 					try
 					{
 						conn.Open();
@@ -57,7 +57,7 @@ namespace WilliamsonFamily.Library.Log
 				using (SQLiteConnection conn = new SQLiteConnection(ConnectionString))
 				{
 					SQLiteCommand cmd = new SQLiteCommand("SELECT COUNT(ErrorId) FROM [Error]", conn);
-
+					
 					try
 					{
 						conn.Open();
@@ -77,6 +77,30 @@ namespace WilliamsonFamily.Library.Log
 				}
 
 				return count;
+			}
+		}
+
+		public void Compact()
+		{
+			EnsureInjectables();
+
+			using (SQLiteConnection conn = new SQLiteConnection(ConnectionString))
+			{
+				SQLiteCommand cmd = new SQLiteCommand("VACUUM", conn);
+
+				try
+				{
+					conn.Open();
+					cmd.ExecuteNonQuery();
+				}
+				catch (SQLiteException e)
+				{
+					throw e;
+				}
+				finally
+				{
+					conn.Close();
+				}
 			}
 		}
 	}
