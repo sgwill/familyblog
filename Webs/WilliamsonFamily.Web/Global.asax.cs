@@ -7,6 +7,7 @@ using System.Web.Routing;
 using WilliamsonFamily.Library.Web;
 using MvcMiniProfiler;
 using Elmah;
+using WilliamsonFamily.Library.Web.Routing;
 
 namespace WilliamsonFamily.Web
 {
@@ -17,7 +18,7 @@ namespace WilliamsonFamily.Web
     {
         public static void RegisterGlobalFilters(GlobalFilterCollection filters)
         {
-            filters.Add(new HandleErrorAttribute());
+            filters.Add(new WilliamsonFamily.Library.Web.Attributes.HandleErrorAttribute());
         }
 
         public static void RegisterRoutes()
@@ -25,100 +26,17 @@ namespace WilliamsonFamily.Web
             RouteTable.Routes.Clear();
             RouteTable.Routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            RouteTable.Routes.MapRoute(
-               "Home",
-               "home",
-                new { controller = "Home", action = "Index", id = "" }
-            );
+			RouteAttribute.MapDecoratedRoutes(RouteTable.Routes);
 
-            RouteTable.Routes.MapRoute(
-               "Login",
-               "home/login",
-               new { controller = "Account", action = "Login" }
-            );
-
-            RouteTable.Routes.MapRoute(
-                "Logout",
-                "home/logout",
-                new { controller = "Account", action = "Logout" }
-            );
-
-            ///////////////////////////////////////////////////////
-            // Blog Routes
-            ///////////////////////////////////////////////////////
-
-            RouteTable.Routes.MapRoute(
-                "BlogList",
-                "{user}/blog/list.aspx/{*date}",
-                new { controller = "Blog", action = "List", user = "", date = "" }
-            );
-
-            RouteTable.Routes.MapRoute(
-                "BlogUserList",
-                "{user}/blog/userlist.aspx",
-                new { controller = "Blog", action = "UserList", user = "" }
-            );
-
-            RouteTable.Routes.MapRoute(
-               "BlogListFeed",
-               "{user}/blog/list.xml.aspx/{*date}",
-               new { controller = "Blog", action = "Feed", user = "", date = "" }
-            );
-
-            RouteTable.Routes.MapRoute(
-                "BlogCreate",
-                "{user}/blog/create.aspx/",
-                new { controller = "Blog", action = "Create", user = "" }
-            );
-
-            RouteTable.Routes.MapRoute(
-                "BlogEdit",
-                "{user}/blog/edit/{slug}.aspx",
-                new { controller = "Blog", action = "Edit", user = "", slug = "" }
-            );
-
-            RouteTable.Routes.MapRoute(
-                "BlogDetail",
-                "{user}/blog/{title}.aspx",
-                new { controller = "Blog", action = "Detail", user = "", title = "" }
-            );
-
-            ///////////////////////////////////////////////////////
-            // Photo Routes
-            ///////////////////////////////////////////////////////
-
-            RouteTable.Routes.MapRoute(
-               "Photo",
-               "{user}/photo/upload.aspx",
-               new { controller = "Photo", action = "Upload", user = "" }
-            );
-
-            ///////////////////////////////////////////////////////
-            // Default Routes
-            ///////////////////////////////////////////////////////
-
-            RouteTable.Routes.MapRoute(
-              "Default",                                              // Route name
-              "{controller}/{action}/{id}",                           // URL with parameters
-              new { controller = "Home", action = "Index", id = "" }  // Parameter defaults
-            );
-
-
-            RouteTable.Routes.MapRoute(
-                "DefaultWithUser",
-                "{user}/{controller}/{action}/{id}",
-                new { controller = "", action = "", user = "", id = "" }
-            );
-            
-          
+            // MUST be the last route as a catch-all! --> Not ready for it yet
+			//RouteTable.Routes.MapRoute("", "{*url}", new { controller = "Error", action = "PageNotFound" });
 
             // 404
-            RouteTable.Routes.MapRoute(
-                "404-Catch",
-                "{*url}",
-                new { controller = "Base", action = "MissingPage" }
-            );
-
+			//RouteTable.Routes.MapRoute(
+			//    "404-Catch",
+			//    "{*url}",
+			//    new { controller = "Base", action = "MissingPage" }
+			//);
         }
 
         protected void Application_Start()

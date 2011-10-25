@@ -67,7 +67,7 @@ namespace WilliamsonFamily.Web.Tests
         [TestMethod]
         public void Routes_UsernameBlogList_RoutesTo_BlogList()
         {
-            "~/sam/blog/list.aspx".ShouldMapTo<BlogController>(a => a.List("sam", ""));
+            "~/sam/blog/list.aspx".ShouldMapTo<BlogController>(a => a.List("sam"));
         }
 
         [TestMethod]

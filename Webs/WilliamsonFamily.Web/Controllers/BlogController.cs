@@ -14,6 +14,7 @@ using WilliamsonFamily.Models.Family;
 using WilliamsonFamily.Models.User;
 using WilliamsonFamily.Web.Models.Blog;
 using WilliamsonFamily.Web.Web;
+using WilliamsonFamily.Library.Web.Routing;
 
 namespace WilliamsonFamily.Web.Controllers
 {
@@ -36,11 +37,13 @@ namespace WilliamsonFamily.Web.Controllers
 
         #region List
         [CompressActionFilter]
-        public ActionResult List(string user, string date)
+		[Route("{user}/blog/list.aspx", RoutePriority.High)]
+		public ActionResult List(string user)
         {
             using (profiler.Step("BlogController.List"))
             {
                 EnsureInjectables();
+				string date = "";
                 var viewData = GetBlogEntries(user, date, true);
 
                 if (viewData == null)
@@ -140,6 +143,7 @@ namespace WilliamsonFamily.Web.Controllers
 
         #region UserList
         [Authorize]
+		[Route("{user}/blog/userlist.aspx")]
         public ActionResult UserList(string user)
         {
             EnsureInjectables();
@@ -163,6 +167,7 @@ namespace WilliamsonFamily.Web.Controllers
         #endregion
 
         #region Feed
+		[Route("{user}/blog/list.xml.aspx")]
         public ActionResult Feed(string user)
         {
             EnsureInjectables();
@@ -194,6 +199,7 @@ namespace WilliamsonFamily.Web.Controllers
 
         #region Detail
         [CompressActionFilter]
+		[Route("{user}/blog/{title}.aspx", RoutePriority.Low)]
         public ActionResult Detail(string title)
         {
             using (profiler.Step("BlogController.Detail"))
@@ -231,6 +237,7 @@ namespace WilliamsonFamily.Web.Controllers
         #region Create
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
+		[Route("{user}/blog/create.aspx")]
         public ActionResult Create(string user)
         {
             EnsureInjectables();
@@ -256,6 +263,7 @@ namespace WilliamsonFamily.Web.Controllers
         [Authorize]
         [ValidateInput(false)]
         [AcceptVerbs(HttpVerbs.Post)]
+		[Route("{user}/blog/create.aspx", HttpVerbs.Post)]
         public ActionResult Create(BlogCreateModel viewData)
         {
             EnsureInjectables();
@@ -287,6 +295,7 @@ namespace WilliamsonFamily.Web.Controllers
         #region Edit Post
         [Authorize]
         [AcceptVerbs(HttpVerbs.Get)]
+		[Route("{user}/blog/edit/{slug}.aspx")]
         public ActionResult Edit(string user, string slug)
         {
             EnsureInjectables();
@@ -312,6 +321,7 @@ namespace WilliamsonFamily.Web.Controllers
         [Authorize]
         [ValidateInput(false)]
         [AcceptVerbs(HttpVerbs.Post)]
+		[Route("{user}/blog/edit/{slug}.aspx", HttpVerbs.Post)]
         public ActionResult Edit(BlogCreateModel viewData)
         {
             EnsureInjectables();

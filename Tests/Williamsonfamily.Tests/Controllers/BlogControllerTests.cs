@@ -30,7 +30,7 @@ namespace WilliamsonFamily.Web.Tests.Controllers
         public void List_InvalidUserAndFamily_RedirectsToHomeIndex()
         {
             // Assert
-            _controller.List("", "")
+            _controller.List("")
                 .AssertActionRedirect()
                 .ToController("Home")
                 .ToAction("Index");

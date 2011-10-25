@@ -302,7 +302,8 @@ section#content
 
 /* TAB MENU   
 ----------------------------------------------------------*/
-#sidebar {
+#sidebar 
+{
 	float: right;
 	width: 220px;
 }
