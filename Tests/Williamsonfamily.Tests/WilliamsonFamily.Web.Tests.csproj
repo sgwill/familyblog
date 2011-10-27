@@ -82,7 +82,9 @@
     <Compile Include="Web\ExtensionTests.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="App.config" />
+    <Content Include="App.config">
+      <SubType>Designer</SubType>
+    </Content>
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\Libraries\Williamsonfamily.Library\WilliamsonFamily.Library.csproj">
