@@ -121,9 +121,15 @@ namespace WilliamsonFamily.Web.Tests
 
         #region Photo Routes
         [TestMethod]
-        public void Routes_PhotoUpload_RoutesTo_PhotoUpload()
+        public void Routes_PhotoUpload_RoutesTo_Upload()
         {
-            "~/sam/photo/upload.aspx".ShouldMapTo<PhotoController>(a => a.Upload());
+            "~/sam/photo/upload".ShouldMapTo<PhotoController>(a => a.Upload());
+        }
+
+        [TestMethod]
+        public void Routes_PhotoUploadPhoto_RoutesTo_UploadPhoto()
+        {
+            "~/sam/photo/uploadphoto".ShouldMapTo<PhotoController>(a => a.UploadPhoto(null));
         }
         #endregion
 

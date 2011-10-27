@@ -22,7 +22,7 @@ namespace WilliamsonFamily.Web.Controllers
         }
         #endregion
 
-		[Route("{user}/photo/upload.aspx")]
+		[Route("{user}/photo/upload")]
         public ActionResult Upload()
         {
             string view = "UploadPhoto";
@@ -34,8 +34,8 @@ namespace WilliamsonFamily.Web.Controllers
 
         [ValidateInput(false)]
         [AcceptVerbs(HttpVerbs.Post)]
-		[Route("{user}/photo/upload.aspx", HttpVerbs.Post)]
-        public ActionResult Upload(HttpPostedFileBase theFile)
+		[Route("{user}/photo/uploadphoto", HttpVerbs.Post)]
+        public ActionResult UploadPhoto(HttpPostedFileBase theFile)
         {
             EnsureInjectables();
 
