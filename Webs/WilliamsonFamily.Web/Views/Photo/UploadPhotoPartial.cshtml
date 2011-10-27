@@ -5,7 +5,7 @@
     <div class="photoUpload">
         <h2>Upload Photo</h2>
         
-        @{Html.BeginForm("upload", "photo", FormMethod.Post, new { enctype = "multipart/form-data", id = "PhotoUpload" });}
+        @{Html.BeginForm("UploadPhoto", "photo", FormMethod.Post, new { enctype = "multipart/form-data", id = "PhotoUpload" });}
             <input type="file" name="thefile" id="thefile" class="multi"/>
             <input type="submit" value="Upload" id="uploadButton" name="uploadButton"/>
         @{Html.EndForm();}

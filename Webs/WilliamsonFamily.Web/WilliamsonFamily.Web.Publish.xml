@@ -3,110 +3,127 @@
   <publishProfile publishUrl="C:\Projects\Deploy\WilliamsonFamily" deleteExistingFiles="True" ftpAnonymousLogin="False" ftpPassiveMode="True" msdeploySite="" msdeploySiteID="" msdeployRemoteSitePhysicalPath="" msdeployAllowUntrustedCertificate="False" msdeploySkipExtraFilesOnServer="True" msdeployMarkAsApp="False" profileName="Profile1" publishMethod="FileSystem" replaceMatchingFiles="False" userName="" savePWD="False" userPWD="" SelectedForPublish="True">
     <file relUrl="Content/html5reset-1.6.1.css" publishTime="10/22/2011 09:29:44" />
     <file relUrl="bin/SquishIt.Framework.dll" publishTime="10/22/2011 09:29:47" />
-    <file relUrl="bin/WilliamsonFamily.Models.FlickrPhoto.pdb" publishTime="10/22/2011 22:38:32" />
-    <file relUrl="bin/WilliamsonFamily.Web.dll" publishTime="10/22/2011 22:38:45" />
+    <file relUrl="bin/WilliamsonFamily.Models.FlickrPhoto.pdb" publishTime="10/26/2011 20:04:52" />
+    <file relUrl="Content/Fancybox/fancy_title_over.png" publishTime="10/26/2011 19:25:00" />
+    <file relUrl="bin/WilliamsonFamily.Web.dll" publishTime="10/26/2011 21:03:06" />
     <file relUrl="Views/Blog/BlogSidebarList.cshtml" publishTime="10/22/2011 09:29:46" />
     <file relUrl="Scripts/MicrosoftAjax.js" publishTime="10/22/2011 09:29:44" />
-    <file relUrl="bin/WilliamsonFamily.Models.FlickrPhoto.dll" publishTime="10/22/2011 22:38:33" />
-    <file relUrl="Scripts/jHtmlArea.ColorPickerMenu-0.7.0.min.js" publishTime="10/22/2011 09:29:44" />
-    <file relUrl="bin/WilliamsonFamily.Web.pdb" publishTime="10/22/2011 22:38:45" />
-    <file relUrl="Scripts/errorhandler.js" publishTime="10/22/2011 09:31:09" />
+    <file relUrl="bin/WilliamsonFamily.Models.FlickrPhoto.dll" publishTime="10/26/2011 20:04:52" />
+    <file relUrl="Scripts/jquery.mousewheel-3.0.4.pack.js" publishTime="10/26/2011 19:25:00" />
+    <file relUrl="Content/jHtmlArea.ColorPickerMenu.css" publishTime="10/22/2011 09:29:44" />
+    <file relUrl="Scripts/jquery.validate.min.js" publishTime="10/22/2011 09:29:46" />
     <file relUrl="Scripts/MicrosoftMvcValidation.debug.js" publishTime="10/22/2011 09:29:44" />
     <file relUrl="bin/MvcMiniProfiler.pdb" publishTime="10/22/2011 09:29:47" />
     <file relUrl="bin/System.Web.Mvc.Html5.dll" publishTime="10/22/2011 09:29:47" />
     <file relUrl="Content/images/002.JPG" publishTime="10/22/2011 09:29:44" />
     <file relUrl="App_Readme/glimpse.mvc3.readme.txt" publishTime="10/22/2011 09:29:43" />
-    <file relUrl="Web.config" publishTime="10/22/2011 22:38:53" />
+    <file relUrl="Web.config" publishTime="10/26/2011 20:09:25" />
     <file relUrl="Views/Blog/UserList.cshtml" publishTime="10/22/2011 09:29:46" />
-    <file relUrl="bin/WilliamsonFamily.Models.dll" publishTime="10/22/2011 21:53:14" />
     <file relUrl="bin/AjaxMin.dll" publishTime="10/22/2011 09:29:46" />
     <file relUrl="Scripts/MicrosoftMvcAjax.js" publishTime="10/22/2011 09:29:44" />
     <file relUrl="bin/dotless.Core.dll" publishTime="10/22/2011 09:29:48" />
-    <file relUrl="Scripts/jquery.nyroModal.custom.js" publishTime="10/22/2011 09:29:46" />
-    <file relUrl="Views/Blog/CreateEditJS.cshtml" publishTime="10/22/2011 09:29:46" />
-    <file relUrl="Scripts/jquery.nyroModal.custom.min.js" publishTime="10/22/2011 09:29:46" />
-    <file relUrl="bin/WilliamsonFamily.Models.Data.pdb" publishTime="10/22/2011 22:38:36" />
+    <file relUrl="Content/images/next.gif" publishTime="10/22/2011 09:29:44" />
+    <file relUrl="Views/Blog/CreateEditJS.cshtml" publishTime="10/26/2011 20:57:50" />
+    <file relUrl="bin/WilliamsonFamily.Models.Data.pdb" publishTime="10/26/2011 20:04:53" />
+    <file relUrl="Scripts/MicrosoftMvcValidation.js" publishTime="10/22/2011 09:29:44" />
+    <file relUrl="Content/Fancybox/fancy_loading.png" publishTime="10/26/2011 19:25:00" />
+    <file relUrl="bin/WilliamsonFamily.Models.pdb" publishTime="10/22/2011 21:53:14" />
     <file relUrl="Views/Photo/UploadPhoto.cshtml" publishTime="10/22/2011 09:29:46" />
+    <file relUrl="Content/Fancybox/fancybox-x.png" publishTime="10/26/2011 19:25:00" />
     <file relUrl="bin/System.Data.SQLite.Linq.dll" publishTime="10/22/2011 15:04:08" />
     <file relUrl="Content/jHtmlArea.css" publishTime="10/22/2011 09:29:44" />
     <file relUrl="Scripts/jquery-1.6.3.js" publishTime="10/22/2011 09:29:44" />
-    <file relUrl="bin/WilliamsonFamily.DependencyInjection.StructureMap.pdb" publishTime="10/22/2011 22:38:40" />
-    <file relUrl="Scripts/jquery.validate.unobtrusive.min.js" publishTime="10/22/2011 09:29:46" />
+    <file relUrl="Content/Fancybox/fancy_title_right.png" publishTime="10/26/2011 19:25:00" />
+    <file relUrl="Content/Fancybox/fancy_shadow_ne.png" publishTime="10/26/2011 19:25:00" />
+    <file relUrl="Content/Fancybox/fancy_title_left.png" publishTime="10/26/2011 19:25:00" />
+    <file relUrl="Content/Fancybox/fancy_shadow_sw.png" publishTime="10/26/2011 19:25:00" />
     <file relUrl="Scripts/jquery.unobtrusive-ajax.min.js" publishTime="10/22/2011 09:29:46" />
     <file relUrl="App_Readme/glimpse.readme.txt" publishTime="10/22/2011 09:29:43" />
-    <file relUrl="Views/Photo/UploadPhotoPartial.cshtml" publishTime="10/22/2011 09:29:46" />
-    <file relUrl="bin/WilliamsonFamily.Models.Data.dll" publishTime="10/22/2011 22:38:36" />
+    <file relUrl="Views/Photo/UploadPhotoPartial.cshtml" publishTime="10/26/2011 19:54:55" />
+    <file relUrl="bin/WilliamsonFamily.Models.Data.dll" publishTime="10/26/2011 20:04:53" />
+    <file relUrl="Content/Fancybox/fancy_close.png" publishTime="10/26/2011 19:25:00" />
+    <file relUrl="Scripts/MicrosoftAjax.debug.js" publishTime="10/22/2011 09:29:44" />
     <file relUrl="bin/MvcMiniProfiler.xml" publishTime="10/22/2011 09:29:47" />
+    <file relUrl="Scripts/jquery.easing.1.3.js" publishTime="10/26/2011 19:25:02" />
+    <file relUrl="Content/Fancybox/fancy_shadow_n.png" publishTime="10/26/2011 19:25:00" />
     <file relUrl="Views/Blog/Edit.cshtml" publishTime="10/22/2011 09:29:46" />
     <file relUrl="Views/Account/Login.cshtml" publishTime="10/22/2011 09:31:09" />
-    <file relUrl="bin/WilliamsonFamily.Library.dll" publishTime="10/22/2011 22:38:31" />
+    <file relUrl="bin/WilliamsonFamily.Library.dll" publishTime="10/26/2011 20:04:51" />
     <file relUrl="bin/System.Data.SQLite.DLL" publishTime="10/22/2011 15:04:08" />
-    <file relUrl="Scripts/jquery.validate.min.js" publishTime="10/22/2011 09:29:46" />
+    <file relUrl="Views/Blog/Create.cshtml" publishTime="10/22/2011 09:29:46" />
+    <file relUrl="Content/Fancybox/fancy_nav_left.png" publishTime="10/26/2011 19:25:00" />
     <file relUrl="Content/images/jHtml/jHtmlArea_Toolbar_Group__Btn_Select_BG.png" publishTime="10/22/2011 09:29:44" />
     <file relUrl="Views/Blog/Details.cshtml" publishTime="10/22/2011 09:29:46" />
+    <file relUrl="bin/Yahoo.Yui.Compressor.dll" publishTime="10/22/2011 09:29:48" />
     <file relUrl="bin/MvcMiniProfiler.dll" publishTime="10/22/2011 09:29:47" />
     <file relUrl="Views/Admin/Index.cshtml" publishTime="10/22/2011 09:31:09" />
-    <file relUrl="bin/DbLinq.dll" publishTime="10/22/2011 09:29:43" />
+    <file relUrl="Views/Home/Index.cshtml" publishTime="10/22/2011 09:29:46" />
+    <file relUrl="Content/Fancybox/fancy_shadow_nw.png" publishTime="10/26/2011 19:25:00" />
+    <file relUrl="Content/jquery.fancybox-1.3.4.css" publishTime="10/26/2011 19:25:00" />
+    <file relUrl="Views/Blog/EditShared.cshtml" publishTime="10/22/2011 09:29:46" />
+    <file relUrl="Content/Fancybox/fancy_shadow_w.png" publishTime="10/26/2011 19:25:00" />
     <file relUrl="bin/DbLinq.Sqlite.dll" publishTime="10/22/2011 09:29:43" />
-    <file relUrl="Scripts/jquery.nyroModal-1.6.2.min.js" publishTime="10/22/2011 09:29:46" />
+    <file relUrl="Content/Fancybox/fancy_title_main.png" publishTime="10/26/2011 19:25:00" />
     <file relUrl="Content/images/jHtml/jHtmlArea.png" publishTime="10/22/2011 09:29:44" />
-    <file relUrl="packages.config" publishTime="10/22/2011 22:06:01" />
+    <file relUrl="packages.config" publishTime="10/26/2011 19:25:00" />
     <file relUrl="Content/images/jHtml/jHtmlArea_Toolbar_Group_BG.png" publishTime="10/22/2011 09:29:44" />
-    <file relUrl="Views/Blog/CreateEditCSS.cshtml" publishTime="10/22/2011 09:29:46" />
+    <file relUrl="Views/Blog/CreateEditCSS.cshtml" publishTime="10/26/2011 19:25:00" />
     <file relUrl="bin/Glimpse.Mvc3.dll" publishTime="10/22/2011 09:29:47" />
     <file relUrl="Content/images/img04.gif" publishTime="10/22/2011 09:29:44" />
     <file relUrl="Scripts/jquery-1.6.3.min.js" publishTime="10/22/2011 09:29:45" />
     <file relUrl="Views/Blog/List.cshtml" publishTime="10/22/2011 09:29:46" />
     <file relUrl="Views/Shared/Error.cshtml" publishTime="10/22/2011 09:29:46" />
-    <file relUrl="Content/jHtmlArea.ColorPickerMenu.css" publishTime="10/22/2011 09:29:44" />
+    <file relUrl="bin/EcmaScript.NET.modified.dll" publishTime="10/22/2011 09:29:48" />
     <file relUrl="Scripts/modernizr-2.0.6-development-only.js" publishTime="10/22/2011 09:29:46" />
+    <file relUrl="Content/Fancybox/fancy_nav_right.png" publishTime="10/26/2011 19:25:00" />
+    <file relUrl="Scripts/jquery.fancybox-1.3.4.js" publishTime="10/26/2011 19:25:00" />
+    <file relUrl="Scripts/errorhandler.js" publishTime="10/22/2011 09:31:09" />
+    <file relUrl="Content/Fancybox/blank.gif" publishTime="10/26/2011 19:25:00" />
     <file relUrl="bin/Elmah.dll" publishTime="10/22/2011 09:29:48" />
-    <file relUrl="bin/StructureMap.xml" publishTime="10/22/2011 09:29:49" />
+    <file relUrl="Content/Fancybox/fancy_shadow_se.png" publishTime="10/26/2011 19:25:00" />
     <file relUrl="bin/CookComputing.XmlRpcV2.dll" publishTime="10/22/2011 09:29:49" />
     <file relUrl="Content/images/jHtml/disk.png" publishTime="10/22/2011 09:29:44" />
+    <file relUrl="Content/Fancybox/fancybox-y.png" publishTime="10/26/2011 19:25:00" />
     <file relUrl="Scripts/jquery.validate.unobtrusive.js" publishTime="10/22/2011 09:29:46" />
-    <file relUrl="bin/StructureMap.dll" publishTime="10/22/2011 09:29:49" />
+    <file relUrl="bin/WilliamsonFamily.Models.dll" publishTime="10/22/2011 21:53:14" />
     <file relUrl="bin/WebActivator.dll" publishTime="10/22/2011 09:29:48" />
-    <file relUrl="Views/Shared/_Layout.cshtml" publishTime="10/22/2011 09:31:09" />
-    <file relUrl="Global.asax" publishTime="10/22/2011 09:29:44" />
+    <file relUrl="Views/Shared/_Layout.cshtml" publishTime="10/26/2011 19:42:57" />
+    <file relUrl="Content/Fancybox/fancy_shadow_e.png" publishTime="10/26/2011 19:25:00" />
     <file relUrl="Content/images/usermenu.png" publishTime="10/22/2011 09:29:44" />
-    <file relUrl="Views/_ViewStart.cshtml" publishTime="10/22/2011 09:29:46" />
+    <file relUrl="bin/WilliamsonFamily.DependencyInjection.StructureMap.dll" publishTime="10/26/2011 20:04:55" />
     <file relUrl="favicon.ico" publishTime="10/22/2011 09:29:46" />
     <file relUrl="Views/Web.config" publishTime="10/22/2011 09:29:46" />
-    <file relUrl="Scripts/jquery.easing.js" publishTime="10/22/2011 09:29:46" />
     <file relUrl="Content/Site.css" publishTime="10/22/2011 09:29:44" />
     <file relUrl="Views/Shared/LoginUserControl.cshtml" publishTime="10/22/2011 09:29:46" />
-    <file relUrl="Scripts/MicrosoftMvcValidation.js" publishTime="10/22/2011 09:29:44" />
+    <file relUrl="bin/DbLinq.dll" publishTime="10/22/2011 09:29:43" />
     <file relUrl="Scripts/jquery-1.6.3-vsdoc.js" publishTime="10/22/2011 09:29:44" />
     <file relUrl="Content/images/prev.gif" publishTime="10/22/2011 09:29:44" />
+    <file relUrl="Content/Fancybox/fancybox.png" publishTime="10/26/2011 19:25:00" />
     <file relUrl="bin/StructureMap.pdb" publishTime="10/22/2011 09:29:49" />
-    <file relUrl="Content/nyroModal.css" publishTime="10/22/2011 09:29:44" />
     <file relUrl="Content/images/try3.jpg" publishTime="10/22/2011 09:29:44" />
-    <file relUrl="Scripts/jquery.collapse.js" publishTime="10/22/2011 09:29:46" />
-    <file relUrl="bin/EcmaScript.NET.modified.dll" publishTime="10/22/2011 09:29:48" />
+    <file relUrl="Views/_ViewStart.cshtml" publishTime="10/22/2011 09:29:46" />
     <file relUrl="bin/Glimpse.Core.dll" publishTime="10/22/2011 09:29:47" />
-    <file relUrl="bin/Yahoo.Yui.Compressor.dll" publishTime="10/22/2011 09:29:48" />
+    <file relUrl="bin/WilliamsonFamily.DependencyInjection.StructureMap.pdb" publishTime="10/26/2011 20:04:55" />
     <file relUrl="Views/Admin/Logs.cshtml" publishTime="10/22/2011 09:31:09" />
     <file relUrl="Scripts/jHtmlArea.ColorPickerMenu-0.7.0.js" publishTime="10/22/2011 09:29:44" />
     <file relUrl="Scripts/jquery.unobtrusive-ajax.js" publishTime="10/22/2011 09:29:46" />
-    <file relUrl="Scripts/jquery.form.js" publishTime="10/22/2011 09:29:46" />
-    <file relUrl="bin/WilliamsonFamily.Models.pdb" publishTime="10/22/2011 21:53:14" />
-    <file relUrl="Content/images/next.gif" publishTime="10/22/2011 09:29:44" />
-    <file relUrl="Scripts/MicrosoftAjax.debug.js" publishTime="10/22/2011 09:29:44" />
+    <file relUrl="Scripts/jquery.form.js" publishTime="10/26/2011 19:25:00" />
+    <file relUrl="bin/StructureMap.xml" publishTime="10/22/2011 09:29:49" />
+    <file relUrl="bin/WilliamsonFamily.Web.pdb" publishTime="10/26/2011 21:03:06" />
+    <file relUrl="Scripts/jquery.collapse.js" publishTime="10/22/2011 09:29:46" />
     <file relUrl="Content/images/close.gif" publishTime="10/22/2011 09:29:44" />
     <file relUrl="bin/FlickrNet.dll" publishTime="10/22/2011 09:29:47" />
     <file relUrl="Scripts/MicrosoftMvcAjax.debug.js" publishTime="10/22/2011 09:29:44" />
-    <file relUrl="Scripts/jHtmlArea-0.7.0.min.js" publishTime="10/22/2011 09:29:44" />
     <file relUrl="Content/images/img05.jpg" publishTime="10/22/2011 09:29:44" />
     <file relUrl="Scripts/jquery.validate-vsdoc.js" publishTime="10/22/2011 09:29:46" />
-    <file relUrl="bin/WilliamsonFamily.DependencyInjection.StructureMap.dll" publishTime="10/22/2011 22:38:41" />
+    <file relUrl="bin/StructureMap.dll" publishTime="10/22/2011 09:29:49" />
     <file relUrl="Scripts/jquery.validate.js" publishTime="10/22/2011 09:29:46" />
     <file relUrl="Content/images/ajaxLoader.gif" publishTime="10/22/2011 09:29:44" />
-    <file relUrl="Views/Blog/Create.cshtml" publishTime="10/22/2011 09:29:46" />
-    <file relUrl="Views/Home/Index.cshtml" publishTime="10/22/2011 09:29:46" />
-    <file relUrl="Views/Blog/EditShared.cshtml" publishTime="10/22/2011 09:29:46" />
+    <file relUrl="Content/Fancybox/fancy_shadow_s.png" publishTime="10/26/2011 19:25:00" />
+    <file relUrl="Scripts/jquery.validate.unobtrusive.min.js" publishTime="10/22/2011 09:29:46" />
+    <file relUrl="Global.asax" publishTime="10/22/2011 09:29:44" />
     <file relUrl="Scripts/jHtmlArea-0.7.0.js" publishTime="10/22/2011 09:29:44" />
     <file relUrl="Content/images/img02.jpg" publishTime="10/22/2011 09:29:44" />
-    <file relUrl="bin/WilliamsonFamily.Library.pdb" publishTime="10/22/2011 22:38:30" />
+    <file relUrl="bin/WilliamsonFamily.Library.pdb" publishTime="10/26/2011 20:04:50" />
   </publishProfile>
 </publishData>
