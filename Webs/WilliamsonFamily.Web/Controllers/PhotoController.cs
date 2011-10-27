@@ -25,33 +25,28 @@ namespace WilliamsonFamily.Web.Controllers
 		[Route("{user}/photo/upload")]
         public ActionResult Upload()
         {
-            string view = "UploadPhoto";
-            if (IsAjaxRequest)
-                view += "Partial";
-
+            string view = "UploadPhotoPartial";
             return View(view);
         }
 
-        [ValidateInput(false)]
-        [AcceptVerbs(HttpVerbs.Post)]
+		[ValidateInput(false)]
+		[AcceptVerbs(HttpVerbs.Post)]
 		[Route("{user}/photo/uploadphoto", HttpVerbs.Post)]
-        public ActionResult UploadPhoto(HttpPostedFileBase theFile)
-        {
-            EnsureInjectables();
+		public ActionResult UploadPhoto(HttpPostedFileBase theFile)
+		{
+			EnsureInjectables();
 
-            IPhoto photo = null;
-            using (profiler.Step("PhotoController.Upload.Post"))
-            {
-                photo = PhotoRepository.UploadPhoto(theFile.InputStream, theFile.FileName, "", "", "");
-            }
+			IPhoto photo = null;
+			using (profiler.Step("PhotoController.Upload.Post"))
+			{
+				photo = PhotoRepository.UploadPhoto(theFile.InputStream, theFile.FileName, "", "", "");
+			}
 
-            if (IsAjaxRequest)
-                return new FileUploadJsonResult()
-                {
-                    Data = new { Url = photo.WebUrl, success = true, message = "success" }
-                };
+			return new FileUploadJsonResult()
+			{
+				Data = new { Url = photo.WebUrl, success = true, message = "success" }
+			};
 
-            return RedirectToAction("Upload");
-        }
+		}
     }
 }
