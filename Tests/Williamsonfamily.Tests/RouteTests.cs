@@ -37,25 +37,31 @@ namespace WilliamsonFamily.Web.Tests
 
         #endregion
 
-//        #region Admin routes
-//        [TestMethod]
-//        public void Routes_AdminIndex_RoutesTo_AdminIndex()
-//        {
-//            "~/Admin/Index.aspx".ShouldMapTo<AdminController>(a => a.Index());
-//        }
+        #region Admin routes
+		[TestMethod]
+		public void Routes_AdminIndex_RoutesTo_AdminIndex()
+		{
+			"~/admin/index".ShouldMapTo<AdminController>(a => a.Index());
+		}
 
-//        [TestMethod]
-//        public void Routes_AdminUsers_RoutesTo_AdminUsers()
-//        {
-//            "~/Admin/Users.aspx".ShouldMapTo<AdminController>(a => a.Users());
-//        }
+		[TestMethod]
+		public void Routes_AdminLogs_RoutesTo_AdminLogs()
+		{
+			"~/admin/logs".ShouldMapTo<AdminController>(a => a.Logs());
+		}
 
-//        [TestMethod]
-//        public void Routes_AdminUserID_RoutesTo_AdminUserWithID()
-//        {
-//            "~/Admin/UserDetail.aspx/s".ShouldMapTo<AdminController>(a => a.UserDetail("s"));
-//        }
-//        #endregion
+		[TestMethod]
+		public void Routes_AdminLogsClear_RoutesTo_AdminLogsClear()
+		{
+			"~/admin/logs/clear".ShouldMapTo<AdminController>(a => a.ClearLogs());
+		}
+
+		[TestMethod]
+		public void Routes_AdminLogsCompact_RoutesTo_AdminLogsCompact()
+		{
+			"~/admin/logs/compact".ShouldMapTo<AdminController>(a => a.CompactLogs());
+		}
+        #endregion
 
 //        //[TestMethod]
 //        //public void Routes_Username_RoutesTo_UserIndex()

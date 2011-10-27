@@ -11,47 +11,39 @@ using WilliamsonFamily.Library.Web.Routing;
 
 namespace WilliamsonFamily.Web.Controllers
 {
-    public class PhotoController : BaseController
-    {
-        #region Injectables
-        public IPhotoRepository PhotoRepository { get; set; }
+	public class PhotoController : BaseController
+	{
+		#region Injectables
+		public IPhotoRepository PhotoRepository { get; set; }
 
-        private void EnsureInjectables()
-        {
-            if (PhotoRepository == null) throw new InjectablePropertyNullException("PhotoRepository");
-        }
-        #endregion
+		private void EnsureInjectables()
+		{
+			if (PhotoRepository == null) throw new InjectablePropertyNullException("PhotoRepository");
+		}
+		#endregion
 
 		[Route("{user}/photo/upload")]
-        public ActionResult Upload()
-        {
-            string view = "UploadPhoto";
-            if (IsAjaxRequest)
-                view += "Partial";
+		public ActionResult Upload()
+		{
+			string view = "UploadPhotoPartial";
+			return View(view);
+		}
 
-            return View(view);
-        }
-
-        [ValidateInput(false)]
-        [AcceptVerbs(HttpVerbs.Post)]
+		[ValidateInput(false)]
+		[AcceptVerbs(HttpVerbs.Post)]
 		[Route("{user}/photo/uploadphoto", HttpVerbs.Post)]
-        public ActionResult UploadPhoto(HttpPostedFileBase theFile)
-        {
-            EnsureInjectables();
+		public ActionResult UploadPhoto(HttpPostedFileBase theFile)
+		{
+			EnsureInjectables();
 
-            IPhoto photo = null;
-            using (profiler.Step("PhotoController.Upload.Post"))
-            {
-                photo = PhotoRepository.UploadPhoto(theFile.InputStream, theFile.FileName, "", "", "");
-            }
+			IPhoto photo = null;
+			photo = PhotoRepository.UploadPhoto(theFile.InputStream, theFile.FileName, "", "", "");
 
-            if (IsAjaxRequest)
-                return new FileUploadJsonResult()
-                {
-                    Data = new { Url = photo.WebUrl, success = true, message = "success" }
-                };
+			return new FileUploadJsonResult()
+			{
+				Data = new { Url = photo.WebUrl, success = true, message = "success" }
+			};
 
-            return RedirectToAction("Upload");
-        }
-    }
+		}
+	}
 }
