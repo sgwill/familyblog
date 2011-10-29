@@ -108,7 +108,7 @@ namespace WilliamsonFamily.Models.Data
                         }
                     }
 
-                    model.BlogEntries = blogs;
+                    model.BlogEntries = blogs.ToList();
 
                     return model;
                 }

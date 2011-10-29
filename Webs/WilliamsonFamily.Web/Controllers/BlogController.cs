@@ -94,12 +94,12 @@ namespace WilliamsonFamily.Web.Controllers
 				if (getIsPublishedOnly)
 					blogFilter.IsPublished = true;
 
-				ICacheKey cacheKey = new BlogListCacheKey();
-				viewData.BlogTitles = Cache.Get<IDictionary<string, IDictionary<string, IEnumerable<IBlog>>>>(cacheKey.GenerateKey(string.Format("SidebarList:{0}", blogFilter.AuthorName)), () =>
-								GenerateBlogTitles(BlogRepository
-									.LoadList(blogFilter)
-									.BlogEntries
-									.OrderByDescending(b => b.DatePublished)));
+                ICacheKey cacheKey = new BlogListCacheKey();
+                viewData.BlogTitles = Cache.Get<IDictionary<string, IDictionary<string, IEnumerable<IBlog>>>>(cacheKey.GenerateKey(string.Format("SidebarList:{0}", blogFilter.AuthorName)), () =>
+                                GenerateBlogTitles(BlogRepository
+                                    .LoadList(blogFilter)
+                                    .BlogEntries
+                                    .OrderByDescending(b => b.DatePublished)));
 
 				int pageSize = 10;
 				if (Int32.TryParse(QueryValue("pageSize"), out pageSize))
