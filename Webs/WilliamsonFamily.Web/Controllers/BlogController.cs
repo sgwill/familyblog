@@ -282,8 +282,12 @@ namespace WilliamsonFamily.Web.Controllers
 			TryUpdateModel<IBlog>(blogEntry);
 			BlogRepository.Save(blogEntry);
 
-			if (blogEntry.IsPublished)
-				Cache.Remove(new BlogListCacheKey().GenerateKey("SidebarList"));
+            if (blogEntry.IsPublished)
+            {
+                Cache.Remove(new BlogListCacheKey().GenerateKey("SidebarList"));
+                Cache.Remove(new BlogListCountCacheKey().GenerateKey(blogEntry.AuthorName));
+                // todo - clear family too
+            }
 
 			return RedirectToAction("UserList");
 		}

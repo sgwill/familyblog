@@ -7,6 +7,8 @@ using WilliamsonFamily.Models.Web;
 using System.Collections.Generic;
 using WilliamsonFamily.Models.Data;
 using WilliamsonFamily.Models;
+using WilliamsonFamily.Models.Data.Tests.TestHelpers;
+using WilliamsonFamily.Library.Web.Caching;
 
 namespace WilliamsonFamily.Models.Data.Tests
 {
@@ -704,6 +706,23 @@ namespace WilliamsonFamily.Models.Data.Tests
 
 			Assert.AreEqual(2, blogs.PageIndex);
 		}
+
+        // Total Count from cache 
+        [TestMethod]
+        public void BlogRespository_LoadPagedList_PreviousCacheBlogCount_ReturnsPageCount()
+        {
+            // Arraing
+            string authorId = "1";
+            var persister = GetPersister();
+            persister.Cache.Insert(new BlogListCountCacheKey().GenerateKey(authorId), 2);
+            persister.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 1 });
+            persister.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 2 });
+            persister.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 3 });
+
+            var blogs = persister.LoadList(new BlogFilter { AuthorName = authorId, LoadBlogBy = LoadBlogBy.User, PageSize = 2, PageIndex = 1 });
+
+            Assert.AreEqual(1, blogs.PageCount);
+        }
 		
 	// Default to page index 1
 		[TestMethod]
@@ -784,7 +803,7 @@ namespace WilliamsonFamily.Models.Data.Tests
 			var dc = new InMemoryDataContext();
 			var dcf = new InMemoryDataContextFactory { DataContext = dc };
 			var titleCleaner = MockRepository.GenerateMock<ITitleCleaner>();
-			return new BlogRepository { DataContext = dc, DataContextFactory = dcf, TitleCleaner = titleCleaner };
+			return new BlogRepository { DataContext = dc, DataContextFactory = dcf, TitleCleaner = titleCleaner, Cache = new InMemoryCache() };
 		}
 		#endregion
 

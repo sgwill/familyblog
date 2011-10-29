@@ -91,6 +91,7 @@
     <Compile Include="Web\Caching\BlogEntryCacheKey.cs" />
     <Compile Include="Web\Caching\BlogListCacheKey.cs" />
     <Compile Include="Web\Caching\CacheKeyBase.cs" />
+    <Compile Include="Web\Caching\BlogListCountCacheKey.cs" />
     <Compile Include="Web\Caching\HttpCache.cs" />
     <Compile Include="Web\Caching\UserCacheKey.cs" />
     <Compile Include="Web\FileUploadJsonResult.cs" />
