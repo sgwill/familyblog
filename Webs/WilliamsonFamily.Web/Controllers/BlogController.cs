@@ -216,7 +216,7 @@ namespace WilliamsonFamily.Web.Controllers
 			var viewData = new BlogModel();
 			viewData.BlogEntry = entry;
 
-			var user = UserRepository.Load(entry.AuthorID);
+			var user = UserRepository.Load(entry.AuthorName);
 			if (user != null)
 			{
 				viewData.Author.UrlName = user.Username;
