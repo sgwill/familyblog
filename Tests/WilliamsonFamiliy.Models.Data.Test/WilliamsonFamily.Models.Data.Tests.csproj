@@ -69,6 +69,7 @@
     <Compile Include="InMemoryDataContext.cs" />
     <Compile Include="InMemoryDataContextFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TestHelpers\InMemoryCache.cs" />
     <Compile Include="User\UserTests.cs" />
   </ItemGroup>
   <ItemGroup>

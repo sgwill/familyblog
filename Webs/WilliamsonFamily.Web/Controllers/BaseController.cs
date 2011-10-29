@@ -8,20 +8,10 @@ using WilliamsonFamily.Library.Web.Filters;
 
 namespace WilliamsonFamily.Web.Controllers
 {
-    [EnableMiniProfilerActionFilter]
+//    [EnableMiniProfilerActionFilter]
     public abstract class BaseController : Controller
     {
         protected MiniProfiler profiler = MiniProfiler.Current;
-
-        protected override void OnActionExecuting(ActionExecutingContext filterContext)
-        {
-            var profiler = MiniProfiler.Current;
-
-            using (profiler.Step("OnActionExecuting"))
-            {
-                base.OnActionExecuting(filterContext);
-            }
-        }
 
         protected override void OnResultExecuting(ResultExecutingContext filterContext)
         {
@@ -54,13 +44,6 @@ namespace WilliamsonFamily.Web.Controllers
                 return (Request.ServerVariables["HTTP_X_REQUESTED_WITH"] ?? "") == "XMLHttpRequest"
                     || (Request.QueryString["__ajax"] ?? "") == "true";
             }
-        }
-
-        public ActionResult MissingPage(string url)
-        {
-            // TODO: Someday, do something creative. In the meantime,
-            Response.StatusCode = 301;
-            return RedirectToRoute("Home");
         }
     }
 }

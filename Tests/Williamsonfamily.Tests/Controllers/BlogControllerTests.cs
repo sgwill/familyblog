@@ -743,6 +743,7 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 			entry
 				.Expect(e => e.Slug)
 				.Return(title);
+            entry.AuthorName = author;
 			entry.AuthorID = author;
 			_controller.BlogRepository
 				.Expect(b => b.LoadBySlug(title))

@@ -5,16 +5,20 @@ using WilliamsonFamily.Models.Blog;
 using WilliamsonFamily.Models.Web;
 using WilliamsonFamily.Library.Exceptions;
 using MvcMiniProfiler;
+using WilliamsonFamily.Models.Caching;
+using WilliamsonFamily.Library.Web.Caching;
 
 namespace WilliamsonFamily.Models.Data
 {
     public class BlogRepository : ContextPersisterBase, IBlogRepository
     {
         public ITitleCleaner TitleCleaner { get; set; }
+        public ICache Cache { get; set; }
 
         void EnsureInjectables()
         {
-            if (TitleCleaner == null) throw new InjectablePropertyNullException("TitleCleanernull");
+            if (TitleCleaner == null) throw new InjectablePropertyNullException("TitleCleaner");
+            if (Cache == null) throw new InjectablePropertyNullException("Cache");
         }
 
         #region IModelLoader<IBlog,int> Members
@@ -93,8 +97,10 @@ namespace WilliamsonFamily.Models.Data
                     {
                         if (filter.PageSize.HasValue)
                         {
-                            int count = blogs.Count();
-                            int pages = Convert.ToInt32(Math.Round(((decimal)count / (decimal)filter.PageSize.Value) + 0.5M, 0, MidpointRounding.AwayFromZero));
+                            int count = Cache.Get<int>(new BlogListCountCacheKey().GenerateKey(filter.AuthorName), () => blogs.Count());
+                            decimal pagesDecimal = (decimal)count / (decimal)filter.PageSize.Value;
+                            if (pagesDecimal % 1  > 0) pagesDecimal += 0.5M;
+                            int pages = Convert.ToInt32(Math.Round(pagesDecimal, 0, MidpointRounding.AwayFromZero));
 
                             int pageIndex = filter.PageIndex.HasValue ? filter.PageIndex.Value - 1 : 0;
                             if (pageIndex > pages)
@@ -108,7 +114,7 @@ namespace WilliamsonFamily.Models.Data
                         }
                     }
 
-                    model.BlogEntries = blogs;
+                    model.BlogEntries = blogs.ToList();
 
                     return model;
                 }

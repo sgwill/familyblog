@@ -11,23 +11,23 @@ using WilliamsonFamily.Library.Web.Routing;
 
 namespace WilliamsonFamily.Web.Controllers
 {
-    public class PhotoController : BaseController
-    {
-        #region Injectables
-        public IPhotoRepository PhotoRepository { get; set; }
+	public class PhotoController : BaseController
+	{
+		#region Injectables
+		public IPhotoRepository PhotoRepository { get; set; }
 
-        private void EnsureInjectables()
-        {
-            if (PhotoRepository == null) throw new InjectablePropertyNullException("PhotoRepository");
-        }
-        #endregion
+		private void EnsureInjectables()
+		{
+			if (PhotoRepository == null) throw new InjectablePropertyNullException("PhotoRepository");
+		}
+		#endregion
 
 		[Route("{user}/photo/upload")]
-        public ActionResult Upload()
-        {
-            string view = "UploadPhotoPartial";
-            return View(view);
-        }
+		public ActionResult Upload()
+		{
+			string view = "UploadPhotoPartial";
+			return View(view);
+		}
 
 		[ValidateInput(false)]
 		[AcceptVerbs(HttpVerbs.Post)]
@@ -37,10 +37,7 @@ namespace WilliamsonFamily.Web.Controllers
 			EnsureInjectables();
 
 			IPhoto photo = null;
-			using (profiler.Step("PhotoController.Upload.Post"))
-			{
-				photo = PhotoRepository.UploadPhoto(theFile.InputStream, theFile.FileName, "", "", "");
-			}
+			photo = PhotoRepository.UploadPhoto(theFile.InputStream, theFile.FileName, "", "", "");
 
 			return new FileUploadJsonResult()
 			{
@@ -48,5 +45,5 @@ namespace WilliamsonFamily.Web.Controllers
 			};
 
 		}
-    }
+	}
 }
