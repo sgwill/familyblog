@@ -3,8 +3,14 @@
     <div id="userMenu">
         <div id="userNavigation">
             <a href="@Url.Action("UserList", "Blog", new { user = User.Identity.Name })">My Entries</a> | 
-            <a href="@Url.Action("Create", "Blog", new { user = User.Identity.Name })">New Entry</a> | 
-			@if (User.IsInRole("admin")) { <a href="@Url.Action("Index", "Admin")">Admin</a> }
+            <a href="@Url.Action("Create", "Blog", new { user = User.Identity.Name })">New Entry</a>
+			@if (User.IsInRole("admin"))
+			{ 
+				@MvcHtmlString.Create("|")
+				<a href="@Url.Action("Index", "Admin")">Admin</a>
+				@MvcHtmlString.Create("|")
+				<a href="elmah.axd">Logs</a>
+			}
         </div>
     
         <div id="login">

@@ -175,6 +175,7 @@
     <Content Include="Content\jHtmlArea.ColorPickerMenu.css" />
     <Content Include="Content\jHtmlArea.css" />
     <Content Include="Content\jquery.fancybox-1.3.4.css" />
+    <Content Include="Content\jquery.jgrowl.css" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\html5reset-1.6.1.css" />
@@ -188,6 +189,7 @@
     <Content Include="Scripts\jquery.easing.1.3.js" />
     <Content Include="Scripts\jquery.fancybox-1.3.4.js" />
     <Content Include="Scripts\jquery.form.js" />
+    <Content Include="Scripts\jquery.jgrowl.js" />
     <Content Include="Scripts\jquery.mousewheel-3.0.4.pack.js" />
     <Content Include="Scripts\jquery.validate-vsdoc.js" />
     <Content Include="Scripts\jquery.validate.js" />
