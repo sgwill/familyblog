@@ -13,6 +13,7 @@ namespace WilliamsonFamily.Web.Controllers
 		public ILogManager LogManager { get; set; }
 
 		[Route("admin/index")]
+		[Route("admin")]
 		public ActionResult Index()
 		{
 			return View();
