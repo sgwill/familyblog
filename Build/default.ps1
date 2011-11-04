@@ -50,7 +50,7 @@ task Checkout-Develop -Description "Checkout develop branch" {
 }
 
 task Checkout-Release -Description "Checkout master branch" {
-    git checkout master
+    #git checkout master
 }
 
 task Build-Debug -Description "Build in DEBUG mode" {
@@ -61,7 +61,7 @@ task Build-Release -Description "Build in RELEASE mode" {
     exec { msbuild $sln "/nologo" "/t:Rebuild" "/p:Configuration=Release" "/fileLogger" } "Build Failed"
 }
 
-task Test -depends Checkout-Develop,Clean-Debug,Build-Debug -Description "Runs tests in DEBUG mode" {
+task Test -depends Build-Debug -Description "Runs tests in DEBUG mode" {
 	    
     # Ensure Test Folder
     $pathExists = test-path $test_debug_dir
