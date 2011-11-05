@@ -39,6 +39,12 @@ namespace WilliamsonFamily.Web.Tests
 
         #region Admin routes
 		[TestMethod]
+		public void Routes_Admin_RoutesTo_Admin()
+		{
+			"~/admin".ShouldMapTo<AdminController>(a => a.Index());
+		}
+		
+		[TestMethod]
 		public void Routes_AdminIndex_RoutesTo_AdminIndex()
 		{
 			"~/admin/index".ShouldMapTo<AdminController>(a => a.Index());

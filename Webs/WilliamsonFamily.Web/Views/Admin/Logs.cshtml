@@ -16,6 +16,19 @@
 
 	<p><a href='@Url.Action("ClearLogs", "Admin")'>Clear old Logs</a></p>
 
-	<p><a href='@Url.Action("CompactLogs", "Admin")'>Compact Log Database</a></p>
+	<p><a href='@Url.Action("CompactLogs", "Admin")' id='compact'>Compact Log Database</a></p>
 
 	<p><a href='@Url.Action("Index", "Admin")'>Admin Home</a></p>
+
+@section ScriptSection
+{
+    <script type="text/javascript">
+    	$('a#compact').click(function (e) {
+    		e.preventDefault();
+
+    		$.get($(this).attr('href'), function (data) {
+    			$.jGrowl('Logs Compacted', { header: 'Log Manager', position: 'bottom-right' });
+    		});
+    	});
+	</script>
+}

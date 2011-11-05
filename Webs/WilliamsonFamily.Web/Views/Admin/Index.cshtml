@@ -13,3 +13,24 @@
 	<br />
 
 	<p><a href='@Url.Action("Logs", "Admin")'>Admin Log Manager</a></p>
+
+	<p><a href='#' id="warm">Warm up Cache</a></p>
+
+@section ScriptSection
+{
+    <script type="text/javascript">
+    	$('a#warm').click(function (e) {
+    		e.preventDefault();
+
+    		// Load sammichele
+    		$.get('@Url.Action("List", "Blog", new { user = "sammichele"} )', function (data) {
+    			$.jGrowl('sammichele blog list warmed', { header: 'Warm Cache', position: 'bottom-right' });
+    		});
+
+    		// Load sammichele
+    		$.get('@Url.Action("List", "Blog", new { user = "bekah"} )', function (data) {
+    			$.jGrowl('bekah blog list warmed', { header: 'Warm Cache', position: 'bottom-right' });
+    		});
+    	});
+	</script>
+}
