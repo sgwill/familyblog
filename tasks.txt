@@ -1,0 +1,6 @@
+Feature Ideas:
+    Lucene
+    Video Upload
+    Replace Flickr for images?
+    Image styling
+    Admin - popup instead of js toast
