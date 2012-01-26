@@ -5,6 +5,9 @@ Feature Ideas:
     Image styling
     Admin - popup instead of js toast
     Move to Dapper...Testing?
+    Signalr
+        online with you
+    Metrics?
     
 Questions
     Deployment framework?
