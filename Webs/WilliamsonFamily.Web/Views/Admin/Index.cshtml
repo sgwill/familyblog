@@ -24,12 +24,12 @@
 
     		// Load sammichele
     		$.get('@Url.Action("List", "Blog", new { user = "sammichele"} )', function (data) {
-    			$.jGrowl('sammichele blog list warmed', { header: 'Warm Cache', position: 'bottom-right' });
+    			notify('sammichele blog list warmed', 'Warm Cache', 'bottom-right');
     		});
 
     		// Load sammichele
     		$.get('@Url.Action("List", "Blog", new { user = "bekah"} )', function (data) {
-    			$.jGrowl('bekah blog list warmed', { header: 'Warm Cache', position: 'bottom-right' });
+    			notify('bekah blog list warmed', 'Warm Cache', 'bottom-right');
     		});
     	});
 	</script>
