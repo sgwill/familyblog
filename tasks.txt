@@ -1,0 +1,17 @@
+Feature Ideas:
+    Lucene
+    Video Upload
+    Replace Flickr for images?
+    Image styling
+    Admin - popup instead of js toast
+    Move to Dapper...Testing?
+    Signalr
+        online with you
+    Metrics?
+    
+Questions
+    Deployment framework?
+    DB Migration framework?
+    Move to SQLServer?
+        DEV as sqlite, LIVE SqlServer...use migrations...export...!!!
+    Build server    

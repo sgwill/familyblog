@@ -27,7 +27,7 @@
     		e.preventDefault();
 
     		$.get($(this).attr('href'), function (data) {
-    			$.jGrowl('Logs Compacted', { header: 'Log Manager', position: 'bottom-right' });
+    			notify('Logs Compacted', 'Log Manager', 'bottom-right');
     		});
     	});
 	</script>
