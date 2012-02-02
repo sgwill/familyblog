@@ -24,12 +24,12 @@
 
     		// Load sammichele
     		$.get('@Url.Action("List", "Blog", new { user = "sammichele"} )', function (data) {
-    			notify('sammichele blog list warmed', 'Warm Cache', 'bottom-right');
+    			Utility.notify('sammichele blog list warmed', 'Warm Cache', 'bottom-right');
     		});
 
     		// Load sammichele
     		$.get('@Url.Action("List", "Blog", new { user = "bekah"} )', function (data) {
-    			notify('bekah blog list warmed', 'Warm Cache', 'bottom-right');
+    			Utility.notify('bekah blog list warmed', 'Warm Cache', 'bottom-right');
     		});
     	});
 	</script>

@@ -27,7 +27,7 @@
     		e.preventDefault();
 
     		$.get($(this).attr('href'), function (data) {
-    			notify('Logs Compacted', 'Log Manager', 'bottom-right');
+    			Utility.notify('Logs Compacted', 'Log Manager', 'bottom-right');
     		});
     	});
 	</script>
