@@ -179,7 +179,6 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\html5reset-1.6.1.css" />
-    <Content Include="Scripts\errorhandler.js" />
     <Content Include="Scripts\jHtmlArea-0.7.0.js" />
     <Content Include="Scripts\jHtmlArea.ColorPickerMenu-0.7.0.js" />
     <Content Include="Scripts\jquery-1.6.3-vsdoc.js" />
@@ -195,10 +194,16 @@
     <Content Include="Scripts\jquery.validate.js" />
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\modernizr-2.0.6-development-only.js" />
+    <Content Include="Scripts\site.errorhandler.js">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>site.errorhandler.coffee</DependentUpon>
+    </Content>
     <Content Include="Scripts\site.js">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>site.coffee</DependentUpon>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Web.config">
       <SubType>Designer</SubType>
@@ -267,9 +272,14 @@
     <Content Include="Views\Blog\CreateEditJS.cshtml" />
     <Content Include="Views\Admin\Index.cshtml" />
     <Content Include="Views\Admin\Logs.cshtml" />
-    <None Include="Scripts\site.coffee">
+    <Content Include="Scripts\site.coffee">
       <Generator>CoffeeScriptGenerator</Generator>
       <LastGenOutput>site.js</LastGenOutput>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Scripts\site.errorhandler.coffee">
+      <Generator>CoffeeScriptGenerator</Generator>
+      <LastGenOutput>site.errorhandler.js</LastGenOutput>
     </None>
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
