@@ -86,6 +86,13 @@
             (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
         } ());
     </script>
+
+	<script type="text/javascript">
+		$(function () {
+			var connection = $.connection('@Href("~/echo")');
+			connection.start();
+		});
+	</script>
 }
 
 

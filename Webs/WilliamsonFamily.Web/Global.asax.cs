@@ -8,6 +8,8 @@ using WilliamsonFamily.Library.Web;
 using MvcMiniProfiler;
 using Elmah;
 using WilliamsonFamily.Library.Web.Routing;
+using SignalR.Hosting.AspNet.Routing;
+using WilliamsonFamily.Web.Connection;
 
 namespace WilliamsonFamily.Web
 {
@@ -26,7 +28,11 @@ namespace WilliamsonFamily.Web
             RouteTable.Routes.Clear();
             RouteTable.Routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
+			RouteTable.Routes.MapConnection<PhoneConnection>("echo", "echo/{*operation}");
+
 			RouteAttribute.MapDecoratedRoutes(RouteTable.Routes);
+
+			
 
             // MUST be the last route as a catch-all! --> Not ready for it yet
 			//RouteTable.Routes.MapRoute("", "{*url}", new { controller = "Error", action = "PageNotFound" });

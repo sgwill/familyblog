@@ -4,11 +4,11 @@
 * intended to be used only for design-time IntelliSense.  Please use the
 * standard jQuery library for all production use.
 *
-* Comment version: 1.6.3
+* Comment version: 1.6.4
 */
 
 /*!
-* jQuery JavaScript Library v1.6.3
+* jQuery JavaScript Library v1.6.4
 * http://jquery.com/
 *
 * Distributed in whole under the terms of the MIT
@@ -755,7 +755,7 @@ jQuery.ajaxPrefilter = function( dataTypeExpression, func ) {
 			}
 		}
 	};
-jQuery.ajaxSettings = { "url": 'http://localhost:25813/?ver=1.6.3&newLineMethod=para',
+jQuery.ajaxSettings = { "url": 'http://localhost:25813/?ver=1.6.4&newLineMethod=para',
 "isLocal": false,
 "global": true,
 "type": 'GET',
@@ -1537,7 +1537,7 @@ jQuery.event = { "global": {},
 "props": ['altKey','attrChange','attrName','bubbles','button','cancelable','charCode','clientX','clientY','ctrlKey','currentTarget','data','detail','eventPhase','fromElement','handler','keyCode','layerX','layerY','metaKey','newValue','offsetX','offsetY','pageX','pageY','prevValue','relatedNode','relatedTarget','screenX','screenY','shiftKey','srcElement','target','toElement','view','wheelDelta','which'],
 "guid": 100000000,
 "special": {},
-"triggered":  };
+"triggered":  false};
 jQuery.expr = { "order": ['ID','CLASS','NAME','TAG'],
 "match": {},
 "leftMatch": {},
@@ -1728,7 +1728,7 @@ jQuery.find = function( query, context, extra, seed ) {
 			return oldSizzle(query, context, extra, seed);
 		};
 jQuery.fn = { "selector": '',
-"jquery": '1.6.3',
+"jquery": '1.6.4',
 "length": 0 };
 jQuery.fragments = {};
 jQuery.fx = function( elem, options, prop ) {
@@ -1867,7 +1867,7 @@ jQuery.holdReady = function( hold ) {
 /// <param name="hold" type="Boolean">
 ///     Indicates whether the ready hold is being requested or released
 /// </param>
-/// <returns type="Boolean" />
+/// <returns type="undefined" />
 
 		if ( hold ) {
 			jQuery.readyWait++;
@@ -2700,7 +2700,7 @@ jQuery.support = { "leadingWhitespace": true,
 "noCloneChecked": false,
 "optDisabled": true,
 "radioValue": false,
-"checkClone": ,
+"checkClone": false,
 "appendChecked": true,
 "boxModel": true,
 "reliableHiddenOffsets": true,
@@ -6642,7 +6642,8 @@ jQuery.prototype.toggleClass = function( value, stateVal ) {
 ///     Add or remove one or more classes from each element in the set of matched elements, depending on either the class's presence or the value of the switch argument.
 ///     <para>1 - toggleClass(className) </para>
 ///     <para>2 - toggleClass(className, switch) </para>
-///     <para>3 - toggleClass(function(index, class, switch), switch)</para>
+///     <para>3 - toggleClass(switch) </para>
+///     <para>4 - toggleClass(function(index, class, switch), switch)</para>
 /// </summary>
 /// <param name="value" type="String">
 ///     One or more class names (separated by spaces) to be toggled for each element in the matched set.
