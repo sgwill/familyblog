@@ -53,6 +53,9 @@
     <CodeAnalysisRuleSet>AllRules.ruleset</CodeAnalysisRuleSet>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="CookComputing.XmlRpcV2">
+      <HintPath>..\..\packages\xmlrpcnet.3.0.0.266\lib\net20\CookComputing.XmlRpcV2.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
@@ -87,6 +90,8 @@
     <Compile Include="IModelRepository.cs" />
     <Compile Include="IUniqueKey.cs" />
     <Compile Include="Log\ILogManager.cs" />
+    <Compile Include="Web\MetaWeblog\IMetaWeblog.cs" />
+    <Compile Include="Web\MetaWeblog\Structs.cs" />
     <Compile Include="Photo\IPhoto.cs" />
     <Compile Include="Photo\IPhotoRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -113,6 +118,9 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
