@@ -39,6 +39,9 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\AjaxMin.4.42.4387.23950\lib\net20\AjaxMin.dll</HintPath>
     </Reference>
+    <Reference Include="CookComputing.XmlRpcV2, Version=3.0.0.0, Culture=neutral, PublicKeyToken=a7d6e17aa302004d, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\xmlrpcnet.3.0.0.266\lib\net20\CookComputing.XmlRpcV2.dll</HintPath>
+    </Reference>
     <Reference Include="dotless.Core, Version=1.2.2.0, Culture=neutral, PublicKeyToken=96b446c9e63eae34, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\dotless.1.2.2.0\lib\dotless.Core.dll</HintPath>
@@ -107,9 +110,6 @@
     <Reference Include="WebActivator, Version=1.4.4.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\packages\WebActivator.1.4.4\lib\net40\WebActivator.dll</HintPath>
-    </Reference>
-    <Reference Include="CookComputing.XmlRpcV2">
-      <HintPath>..\..\packages\xmlrpcnet.3.0.0.241\lib\Net20\CookComputing.XmlRpcV2.dll</HintPath>
     </Reference>
     <Reference Include="Elmah">
       <HintPath>..\..\packages\elmah.corelibrary.1.2\lib\Elmah.dll</HintPath>
