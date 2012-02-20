@@ -19,19 +19,20 @@
 	<ul id="messages"></ul>
 
 	<script type="text/javascript">
-			$(function () {
-				var connection = $.connection('echo');
+		$(function () {
+			var connection = $.connection('echo');
 
-				connection.received(function (data) {
-					$('#messages').append('<li>' + data + '</li>');
-				});
-
-				connection.start();
-
-				$('#broadcast').click(function () {
-					connection.send($('#msg').val());
-				});
+			connection.received(function (data) {
+				$('#messages').append('<li>' + data + '</li>');
+				Utility.notify(data, 'Client Connection', 'bottom-right');
 			});
+
+			connection.start();
+
+			$('#broadcast').click(function () {
+				connection.send($('#msg').val());
+			});
+		});
 	</script>
 @section ScriptSection
 {
