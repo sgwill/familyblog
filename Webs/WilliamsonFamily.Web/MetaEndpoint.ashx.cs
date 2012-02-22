@@ -101,14 +101,25 @@ namespace WilliamsonFamily.Web
 		{
 			if (MembershipService.ValidateUser(username, password))
 			{
-				return new List<CategoryInfo>().ToArray();
+				return Enumerable.Empty<CategoryInfo>().ToArray(); 
 			}
 			throw new XmlRpcFaultException(0, "User is not valid");
 		}
 
 		public Post[] GetRecentPosts(string blogid, string username, string password, int numberOfPosts)
 		{
-			throw new XmlRpcFaultException(0, "Get recent posts not yet supported");
+			if (MembershipService.ValidateUser(username, password))
+			{
+				var user = UserRepository.Load(username);
+				var blogs = BlogRepository.LoadList(new BlogFilter { AuthorName = user.UniqueKey, PageSize = numberOfPosts, LoadBlogBy = LoadBlogBy.User });
+				return blogs.BlogEntries.Select(b => new Post
+					{
+						title = b.Title,
+						description = b.Entry,
+						postid = b.UniqueKey,
+						dateCreated = b.IsPublished ? b.DatePublished.Value : DateTime.Now.AddYears(-10)
+					}).ToArray();
+			}
 			throw new XmlRpcFaultException(0, "User is not valid");
 		}
 
