@@ -796,6 +796,38 @@ namespace WilliamsonFamily.Models.Data.Tests
 		}
 		#endregion
 
+		#region DeleteUnpublished
+		[TestMethod]
+		public void DeleteUnpublished_Unpublished_DeletesEntry()
+		{
+			// Arrange
+			var persister = GetPersister();
+			persister.DataContext.Insert(new Blog { AuthorID = "none", PkID = 3, Entry = "entry", IsPublished = false });
+			
+			// Act
+			persister.DeleteUnpublished(3);
+
+			// Assert
+			Assert.AreEqual(0, persister.DataContext.Repository<Blog>().Count());
+		}
+
+		[TestMethod]
+		public void DeleteUnpublished_Published_DoesNotDeleteEntry()
+		{
+			// Arrange
+			var persister = GetPersister();
+			persister.DataContext.Insert(new Blog { AuthorID = "none", PkID = 3, Entry = "entry", IsPublished = true });
+
+			// Act
+			persister.DeleteUnpublished(3);
+
+			// Assert
+			Assert.AreEqual(1, persister.DataContext.Repository<Blog>().Count());
+		}
+
+
+		#endregion
+
 		#region Helpers
 		#region Provider
 		private BlogRepository GetPersister()

@@ -39,5 +39,24 @@
                 } 
                 @Html.CheckBox("IsPublished", Model.IsPublished, new { @class = Model.IsPublished ? "disabled" : ""})  Publish
             </div>
+
+			@if (!Model.IsPublished && Model.UniqueKey != 0) {
+			<div class="block input-validation-error">
+				<br />
+				<h3>Delete this Draft?</h3>
+				<p>You may delete this draft if you wish. THIS ACTION IS PERMANENT</p>
+				<a href="@Url.Action("DeleteDraft", "Blog", new { id = Model.UniqueKey})" onclick="return confirmDelete();">Delete Draft</a>
+				<br /><br />
+			</div>
+			<script type="text/javascript">
+	   			function confirmDelete() {
+	   				var agree = confirm("Are you sure you want to delete?");
+	   				if (agree)
+	   					return true;
+	   				else
+	   					return false;
+	   			}
+			</script>
+			}
             
             @Html.Hidden("AuthorID", Model.AuthorID) 

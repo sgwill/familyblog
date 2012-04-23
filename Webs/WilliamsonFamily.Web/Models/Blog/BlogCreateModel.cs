@@ -12,5 +12,6 @@ namespace WilliamsonFamily.Web.Models.Blog
         public string AuthorID { get; set; }
         public bool IsEdit { get; set; }
         public bool IsPublished { get; set; }
+		public int UniqueKey { get; set; }
     }
 }

@@ -9,6 +9,7 @@ namespace WilliamsonFamily.Models.Blog
         IBlogList LoadList(BlogFilter filter);
         ITitleCleaner TitleCleaner { get; set; }
         IBlog LoadBySlug(string slug);
+		void DeleteUnpublished(int id);
     }
 
     public class BlogFilter

@@ -315,6 +315,7 @@ namespace WilliamsonFamily.Web.Controllers
 			data.AuthorID = blog.AuthorID;
 			data.IsEdit = true;
 			data.IsPublished = blog.IsPublished;
+			data.UniqueKey = blog.UniqueKey;
 
 			return View("Edit", data);
 		}
@@ -343,6 +344,21 @@ namespace WilliamsonFamily.Web.Controllers
 			BlogRepository.Save(blog);
 
 			Cache.Remove(new BlogListCacheKey().GenerateKey("SidebarList"));
+
+			return RedirectToAction("UserList");
+		}
+		#endregion
+
+		#region DeleteDraft
+		[Authorize]
+		[AcceptVerbs(HttpVerbs.Get)]
+		[Route("{user}/blog/deletedraft/{id}")]
+		public ActionResult DeleteDraft(int id)
+		{
+			EnsureInjectables();
+
+			if (id != 0)
+				BlogRepository.DeleteUnpublished(id);
 
 			return RedirectToAction("UserList");
 		}

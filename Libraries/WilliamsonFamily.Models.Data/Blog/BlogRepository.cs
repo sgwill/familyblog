@@ -263,5 +263,29 @@ namespace WilliamsonFamily.Models.Data
         }
 
         #endregion
-    }
+
+		#region DeleteUnpublished
+		public void DeleteUnpublished(int id)
+		{
+			using (MiniProfiler.Current.Step("BlogRepository.DeleteUnpublished"))
+			{
+				EnsureInjectables();
+
+				using (var dc = DataContextFactory.GetDataContext())
+				{
+					var blog = dc.Repository<Blog>()
+							   .Where(b => b.PkID == id)
+							   .Where(b => b.IsPublished == false)
+							   .FirstOrDefault();
+
+					if (blog != null)
+					{
+						dc.Delete(blog);
+						dc.Commit();
+					}
+				}
+			}
+		}
+		#endregion
+	}
 }
