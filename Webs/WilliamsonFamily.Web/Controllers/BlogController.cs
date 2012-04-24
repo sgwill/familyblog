@@ -37,7 +37,7 @@ namespace WilliamsonFamily.Web.Controllers
 
 		#region List
 		[CompressActionFilter]
-		[Route("{user}/blog/list.aspx", RoutePriority.High)]
+		[Route("{user}/blog", RoutePriority.High)]
 		public ActionResult List(string user)
 		{
 			EnsureInjectables();
@@ -142,7 +142,7 @@ namespace WilliamsonFamily.Web.Controllers
 
 		#region UserList
 		[Authorize]
-		[Route("{user}/blog/userlist.aspx")]
+		[Route("{user}/blog/userlist")]
 		public ActionResult UserList(string user)
 		{
 			EnsureInjectables();
