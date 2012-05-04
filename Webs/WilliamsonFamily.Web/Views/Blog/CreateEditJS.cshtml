@@ -29,36 +29,11 @@
 
                         		$.fancybox(
 								{
-									'href': '@(Url.Action("upload", "photo"))?__ajax=true',
+									'href': '@Url.Action("upload", "photo")',
 									'width': 600,
 									'autoscale': true,
 									'modal': true,
 									'title': 'Upload Image',
-									'onComplete': function () {
-										var options = {
-											url: '@(Url.Action("uploadphoto", "photo"))?__ajax=true',
-											dataType: 'json',
-                                            type: "POST",
-											iframe: true,
-											beforeSubmit: function (arr, $form, options) {
-												$('#MessageText').html('Please wait. Uploading image now');
-												$('#CloseButton').hide();
-												$('#CloseButton').html('Close');
-											},
-											success: function (responseText, statusText, xhr, $form) {
-												window.parent.PhotoUrl = responseText.Url;
-												$('#MessageText').html('Image uploaded. You may now close the uploader.');
-												$('#CloseButton').show();
-												$('#uploadButton').attr('disabled', 'disabled');
-												$('#theButton').attr('disabled', 'disabled');
-												return false;
-											},
-											
-										};
-
-										// bind form using 'ajaxForm'
-										$('#PhotoUpload').ajaxForm(options);
-									},
 									'onCleanup': function() {
 										if (window.PhotoUrl) {
                         					theEditor.image(window.PhotoUrl);
@@ -74,4 +49,6 @@
 		$('#Title').focus();
 		$('.disabled').attr('disabled', 'disabled');
 	});
+
+
 </script>

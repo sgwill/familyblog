@@ -4,14 +4,112 @@
 
     <div class="photoUpload">
         <h2>Upload Photo</h2>
+		<br />
+		<p class="drag">Drag your photo below</p>
+
+		<ul id="uploadBox" class="drag">
+			<span>Drag your photo here</span>
+		</ul>
+
+	@*	<p><span class="drag">Or, </span>Click Browse and find your image, then click Upload.</p>
         
         @{Html.BeginForm("UploadPhoto", "photo", FormMethod.Post, new { enctype = "multipart/form-data", id = "PhotoUpload" });}
             <input type="file" name="thefile" id="thefile" class="multi"/>
             <input type="submit" value="Upload" id="uploadButton" name="uploadButton"/>
-        @{Html.EndForm();}
-        
-        <p id="MessageText">Click Browse and find your image. Then click Upload. The process takes awhile.</p>
+        @{Html.EndForm();}*@
 
+		<br />
+
+		<p id="MessageText">This process will take a few minutes</p>
+        
         <span id="CloseButton" onclick="$.fancybox.close();">Cancel</span>
         
     </div>
+
+	<script>window.jQuery || document.write("<script type='text/javascript' src='@Url.Content("~/scripts/jquery-1.6.4.min.js")'>\x3C/script>")</script>
+	<script>window.Modernizr || document.write("<script type='text/javascript' src='@Url.Content("~/scripts/modernizr-2.0.6-development-only.js")'>\x3C/script>")</script>
+	<script type="text/javascript">
+		$(document).ready(function () {
+			// Check to see if file upload is available in this browser
+			if (!Modernizr.draganddrop) {
+				$('.drag').hide();
+			}
+
+			// Init drag n drop
+			var $box = $("#uploadBox");
+			$box.bind("dragenter", dragEnter);
+			$box.bind("dragexit", dragLeave);
+			$box.bind("drop", drop);
+
+			// Init regular file uploader
+//			var options = {
+//				success: function (responseText, statusText, xhr, $form) {
+//					window.parent.PhotoUrl = responseText.Url;
+//					setUIComplete();
+//					return false;
+//				},
+//				url: '@Url.Action("uploadphoto", "photo")',
+//				dataType: 'json',
+//				type: "POST",
+//				iframe: true,
+//				beforeSubmit: setUIWait()
+//			};
+
+//			// bind form using 'ajaxForm'
+//			$('#PhotoUpload').ajaxForm(options);
+		});
+
+		function dragEnter(evt) {
+			evt.stopPropagation();
+			evt.preventDefault();
+			$(evt.target).addClass('over');
+		}
+		function dragLeave(evt) {
+			evt.stopPropagation();
+			evt.preventDefault();
+			$(evt.target).removeClass('over');
+		}
+
+		function setUIWait() {
+			$('#MessageText').html('Please wait. Uploading image now');
+			$('#CloseButton').hide();
+			$('#CloseButton').html('Close');
+		}
+
+		function setUIComplete() {
+			$('#MessageText').html('Image uploaded. You may now close the uploader.');
+			$('#CloseButton').show();
+			//$('#uploadButton').attr('disabled', 'disabled');
+			$('#theButton').attr('disabled', 'disabled');
+			$('.drop').attr('disabled', 'disabled');
+		}
+
+		function drop(evt) {
+
+			dragLeave(evt);
+
+			var files = evt.originalEvent.dataTransfer.files;
+			if (files.length > 0) {
+				if (window.FormData !== undefined) {
+					var data = new FormData();
+					data.append("theFile", files[0]);
+
+					setUIWait();
+
+					$.ajax({
+						type: "POST",
+						url: '@Url.Action("UploadPhoto", "Photo")',
+						contentType: false,
+						processData: false,
+						data: data,
+						success: function (responseText, statusText, xhr) {
+							window.parent.PhotoUrl = responseText.Url;
+							setUIComplete();
+						}
+					});
+				} else {
+					alert("Problem with Image. Try regular uploader.");
+				}
+			}
+		}
+	</script>

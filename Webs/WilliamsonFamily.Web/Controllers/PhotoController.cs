@@ -34,16 +34,15 @@ namespace WilliamsonFamily.Web.Controllers
 		[Route("{user}/photo/uploadphoto", HttpVerbs.Post)]
 		public ActionResult UploadPhoto(HttpPostedFileBase theFile)
 		{
+			if (theFile == null)
+				return RedirectToAction("Upload");
+
 			EnsureInjectables();
 
 			IPhoto photo = null;
 			photo = PhotoRepository.UploadPhoto(theFile.InputStream, theFile.FileName, "", "", "");
 
-			return new FileUploadJsonResult()
-			{
-				Data = new { Url = photo.WebUrl, success = true, message = "success" }
-			};
-
+			return new JsonResult { Data = new { Url = photo.WebUrl, success = true, message = "success" } };
 		}
 	}
 }

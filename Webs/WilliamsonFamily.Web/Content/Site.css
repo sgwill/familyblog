@@ -383,8 +383,20 @@ input.wideText { width: 500px; }
 div.block { margin: 0 0 20px 0; }
 div iframe { border: 2px inset; }
 div.photoUpload { padding: 20px; }
-span#CloseButton { cursor: pointer; }
-
+span#CloseButton { cursor: pointer; color: #4B8749; }
+#uploadBox { 
+	width: 420px;
+	height: 80px;
+	border: 2px solid #DDD;
+	border-radius: 8px;
+	margin:  20px;
+	background: #DEDEDE;
+	border: 2px solid #808080;
+	text-align:center;
+	padding-top: 65px;
+}
+#uploadBox span { font-size: 18px; }
+#uploadBox.over {background: #4B8749;}
 /* User List
 ----------------------------------------------------------*/
 .contentTable table { width: 840px; border: 1px solid black; border-collapse:collapse; }
