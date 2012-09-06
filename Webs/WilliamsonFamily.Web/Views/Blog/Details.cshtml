@@ -3,6 +3,17 @@
 	ViewBag.Title = Model.BlogEntry.Title;
 }
 
+@section ExtraHead{prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#"}
+
+@section ExtraHeader
+{
+    <meta property="fb:app_id" content="277029815735689" /> 
+    <meta property="og:type"   content="article" /> 
+    <meta property="og:url"    content="@Url.Action("Detail", "Blog", new { title = Model.BlogEntry.Slug, user = Model.Author.FirstName == "Bekah" ? "bekah" : "sammichele" }, "http")" /> 
+    <meta property="og:title"  content="@Model.BlogEntry.Title" /> 
+    <meta property="og:image"  content="https://s-static.ak.fbcdn.net/images/devsite/attachment_blank.png" />
+}
+
 @section HeaderImage
 {
     @if (Model.Author.FirstName == "Bekah")

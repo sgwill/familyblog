@@ -401,8 +401,8 @@ span#CloseButton { cursor: pointer; color: #4B8749; }
 ----------------------------------------------------------*/
 .contentTable table { width: 840px; border: 1px solid black; border-collapse:collapse; }
 .contentTable td { border-top: 1px solid black; }
-.contentTable td.controls { width:65px; padding-right: 2px; }
-.contentTable td.blogName { width: 625px; padding-left: 2px; }
+.contentTable td.controls { width:200px; padding-right: 2px; }
+.contentTable td.blogName { width: 450px; padding-left: 2px; }
 .contentTable td.blogDate { text-align:center; }
 .contentTable tr { height: 16px; }
 .contentTable tr:hover { background-color: #ccc; }

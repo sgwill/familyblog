@@ -5,7 +5,7 @@
 
 <!DOCTYPE html>
 <html>
-<head>
+<head @RenderSection("ExtraHead", false)>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
 
@@ -17,6 +17,7 @@
 		.Add("~/Content/jquery.jgrowl.css")
         .Add("~/Content/Site.css")
         .Render("~/Content/combined_#.css"))
+
     <!-- Extra Header -->
     @RenderSection("ExtraHeader", false)
 

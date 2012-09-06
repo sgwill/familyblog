@@ -50,7 +50,16 @@
 					<td class="blogDate">@(item.IsPublished ? Html.Encode(item.DatePublished) : "Not Published")</td>
 					<td class="controls">
 						@Html.ActionLink("Edit", "Edit", new { user = Model.Author.UrlName, slug = item.Slug }) |
-						@Html.ActionLink("View", "Detail", new { title = item.Slug, user = string.IsNullOrEmpty(Model.Family) ? Model.Author.UrlName : Model.Family }, new { target = "_blank" })
+						@Html.ActionLink("View", "Detail", new { title = item.Slug, user = string.IsNullOrEmpty(Model.Family) ? Model.Author.UrlName : Model.Family }, new { target = "_blank" }) |
+						@{
+		  
+	   var url = Url.Action("Detail", "Blog", new { title = item.Slug, user = string.IsNullOrEmpty(Model.Family) ? Model.Author.UrlName : Model.Family });
+						}
+						<a href='http://www.facebook.com/dialog/feed?
+								app_id=277029815735689&
+								link=@Url.Action("Detail", "Blog", new { title = item.Slug, user = string.IsNullOrEmpty(Model.Family) ? Model.Author.UrlName : Model.Family }, "http")&
+								redirect_uri=@Url.Action("Detail", "Blog", new { title = item.Slug, user = string.IsNullOrEmpty(Model.Family) ? Model.Author.UrlName : Model.Family }, "http")&
+								name=@Html.Encode(item.Title)' target="_blank">Share on Facebook</a>
 					</td>
 				</tr>
 			
