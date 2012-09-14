@@ -45,7 +45,7 @@
 
 			@foreach (var item in Model.BlogEntries) {
 			
-				<tr @(item.IsPublished ? "" : "class=unpublished")>
+				<tr class='@(item.IsPublished ? (item.DatePublished > DateTime.Now ? "future" : "") : "unpublished")'>
 					<td class="blogName">@item.Title</td>
 					<td class="blogDate">@(item.IsPublished ? Html.Encode(item.DatePublished) : "Not Published")</td>
 					<td class="controls">

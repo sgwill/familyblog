@@ -407,6 +407,7 @@ span#CloseButton { cursor: pointer; color: #4B8749; }
 .contentTable tr { height: 16px; }
 .contentTable tr:hover { background-color: #ccc; }
 .contentTable tr.unpublished { background-color:Red; }
+.contentTable tr.future { background-color:Highlight; }
 .contentTable tr.noHover:hover { background-color: White; } 
 .contentTable { margin-bottom: 5px; }
 

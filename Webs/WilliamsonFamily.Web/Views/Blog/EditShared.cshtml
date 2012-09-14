@@ -38,6 +38,9 @@
                 <p><em>This Entry is already published. You can still edit and make updates to it.</em></p>
                 } 
                 @Html.CheckBox("IsPublished", Model.IsPublished, new { @class = Model.IsPublished ? "disabled" : ""})  Publish
+
+				@Html.TextBox("DatePublished", Model.DatePublished, new { @class = Model.IsPublished ? "disabled" : ""})  Publish Date
+
             </div>
 
 			@if (!Model.IsPublished && Model.UniqueKey != 0) {

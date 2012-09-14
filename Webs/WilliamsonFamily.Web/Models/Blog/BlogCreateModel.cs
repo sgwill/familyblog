@@ -13,5 +13,6 @@ namespace WilliamsonFamily.Web.Models.Blog
         public bool IsEdit { get; set; }
         public bool IsPublished { get; set; }
 		public int UniqueKey { get; set; }
+		public DateTime? DatePublished { get; set; }
     }
 }

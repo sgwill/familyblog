@@ -58,12 +58,26 @@ namespace WilliamsonFamily.Models.Data.Tests
 		}
 
 		[TestMethod]
-		public void BlogRepository_LoadListBySpecifiedIsPublished_CanLoad()
+		public void BlogRepository_LoadListByIsPublished_CanLoad()
 		{
 			string authorId = "1";
 			var persister = GetPersister();
-			persister.DataContext.Insert(new Blog { AuthorID = authorId, IsPublished = true });
-			persister.DataContext.Insert(new Blog { AuthorID = authorId + "2", IsPublished = false });
+			persister.DataContext.Insert(new Blog { AuthorID = authorId, IsPublished = true, DatePublished = DateTime.Now.AddDays(-1) });
+			persister.DataContext.Insert(new Blog { AuthorID = authorId + "2", IsPublished = false, DatePublished = DateTime.Now.AddDays(-1) });
+
+			var blogs = persister.LoadList(new BlogFilter { IsPublished = true });
+
+			Assert.AreEqual(1, blogs.BlogEntries.Count(), "Number of Blogs");
+			Assert.AreEqual(authorId, blogs.BlogEntries.FirstOrDefault().AuthorID, "Blog.AuthorID");
+		}
+
+		[TestMethod]
+		public void BlogRepository_LoadListByIsPublished_WillNotLoadFutureDates()
+		{
+			string authorId = "1";
+			var persister = GetPersister();
+			persister.DataContext.Insert(new Blog { AuthorID = authorId, IsPublished = true, DatePublished = DateTime.Now.AddDays(-1) });
+			persister.DataContext.Insert(new Blog { AuthorID = authorId + "2", IsPublished = true, DatePublished = DateTime.Now.AddDays(1) });
 
 			var blogs = persister.LoadList(new BlogFilter { IsPublished = true });
 
@@ -302,6 +316,21 @@ namespace WilliamsonFamily.Models.Data.Tests
 		}
 
 		[TestMethod]
+		public void BlogRepository_Save_ManualFuturePublishDateGetsSaved()
+		{
+			// Arrange
+			string authorID = "author";
+			var persister = GetPersister();
+			persister.DataContext.Insert(new User { PkID = authorID });
+			DateTime published = DateTime.Now.AddDays(1);
+
+			persister.Save(new Blog { Title = "cooltitle", AuthorID = authorID, IsPublished = true, DatePublished = published });
+
+			var blog = persister.DataContext.Repository<Blog>().FirstOrDefault();
+			Assert.AreEqual(published, blog.DatePublished);
+		}
+
+		[TestMethod]
 		public void BlogRepository_Save_OnEditAndPublish_SetDate()
 		{
 			int id = 1;
@@ -309,14 +338,12 @@ namespace WilliamsonFamily.Models.Data.Tests
 			var persister = GetPersister();
 			persister.DataContext.Insert(new User { PkID = afterAuthorId, FirstName = "" });
 			persister.DataContext.Insert(new Blog { PkID = id, AuthorID = afterAuthorId, Title = "", DatePublished = DateTime.Today.AddDays(-1), IsPublished = false });
-			var blog = persister.Load(id);
 
-			blog.IsPublished = true;
-			persister.Save(blog);
+			// NOTE: because it's an in memory repo, we're doing this madness.
+			persister.Save(new Blog { PkID = id, AuthorID = afterAuthorId, Title = "", DatePublished = DateTime.Today.AddDays(-1), IsPublished = true });
 
-			blog = persister.DataContext.Repository<Blog>().FirstOrDefault();
-			//Assert.AreEqual(blog.DatePublished.Value.Day, DateTime.Today.Day);
-			// ARG. InMemory has a bug; this doesn't get hit
+			var blog = persister.DataContext.Repository<Blog>().FirstOrDefault();
+			Assert.AreEqual(blog.DatePublished.Value.Day, DateTime.Today.Day);
 		}
 		#endregion
 

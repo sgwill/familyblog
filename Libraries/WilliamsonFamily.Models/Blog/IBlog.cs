@@ -11,7 +11,7 @@ namespace WilliamsonFamily.Models.Blog
         string Slug { get; }
         string Entry { get; set; }
         string Tags { get; set; }
-        DateTime? DatePublished { get; }
+		DateTime? DatePublished { get; set; }
         bool IsPublished { get; set; }
     }
 }

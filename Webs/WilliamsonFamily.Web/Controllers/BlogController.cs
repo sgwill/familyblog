@@ -315,6 +315,7 @@ namespace WilliamsonFamily.Web.Controllers
 			data.AuthorID = blog.AuthorID;
 			data.IsEdit = true;
 			data.IsPublished = blog.IsPublished;
+			data.DatePublished = blog.IsPublished ? blog.DatePublished : null;
 			data.UniqueKey = blog.UniqueKey;
 
 			return View("Edit", data);

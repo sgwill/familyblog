@@ -88,8 +88,11 @@ namespace WilliamsonFamily.Models.Data
                         blogs = LoadByTags(blogs, filter.Tags);
                     }
 
-                    if (filter.IsPublished.HasValue)
-                        blogs = blogs.Where(b => b.IsPublished == filter.IsPublished.Value);
+					if (filter.IsPublished.HasValue)
+					{
+						blogs = blogs.Where(b => b.IsPublished == filter.IsPublished.Value);
+						blogs = blogs.Where(b => b.DatePublished.Value <= DateTime.Now);
+					}
 
                     blogs = blogs.OrderByDescending(b => b.DatePublished);
 
@@ -223,7 +226,7 @@ namespace WilliamsonFamily.Models.Data
                     modelAsBlog.Slug = TitleCleaner.CleanTitle(model.Title);
                     if (!modelAsBlog.IsPublished && model.IsPublished)
                     {
-                        modelAsBlog.DatePublished = DateTime.Now;
+						modelAsBlog.DatePublished = model.DatePublished.HasValue && model.DatePublished.Value > DateTime.Now ? model.DatePublished : DateTime.Now;
                         modelAsBlog.IsPublished = model.IsPublished;
                     }
                     modelAsBlog.AuthorName = dc.Repository<User>()
