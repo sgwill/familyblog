@@ -28,7 +28,7 @@ namespace WilliamsonFamily.Web
             RouteTable.Routes.Clear();
             RouteTable.Routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-			RouteTable.Routes.MapConnection<PhoneConnection>("echo", "echo/{*operation}");
+			//RouteTable.Routes.MapConnection<PhoneConnection>("echo", "echo/{*operation}");
 
 			RouteAttribute.MapDecoratedRoutes(RouteTable.Routes);
 
