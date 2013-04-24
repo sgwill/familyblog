@@ -16,10 +16,8 @@ namespace WilliamsonFamily.Library.Tests.Log
 		[TestMethod]
 		public void RemoveOldLogs_EmptyConnectionString_ThrowsException()
 		{
-			// Arrange
 			cleaner.ConnectionString = "";
 
-			// Assert
 			try
 			{
 				cleaner.RemoveOldLogs(30);
@@ -33,10 +31,8 @@ namespace WilliamsonFamily.Library.Tests.Log
 		[TestMethod]
 		public void RemoveOldLogs_LessThan30DaysToKeep_ThrowsException()
 		{
-			// Arrange
 			cleaner.ConnectionString = "string";
 
-			// Assert
 			try
 			{
 				cleaner.RemoveOldLogs(10);
@@ -50,10 +46,8 @@ namespace WilliamsonFamily.Library.Tests.Log
 		[TestMethod]
 		public void LogCount_EmptyConnectionString_ThrowsException()
 		{
-			// Arrange
 			cleaner.ConnectionString = "";
 
-			// Assert
 			try
 			{
 				cleaner.LogsCount();
@@ -67,10 +61,8 @@ namespace WilliamsonFamily.Library.Tests.Log
 		[TestMethod]
 		public void Compact_EmptyConnectionString_ThrowsException()
 		{
-			// Arrange
 			cleaner.ConnectionString = "";
 
-			// Assert
 			try
 			{
 				cleaner.Compact();
