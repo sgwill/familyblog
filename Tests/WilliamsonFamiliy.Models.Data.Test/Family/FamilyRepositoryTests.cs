@@ -8,16 +8,14 @@ namespace WilliamsonFamily.Models.Data.Tests
     [TestClass]
     public class FamilyRepositoryTests
     {
-        #region Load Tests
         [TestMethod]
         public void Family_LoadbyFamilyName_GetFamilyByFamilyname()
         {
             string familyName = "williamson";
             int id = 1;
-            var persister = GetPersister();
-            persister.DataContext.Insert(new Family { PkID = id, FamilyName = familyName });
+            repository.DataContext.Insert(new Family { PkID = id, FamilyName = familyName });
 
-            var family = persister.Load(familyName);
+            var family = repository.Load(familyName);
 
             Assert.AreEqual(id, family.UniqueKey);
         }
@@ -26,10 +24,9 @@ namespace WilliamsonFamily.Models.Data.Tests
         public void Family_LoadbyFamilyName_InvalidFamilynameReturnsNull()
         {
             string familyName = "williamson";
-            var persister = GetPersister();
-            persister.DataContext.Insert(new Family { FamilyName = familyName });
+            repository.DataContext.Insert(new Family { FamilyName = familyName });
 
-            var family = persister.Load("noone");
+            var family = repository.Load("noone");
 
             Assert.IsNull(family);
         }
@@ -38,13 +35,12 @@ namespace WilliamsonFamily.Models.Data.Tests
         public void Family_LoadbyFamilyName_TwoFamiliesWithSameFamilyNameThrowsException()
         {
             string familyName = "williamson";
-            var persister = GetPersister();
-            persister.DataContext.Insert(new Family { FamilyName = familyName });
-            persister.DataContext.Insert(new Family { FamilyName = familyName });
+            repository.DataContext.Insert(new Family { FamilyName = familyName });
+            repository.DataContext.Insert(new Family { FamilyName = familyName });
 
             try
             {
-                var user = persister.Load(familyName);
+                var user = repository.Load(familyName);
                 Assert.Fail();
             }
             catch (Exception ex)
@@ -52,15 +48,14 @@ namespace WilliamsonFamily.Models.Data.Tests
                 Assert.IsInstanceOfType(ex, typeof(InvalidOperationException));
             }
         }
-        #endregion
 
-        #region Provider
-        private FamilyRepository GetPersister()
+        FamilyRepository repository;
+        [TestInitialize]
+        public void Init()
         {
             var dc = new InMemoryDataContext();
             var dcf = new InMemoryDataContextFactory { DataContext = dc };
-            return new FamilyRepository { DataContext = dc, DataContextFactory = dcf };
+            repository = new FamilyRepository { DataContext = dc, DataContextFactory = dcf };
         }
-        #endregion
     }
 }

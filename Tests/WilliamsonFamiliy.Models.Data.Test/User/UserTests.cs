@@ -9,175 +9,179 @@ namespace WilliamsonFamily.Models.Data.Tests
     [TestClass]
     public class UserTests
     {
-        #region Load
-       
-        [TestMethod]
-        public void User_LoadbyUserName_GetUserByUsername()
+        [TestClass]
+        public class Load
         {
-            string userName = "sgwill";
-            string id = "1";
-            var persister = GetPersister();
-            persister.DataContext.Insert(new User { PkID = id, Username = userName });
-
-            var user = persister.Load(userName);
-
-            Assert.AreEqual(id, user.UniqueKey);
-        }
-
-        [TestMethod]
-        public void User_LoadbyUserName_InvalidUsernameReturnsNull()
-        {
-            string userName = "sgwill";
-            var persister = GetPersister();
-            persister.DataContext.Insert(new User { Username = userName });
-
-            var user = persister.Load("noone");
-
-            Assert.IsNull(user);
-        }
-
-        [TestMethod]
-        public void User_LoadbyUserName_TwoUsersWithSameUserNameThrowsException()
-        {
-            string userName = "sgwill";
-            var persister = GetPersister();
-            persister.DataContext.Insert(new User { Username = userName });
-            persister.DataContext.Insert(new User { Username = userName });
-
-            try
+            [TestMethod]
+            public void User_LoadbyUserName_GetUserByUsername()
             {
-                var user = persister.Load(userName);
-                Assert.Fail();
+                string userName = "sgwill";
+                string id = "1";
+                repository.DataContext.Insert(new User { PkID = id, Username = userName });
+
+                var user = repository.Load(userName);
+
+                Assert.AreEqual(id, user.UniqueKey);
             }
-            catch (Exception ex)
+
+            [TestMethod]
+            public void User_LoadbyUserName_InvalidUsernameReturnsNull()
             {
-                Assert.IsInstanceOfType(ex, typeof(InvalidOperationException));
+                string userName = "sgwill";
+                repository.DataContext.Insert(new User { Username = userName });
+
+                var user = repository.Load("noone");
+
+                Assert.IsNull(user);
             }
-        }
 
-        [TestMethod]
-        public void User_LoadByUserName_IgnoresCase()
-        {
-            string userName = "sgwill";
-            var persister = GetPersister();
-            persister.DataContext.Insert(new User { Username = userName });
-
-            var user = persister.Load(userName.ToUpper());
-
-            Assert.IsNotNull(user);
-        }
-
-        [TestMethod]
-        public void User_LoadByUserName_FallsBackToUniqueKey()
-        {
-            Guid g = new Guid();
-            string key = g.ToString();
-            var persister = GetPersister();
-            persister.DataContext.Insert(new User {  PkID = key, Username = "" });
-
-            var user = persister.Load(key);
-
-            Assert.IsNotNull(user);
-        }
-        #endregion
-
-        #region Factory Tests
-        [TestMethod]
-        public void User_Factory_CanCreateNew()
-        {
-            var persister = GetPersister();
-
-            var newUser = persister.New();
-
-            Assert.IsInstanceOfType(newUser, typeof(User));
-        }
-        #endregion
-
-        #region Save Tests
-        [TestMethod]
-        public void User_Save_CanSave()
-        {
-            string userName = "sam";
-            var persister = GetPersister();
-
-            persister.Save(new User { Username = userName });
-
-            var user = persister.DataContext.Repository<User>().FirstOrDefault();
-            Assert.IsNotNull(user);
-        }
-
-        [TestMethod]
-        public void User_Save_UpdateNonExistingUserThrowsException()
-        {
-            string pkId = "1";
-            var persister = GetPersister();
-
-            try
+            [TestMethod]
+            public void User_LoadbyUserName_TwoUsersWithSameUserNameThrowsException()
             {
-                persister.Save(new User { PkID = pkId });
-                Assert.Fail();
+                string userName = "sgwill";
+                repository.DataContext.Insert(new User { Username = userName });
+                repository.DataContext.Insert(new User { Username = userName });
+
+                try
+                {
+                    var user = repository.Load(userName);
+                    Assert.Fail();
+                }
+                catch (Exception ex)
+                {
+                    Assert.IsInstanceOfType(ex, typeof(InvalidOperationException));
+                }
             }
-            catch (Exception ex)
+
+            [TestMethod]
+            public void User_LoadByUserName_IgnoresCase()
             {
-                Assert.IsInstanceOfType(ex, typeof(ArgumentException));
+                string userName = "sgwill";
+                repository.DataContext.Insert(new User { Username = userName });
+
+                var user = repository.Load(userName.ToUpper());
+
+                Assert.IsNotNull(user);
+            }
+
+            [TestMethod]
+            public void User_LoadByUserName_FallsBackToUniqueKey()
+            {
+                Guid g = new Guid();
+                string key = g.ToString();
+                repository.DataContext.Insert(new User { PkID = key, Username = "" });
+
+                var user = repository.Load(key);
+
+                Assert.IsNotNull(user);
+            }
+
+            UserRepository repository;
+            [TestInitialize]
+            public void Init()
+            {
+                var dc = new InMemoryDataContext();
+                var dcf = new InMemoryDataContextFactory { DataContext = dc };
+                repository = new UserRepository { DataContext = dc, DataContextFactory = dcf };
             }
         }
 
-        [TestMethod]
-        public void User_Save_WillInsertNewUser()
+        [TestClass]
+        public class Factory
         {
-            string userName = "sam";
-            var persister = GetPersister();
+            [TestMethod]
+            public void User_Factory_CanCreateNew()
+            {
+                var repository = new UserRepository();
 
-            int beforeCount = persister.DataContext.Repository<User>().Count();
-            persister.Save(new User { Username = userName });
+                var newUser = repository.New();
 
-            int afterCount = persister.DataContext.Repository<User>().Count();
-            Assert.AreEqual(1, afterCount - beforeCount);
+                Assert.IsInstanceOfType(newUser, typeof(User));
+            }
         }
 
-        [TestMethod]
-        public void User_Save_WillNotInsertExistingUser()
+        [TestClass]
+        public class Save
         {
-            string id = "1";
-            string username = "sam";
-            var persister = GetPersister();
-            persister.DataContext.Insert(new User { PkID = id, Username = username });
-            var user = persister.Load(username);
+            [TestMethod]
+            public void User_Save_CanSave()
+            {
+                string userName = "sam";
 
-            int beforeCount = persister.DataContext.Repository<User>().Count();
-            persister.Save(user);
+                repository.Save(new User { Username = userName });
 
-            int afterCount = persister.DataContext.Repository<User>().Count();
-            Assert.AreEqual(0, afterCount - beforeCount);
+                var user = repository.DataContext.Repository<User>().FirstOrDefault();
+                Assert.IsNotNull(user);
+            }
+
+            [TestMethod]
+            public void User_Save_UpdateNonExistingUserThrowsException()
+            {
+                string pkId = "1";
+
+                try
+                {
+                    repository.Save(new User { PkID = pkId });
+                    Assert.Fail();
+                }
+                catch (Exception ex)
+                {
+                    Assert.IsInstanceOfType(ex, typeof(ArgumentException));
+                }
+            }
+
+            [TestMethod]
+            public void User_Save_WillInsertNewUser()
+            {
+                string userName = "sam";
+
+                int beforeCount = repository.DataContext.Repository<User>().Count();
+                repository.Save(new User { Username = userName });
+
+                int afterCount = repository.DataContext.Repository<User>().Count();
+                Assert.AreEqual(1, afterCount - beforeCount);
+            }
+
+            [TestMethod]
+            public void User_Save_WillNotInsertExistingUser()
+            {
+                string id = "1";
+                string username = "sam";
+                repository.DataContext.Insert(new User { PkID = id, Username = username });
+                var user = repository.Load(username);
+
+                int beforeCount = repository.DataContext.Repository<User>().Count();
+                repository.Save(user);
+
+                int afterCount = repository.DataContext.Repository<User>().Count();
+                Assert.AreEqual(0, afterCount - beforeCount);
+            }
+
+            [TestMethod]
+            public void User_Save_WillUpdateExistingUser()
+            {
+                string id = "1";
+                string beforeName = "sam";
+                string afterName = "sambo";
+                repository.DataContext.Insert(new User { PkID = id, Username = beforeName, FirstName = beforeName });
+                var user = repository.Load(beforeName);
+
+                user.FirstName = afterName;
+                repository.Save(user);
+
+                user = repository.DataContext.Repository<User>().FirstOrDefault();
+                Assert.AreEqual(afterName, user.FirstName);
+            }
+
+            UserRepository repository;
+            [TestInitialize]
+            public void Init()
+            {
+                var dc = new InMemoryDataContext();
+                var dcf = new InMemoryDataContextFactory { DataContext = dc };
+                repository = new UserRepository { DataContext = dc, DataContextFactory = dcf };
+            }
         }
-
-        [TestMethod]
-        public void User_Save_WillUpdateExistingUser()
-        {
-            string id = "1";
-            string beforeName = "sam";
-            string afterName = "sambo";
-            var persister = GetPersister();
-            persister.DataContext.Insert(new User { PkID = id, Username = beforeName, FirstName = beforeName });
-            var user = persister.Load(beforeName);
-
-            user.FirstName = afterName;
-            persister.Save(user);
-
-            user = persister.DataContext.Repository<User>().FirstOrDefault();
-            Assert.AreEqual(afterName, user.FirstName);
-        }
-        #endregion
-
-        #region Provider
-        private UserRepository GetPersister()
-        {
-            var dc = new InMemoryDataContext();
-            var dcf = new InMemoryDataContextFactory { DataContext = dc };
-            return new UserRepository { DataContext = dc, DataContextFactory = dcf };
-        }
-        #endregion
 
         public class OtherUser : IUser
         {
