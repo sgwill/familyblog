@@ -1,46 +1,19 @@
-#OS junk files
-[Tt]humbs.db
-*.DS_Store
-
-#Visual Studio files
-*.[Oo]bj
+[Oo]bj/
+[Bb]in/
 *.user
-*.aps
-*.pch
-*.vspscc
-*.vssscc
-*_i.c
-*_p.c
-*.ncb
+target/
 *.suo
-*.tlb
-*.tlh
+*.cache
 *.bak
-*.[Cc]ache
-*.ilk
-*.log
-*.lib
-*.sbr
-*.sdf
-*.opensdf
-*.unsuccessfulbuild
-ipch/
-obj/
-[Bb]in
-[Dd]ebug*/
-[Rr]elease*/
-Ankh.NoLoad
-*.Publish.xml
-
-
-#Tooling
-_ReSharper*/
-*.resharper
-[Tt]est[Rr]esult*
-*.ncrunchproject
+packages/
+msbuild.log
+_Resharper*/
 *.ncrunchsolution
-#Subversion files
-.svn
+*.ncrunchproject
+TestResults/
 
-# Office Temp Files
-~$*
+Web.Debug.config
+Web.Release.config
+*.publish.xml
+publishprofiles/
+testimpactdata.sdf
