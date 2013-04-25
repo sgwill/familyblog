@@ -86,7 +86,6 @@
     <Compile Include="Exceptions\InjectableProperyNullException.cs" />
     <Compile Include="ExtensionMethods.cs" />
     <Compile Include="Log\ElmahLogManager.cs" />
-    <Compile Include="Web\AreaViewEngine.cs" />
     <Compile Include="Web\Attributes\HandleErrorAttribute.cs" />
     <Compile Include="Web\Caching\BlogEntryCacheKey.cs" />
     <Compile Include="Web\Caching\BlogListCacheKey.cs" />
@@ -97,7 +96,6 @@
     <Compile Include="Web\FileUploadJsonResult.cs" />
     <Compile Include="Web\Filters\CompressActionFilter.cs" />
     <Compile Include="Web\Filters\EnableMiniProfilerActionFilter.cs" />
-    <Compile Include="Web\IUrl.cs" />
     <Compile Include="Web\Membership\SQLiteProviders\SQLiteMembershipProvider.cs" />
     <Compile Include="Web\Membership\SQLiteProviders\SQLitePersonalizationProvider.cs" />
     <Compile Include="Web\Membership\SQLiteProviders\SQLiteProfileProvider.cs" />

@@ -37,7 +37,8 @@ Ankh.NoLoad
 _ReSharper*/
 *.resharper
 [Tt]est[Rr]esult*
-*.ncrunchproject 
+*.ncrunchproject
+*.ncrunchsolution
 #Subversion files
 .svn
 

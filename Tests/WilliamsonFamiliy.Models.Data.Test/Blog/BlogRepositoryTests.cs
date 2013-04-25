@@ -20,11 +20,10 @@ namespace WilliamsonFamily.Models.Data.Tests
 		public void BlogRepository_LoadSingleByID_CanLoad()
 		{
 			int id = 3;
-			var persister = GetPersister();
-			persister.DataContext.Insert(new Blog { PkID = id });
-			persister.DataContext.Insert(new Blog { PkID = id + 1 });
+			repository.DataContext.Insert(new Blog { PkID = id });
+			repository.DataContext.Insert(new Blog { PkID = id + 1 });
 
-			var blog = persister.Load(id);
+			var blog = repository.Load(id);
 
 			Assert.AreEqual(id, blog.UniqueKey);
 		}
@@ -33,10 +32,9 @@ namespace WilliamsonFamily.Models.Data.Tests
 		public void BlogRepository_LoadSingleByID_InvalidIDReturnsNull()
 		{
 			int id = 3;
-			var persister = GetPersister();
-			persister.DataContext.Insert(new Blog { PkID = id });
+			repository.DataContext.Insert(new Blog { PkID = id });
 
-			var blog = persister.Load(2);
+			var blog = repository.Load(2);
 
 			Assert.IsNull(blog);
 		}
@@ -47,11 +45,10 @@ namespace WilliamsonFamily.Models.Data.Tests
 		public void BlogRepository_LoadListByAuthorID_CanLoad()
 		{
 			string authorId = "1";
-			var persister = GetPersister();
-			persister.DataContext.Insert(new Blog { AuthorID = authorId });
-			persister.DataContext.Insert(new Blog { AuthorID = authorId + "2"});
+			repository.DataContext.Insert(new Blog { AuthorID = authorId });
+			repository.DataContext.Insert(new Blog { AuthorID = authorId + "2" });
 
-			var blogs = persister.LoadList(new BlogFilter { AuthorName = authorId, LoadBlogBy = LoadBlogBy.User });
+			var blogs = repository.LoadList(new BlogFilter { AuthorName = authorId, LoadBlogBy = LoadBlogBy.User });
 
 			Assert.AreEqual(1, blogs.BlogEntries.Count(), "Number of Blogs");
 			Assert.AreEqual(authorId, blogs.BlogEntries.FirstOrDefault().AuthorID, "Blog.AuthorID");
@@ -61,11 +58,10 @@ namespace WilliamsonFamily.Models.Data.Tests
 		public void BlogRepository_LoadListByIsPublished_CanLoad()
 		{
 			string authorId = "1";
-			var persister = GetPersister();
-			persister.DataContext.Insert(new Blog { AuthorID = authorId, IsPublished = true, DatePublished = DateTime.Now.AddDays(-1) });
-			persister.DataContext.Insert(new Blog { AuthorID = authorId + "2", IsPublished = false, DatePublished = DateTime.Now.AddDays(-1) });
+			repository.DataContext.Insert(new Blog { AuthorID = authorId, IsPublished = true, DatePublished = DateTime.Now.AddDays(-1) });
+			repository.DataContext.Insert(new Blog { AuthorID = authorId + "2", IsPublished = false, DatePublished = DateTime.Now.AddDays(-1) });
 
-			var blogs = persister.LoadList(new BlogFilter { IsPublished = true });
+			var blogs = repository.LoadList(new BlogFilter { IsPublished = true });
 
 			Assert.AreEqual(1, blogs.BlogEntries.Count(), "Number of Blogs");
 			Assert.AreEqual(authorId, blogs.BlogEntries.FirstOrDefault().AuthorID, "Blog.AuthorID");
@@ -75,11 +71,10 @@ namespace WilliamsonFamily.Models.Data.Tests
 		public void BlogRepository_LoadListByIsPublished_WillNotLoadFutureDates()
 		{
 			string authorId = "1";
-			var persister = GetPersister();
-			persister.DataContext.Insert(new Blog { AuthorID = authorId, IsPublished = true, DatePublished = DateTime.Now.AddDays(-1) });
-			persister.DataContext.Insert(new Blog { AuthorID = authorId + "2", IsPublished = true, DatePublished = DateTime.Now.AddDays(1) });
+			repository.DataContext.Insert(new Blog { AuthorID = authorId, IsPublished = true, DatePublished = DateTime.Now.AddDays(-1) });
+			repository.DataContext.Insert(new Blog { AuthorID = authorId + "2", IsPublished = true, DatePublished = DateTime.Now.AddDays(1) });
 
-			var blogs = persister.LoadList(new BlogFilter { IsPublished = true });
+			var blogs = repository.LoadList(new BlogFilter { IsPublished = true });
 
 			Assert.AreEqual(1, blogs.BlogEntries.Count(), "Number of Blogs");
 			Assert.AreEqual(authorId, blogs.BlogEntries.FirstOrDefault().AuthorID, "Blog.AuthorID");
@@ -89,37 +84,33 @@ namespace WilliamsonFamily.Models.Data.Tests
 		public void BlogRepository_LoadListWithoutSpecifyingIsPublished_CanLoad()
 		{
 			string authorId = "1";
-			var persister = GetPersister();
-			persister.DataContext.Insert(new Blog { AuthorID = authorId, IsPublished = true });
-			persister.DataContext.Insert(new Blog { AuthorID = authorId + "2", IsPublished = false });
+			repository.DataContext.Insert(new Blog { AuthorID = authorId, IsPublished = true });
+			repository.DataContext.Insert(new Blog { AuthorID = authorId + "2", IsPublished = false });
 
-			var blogs = persister.LoadList(new BlogFilter { });
+			var blogs = repository.LoadList(new BlogFilter { });
 
 			Assert.AreEqual(2, blogs.BlogEntries.Count(), "Number of Blogs");
 		}
 
-	    [TestMethod]
+		[TestMethod]
 		public void BlogRepository_LoadList_OrdersByDateDescending()
 		{
 			string authorId = "1";
-			var persister = GetPersister();
-			persister.DataContext.Insert(new Blog { AuthorID = authorId, DatePublished = DateTime.Now });
-			persister.DataContext.Insert(new Blog { AuthorID = authorId, DatePublished = DateTime.Now.AddDays(1) });
+			repository.DataContext.Insert(new Blog { AuthorID = authorId, DatePublished = DateTime.Now });
+			repository.DataContext.Insert(new Blog { AuthorID = authorId, DatePublished = DateTime.Now.AddDays(1) });
 
-			var blogs = persister.LoadList(new BlogFilter { });
+			var blogs = repository.LoadList(new BlogFilter { });
 
 			Assert.AreEqual(DateTime.Now.AddDays(1).Date, blogs.BlogEntries.FirstOrDefault().DatePublished.Value.Date);
 		}
-	
+
 		#endregion
 
 		#region Factory Tests
 		[TestMethod]
 		public void BlogRepository_ModelFactory_CanCreateNew()
 		{
-			var persister = GetPersister();
-
-			var blog = persister.New();
+			var blog = repository.New();
 
 			Assert.IsInstanceOfType(blog, typeof(Blog));
 		}
@@ -130,12 +121,11 @@ namespace WilliamsonFamily.Models.Data.Tests
 		public void BlogRepository_Save_CanSave()
 		{
 			string authorId = "1";
-			var persister = GetPersister();
-			persister.DataContext.Insert(new User { PkID = authorId, FirstName = "" });
+			repository.DataContext.Insert(new User { PkID = authorId, FirstName = "" });
 
-			persister.Save(new Blog { AuthorID = authorId, Title = "" });
+			repository.Save(new Blog { AuthorID = authorId, Title = "" });
 
-			var blog = persister.DataContext.Repository<Blog>().FirstOrDefault();
+			var blog = repository.DataContext.Repository<Blog>().FirstOrDefault();
 			Assert.IsNotNull(blog);
 		}
 
@@ -143,11 +133,10 @@ namespace WilliamsonFamily.Models.Data.Tests
 		public void BlogRepository_Save_UpdateNonExistingBlogThrowsException()
 		{
 			int pkId = 1;
-			var persister = GetPersister();
 
 			try
 			{
-				persister.Save(new OtherBlog { UniqueKey = pkId });
+				repository.Save(new OtherBlog { UniqueKey = pkId });
 				Assert.Fail();
 			}
 			catch (Exception ex)
@@ -160,13 +149,12 @@ namespace WilliamsonFamily.Models.Data.Tests
 		public void BlogRepository_Save_WillInsertNewBlog()
 		{
 			string authorId = "1";
-			var persister = GetPersister();
-			persister.DataContext.Insert(new User { PkID = authorId, FirstName = "" });
+			repository.DataContext.Insert(new User { PkID = authorId, FirstName = "" });
+			int beforeCount = repository.DataContext.Repository<Blog>().Count();
 
-			int beforeCount = persister.DataContext.Repository<Blog>().Count();
-			persister.Save(new Blog { AuthorID = authorId, Title = "" });
+			repository.Save(new Blog { AuthorID = authorId, Title = "" });
 
-			int afterCount = persister.DataContext.Repository<Blog>().Count();
+			int afterCount = repository.DataContext.Repository<Blog>().Count();
 			Assert.AreEqual(1, afterCount - beforeCount);
 		}
 
@@ -174,15 +162,14 @@ namespace WilliamsonFamily.Models.Data.Tests
 		public void BlogRepository_Save_WillNotInsertExistingBlog()
 		{
 			int id = 1;
-			var persister = GetPersister();
-			persister.DataContext.Insert(new User { PkID = "sam", FirstName = "" });
-			persister.DataContext.Insert(new Blog { PkID = id, Title = "", AuthorID = "sam" });
-			var blog = persister.Load(id);
+			repository.DataContext.Insert(new User { PkID = "sam", FirstName = "" });
+			repository.DataContext.Insert(new Blog { PkID = id, Title = "", AuthorID = "sam" });
+			var blog = repository.Load(id);
 
-			int beforeCount = persister.DataContext.Repository<Blog>().Count();
-			persister.Save(blog);
+			int beforeCount = repository.DataContext.Repository<Blog>().Count();
+			repository.Save(blog);
 
-			int afterCount = persister.DataContext.Repository<Blog>().Count();
+			int afterCount = repository.DataContext.Repository<Blog>().Count();
 			Assert.AreEqual(0, afterCount - beforeCount);
 		}
 
@@ -192,15 +179,14 @@ namespace WilliamsonFamily.Models.Data.Tests
 			int id = 1;
 			string beforeAuthorId = "1";
 			string afterAuthorId = "2";
-			var persister = GetPersister();
-			persister.DataContext.Insert(new User { PkID = afterAuthorId, FirstName = "" });
-			persister.DataContext.Insert(new Blog { PkID = id, AuthorID = beforeAuthorId, Title = "" });
-			var blog = persister.Load(id);
+			repository.DataContext.Insert(new User { PkID = afterAuthorId, FirstName = "" });
+			repository.DataContext.Insert(new Blog { PkID = id, AuthorID = beforeAuthorId, Title = "" });
+			var blog = repository.Load(id);
 
 			blog.AuthorID = afterAuthorId;
-			persister.Save(blog);
+			repository.Save(blog);
 
-			blog = persister.DataContext.Repository<Blog>().FirstOrDefault();
+			blog = repository.DataContext.Repository<Blog>().FirstOrDefault();
 			Assert.AreEqual(blog.AuthorID, afterAuthorId);
 		}
 
@@ -208,125 +194,116 @@ namespace WilliamsonFamily.Models.Data.Tests
 		public void BlogRepository_Save_WillInsertDatePublished()
 		{
 			string authorId = "1";
-			var persister = GetPersister();
-			persister.DataContext.Insert(new User { PkID = authorId, FirstName = "" });
+			repository.DataContext.Insert(new User { PkID = authorId, FirstName = "" });
 
-			persister.Save(new Blog { AuthorID = authorId, Title = "" });
+			repository.Save(new Blog { AuthorID = authorId, Title = "" });
 
-			var blog = persister.DataContext.Repository<Blog>().FirstOrDefault();
+			var blog = repository.DataContext.Repository<Blog>().FirstOrDefault();
 			Assert.IsNotNull(blog.DatePublished);
 		}
 
-		[TestMethod] 
+		[TestMethod]
 		public void BlogRepository_Save_WillLowercaseTags()
 		{
-			var persister = GetPersister();
-			persister.DataContext.Insert(new User { PkID = "sam", FirstName = "" });
+			repository.DataContext.Insert(new User { PkID = "sam", FirstName = "" });
 
-			persister.Save(new Blog { Tags = "Tag", Title = "", AuthorID = "sam" });
+			repository.Save(new Blog { Tags = "Tag", Title = "", AuthorID = "sam" });
 
-			var blog = persister.DataContext.Repository<Blog>().FirstOrDefault();
+			var blog = repository.DataContext.Repository<Blog>().FirstOrDefault();
 			Assert.AreEqual("tag", blog.Tags);
 		}
 
 		[TestMethod]
 		public void BlogRepository_Save_WillAlphabatizeTags()
 		{
-			var persister = GetPersister();
-			persister.DataContext.Insert(new User { PkID = "sam", FirstName = "" });
+			repository.DataContext.Insert(new User { PkID = "sam", FirstName = "" });
 
-			persister.Save(new Blog { Tags = "tag apple", Title = "", AuthorID = "sam" });
+			repository.Save(new Blog { Tags = "tag apple", Title = "", AuthorID = "sam" });
 
-			var blog = persister.DataContext.Repository<Blog>().FirstOrDefault();
+			var blog = repository.DataContext.Repository<Blog>().FirstOrDefault();
 			Assert.AreEqual("apple tag", blog.Tags);
 		}
 
 		[TestMethod]
 		public void BlogRepository_Save_WillSaveSluggedTitle()
 		{
-			var persister = GetPersister();
-			persister.DataContext.Insert(new User { PkID = "sam", FirstName = "" });
-			persister.TitleCleaner
+			repository.DataContext.Insert(new User { PkID = "sam", FirstName = "" });
+			repository.TitleCleaner
 			   .Expect(s => s.CleanTitle("cooltitle"))
 			   .Return("cooltitle");
 
-			persister.Save(new Blog { Title = "cooltitle", AuthorID = "sam" });
+			repository.Save(new Blog { Title = "cooltitle", AuthorID = "sam" });
 
-			var blog = persister.DataContext.Repository<Blog>().FirstOrDefault();
+			var blog = repository.DataContext.Repository<Blog>().FirstOrDefault();
 			Assert.AreEqual("cooltitle", blog.Slug);
 		}
 
 		[TestMethod]
 		public void BlogRepository_Save_Slug_WillReplaceSpacesWithDashes()
 		{
-			var persister = GetPersister();
-			persister.DataContext.Insert(new User { PkID = "sam", FirstName = "" });
-			persister.TitleCleaner
+			repository.DataContext.Insert(new User { PkID = "sam", FirstName = "" });
+			repository.TitleCleaner
 			   .Expect(s => s.CleanTitle("cool title"))
 			   .Return("cool-title");
 
-			persister.Save(new Blog { Title = "cool title", AuthorID = "sam" });
+			repository.Save(new Blog { Title = "cool title", AuthorID = "sam" });
 
-			var blog = persister.DataContext.Repository<Blog>().FirstOrDefault();
+			var blog = repository.DataContext.Repository<Blog>().FirstOrDefault();
 			Assert.AreEqual("cool-title", blog.Slug);
 		}
 
 		[TestMethod]
 		public void BlogRepository_Save_Slug_WillLowerCase()
 		{
-			var persister = GetPersister();
-			persister.DataContext.Insert(new User { PkID = "sam", FirstName = "" });
-			persister.TitleCleaner
+			repository.DataContext.Insert(new User { PkID = "sam", FirstName = "" });
+			repository.TitleCleaner
 				.Expect(s => s.CleanTitle("Coolitle"))
 				.Return("coolitle");
 
-			persister.Save(new Blog { Title = "Coolitle", AuthorID = "sam" });
+			repository.Save(new Blog { Title = "Coolitle", AuthorID = "sam" });
 
-			var blog = persister.DataContext.Repository<Blog>().FirstOrDefault();
+			var blog = repository.DataContext.Repository<Blog>().FirstOrDefault();
 			Assert.AreEqual("coolitle", blog.Slug);
 		}
 
 		[TestMethod]
 		public void BlogRepository_Save_SetsAuthorName()
 		{
-			// Arrange
 			string authorID = "author";
 			string authorName = "name";
-			var persister = GetPersister();
-			persister.DataContext.Insert(new User { PkID = authorID, FirstName = authorName });
 
-			persister.Save(new Blog { Title = "cooltitle", AuthorID = authorID });
+			repository.DataContext.Insert(new User { PkID = authorID, FirstName = authorName });
 
-			var blog = persister.DataContext.Repository<Blog>().FirstOrDefault();
+			repository.Save(new Blog { Title = "cooltitle", AuthorID = authorID });
+
+			var blog = repository.DataContext.Repository<Blog>().FirstOrDefault();
 			Assert.AreEqual(authorName, blog.AuthorName);
 		}
 
 		[TestMethod]
 		public void BlogRepository_Save_SetsPublished()
 		{
-			// Arrange
 			string authorID = "author";
-			var persister = GetPersister();
-			persister.DataContext.Insert(new User { PkID = authorID });
 
-			persister.Save(new Blog { Title = "cooltitle", AuthorID = authorID, IsPublished = true });
+			repository.DataContext.Insert(new User { PkID = authorID });
 
-			var blog = persister.DataContext.Repository<Blog>().FirstOrDefault();
+			repository.Save(new Blog { Title = "cooltitle", AuthorID = authorID, IsPublished = true });
+
+			var blog = repository.DataContext.Repository<Blog>().FirstOrDefault();
 			Assert.IsTrue(blog.IsPublished);
 		}
 
 		[TestMethod]
 		public void BlogRepository_Save_ManualFuturePublishDateGetsSaved()
 		{
-			// Arrange
 			string authorID = "author";
-			var persister = GetPersister();
-			persister.DataContext.Insert(new User { PkID = authorID });
+
+			repository.DataContext.Insert(new User { PkID = authorID });
 			DateTime published = DateTime.Now.AddDays(1);
 
-			persister.Save(new Blog { Title = "cooltitle", AuthorID = authorID, IsPublished = true, DatePublished = published });
+			repository.Save(new Blog { Title = "cooltitle", AuthorID = authorID, IsPublished = true, DatePublished = published });
 
-			var blog = persister.DataContext.Repository<Blog>().FirstOrDefault();
+			var blog = repository.DataContext.Repository<Blog>().FirstOrDefault();
 			Assert.AreEqual(published, blog.DatePublished);
 		}
 
@@ -335,14 +312,14 @@ namespace WilliamsonFamily.Models.Data.Tests
 		{
 			int id = 1;
 			string afterAuthorId = "2";
-			var persister = GetPersister();
-			persister.DataContext.Insert(new User { PkID = afterAuthorId, FirstName = "" });
-			persister.DataContext.Insert(new Blog { PkID = id, AuthorID = afterAuthorId, Title = "", DatePublished = DateTime.Today.AddDays(-1), IsPublished = false });
+
+			repository.DataContext.Insert(new User { PkID = afterAuthorId, FirstName = "" });
+			repository.DataContext.Insert(new Blog { PkID = id, AuthorID = afterAuthorId, Title = "", DatePublished = DateTime.Today.AddDays(-1), IsPublished = false });
 
 			// NOTE: because it's an in memory repo, we're doing this madness.
-			persister.Save(new Blog { PkID = id, AuthorID = afterAuthorId, Title = "", DatePublished = DateTime.Today.AddDays(-1), IsPublished = true });
+			repository.Save(new Blog { PkID = id, AuthorID = afterAuthorId, Title = "", DatePublished = DateTime.Today.AddDays(-1), IsPublished = true });
 
-			var blog = persister.DataContext.Repository<Blog>().FirstOrDefault();
+			var blog = repository.DataContext.Repository<Blog>().FirstOrDefault();
 			Assert.AreEqual(blog.DatePublished.Value.Day, DateTime.Today.Day);
 		}
 		#endregion
@@ -354,15 +331,10 @@ namespace WilliamsonFamily.Models.Data.Tests
 			string title = "test title";
 			string slug = "test-title";
 			int id = 4;
-			var persister = GetPersister();
+			repository.DataContext.Insert(new Blog { PkID = id, Title = title, Slug = slug });
 
-			// Arrange
-			persister.DataContext.Insert(new Blog { PkID = id, Title = title, Slug = slug });
+			var blog = repository.LoadBySlug(slug);
 
-			// Act
-			var blog = persister.LoadBySlug(slug);
-
-			// Assert
 			Assert.IsNotNull(blog, "Blog is not null");
 			Assert.AreEqual(id, blog.UniqueKey, "UniqueKey");
 		}
@@ -370,12 +342,8 @@ namespace WilliamsonFamily.Models.Data.Tests
 		[TestMethod]
 		public void BlogRepository_LoadBySlug_UnmatchedSlugReturnsNull()
 		{
-			var persister = GetPersister();
+			var blog = repository.LoadBySlug("nah");
 
-			// Act
-			var blog = persister.LoadBySlug("nah");
-
-			//Assert
 			Assert.IsNull(blog);
 		}
 
@@ -386,16 +354,11 @@ namespace WilliamsonFamily.Models.Data.Tests
 			int id2 = 2;
 			string title = "the title";
 			string slug = "the-title";
-			var persister = GetPersister();
+			repository.DataContext.Insert(new Blog { PkID = id1, DatePublished = DateTime.Now.AddDays(-1), Title = title, Slug = slug });
+			repository.DataContext.Insert(new Blog { PkID = id2, DatePublished = DateTime.Now, Title = title, Slug = slug });
 
-			// Arrange
-			persister.DataContext.Insert(new Blog { PkID = id1, DatePublished = DateTime.Now.AddDays(-1), Title = title, Slug = slug });
-			persister.DataContext.Insert(new Blog { PkID = id2, DatePublished = DateTime.Now, Title = title, Slug = slug });
+			var blog = repository.LoadBySlug(slug);
 
-			// Act
-			var blog = persister.LoadBySlug(slug);
-
-			// Assert
 			Assert.AreEqual(id2, blog.UniqueKey);
 		}
 
@@ -405,91 +368,66 @@ namespace WilliamsonFamily.Models.Data.Tests
 		[TestMethod]
 		public void BlogRepository_LoadListByDate_LoadByYear()
 		{
-			var persister = GetPersister();
+			repository.DataContext.Insert(new Blog { PkID = 1, Title = "first", DatePublished = DateTime.Parse("2009/10/12") });
+			repository.DataContext.Insert(new Blog { PkID = 2, Title = "second", DatePublished = DateTime.Parse("2009/10/13") });
+			repository.DataContext.Insert(new Blog { PkID = 3, Title = "third", DatePublished = DateTime.Parse("2009/11/12") });
 
-			// Arrange
-			persister.DataContext.Insert(new Blog { PkID = 1, Title = "first", DatePublished = DateTime.Parse("2009/10/12") });
-			persister.DataContext.Insert(new Blog { PkID = 2, Title = "second", DatePublished = DateTime.Parse("2009/10/13") });
-			persister.DataContext.Insert(new Blog { PkID = 3, Title = "third", DatePublished = DateTime.Parse("2009/11/12") });
+			var blogs = repository.LoadList(new BlogFilter { Date = "2009" });
 
-			// Act
-			var blogs = persister.LoadList(new BlogFilter { Date = "2009" });
-
-			// Assert
 			Assert.AreEqual(3, blogs.BlogEntries.Count());
 		}
 
 		[TestMethod]
 		public void BlogRepository_LoadListByDate_LoadByYearMonth()
 		{
-			var persister = GetPersister();
+			repository.DataContext.Insert(new Blog { PkID = 1, Title = "first", DatePublished = DateTime.Parse("2009/10/12") });
+			repository.DataContext.Insert(new Blog { PkID = 2, Title = "second", DatePublished = DateTime.Parse("2009/10/13") });
+			repository.DataContext.Insert(new Blog { PkID = 3, Title = "third", DatePublished = DateTime.Parse("2009/11/12") });
 
-			// Arrange
-			persister.DataContext.Insert(new Blog { PkID = 1, Title = "first", DatePublished = DateTime.Parse("2009/10/12") });
-			persister.DataContext.Insert(new Blog { PkID = 2, Title = "second", DatePublished = DateTime.Parse("2009/10/13") });
-			persister.DataContext.Insert(new Blog { PkID = 3, Title = "third", DatePublished = DateTime.Parse("2009/11/12") });
+			var blogs = repository.LoadList(new BlogFilter { Date = "2009/10" });
 
-			// Act
-			var blogs = persister.LoadList(new BlogFilter { Date = "2009/10" });
-
-			// Assert
 			Assert.AreEqual(2, blogs.BlogEntries.Count());
 		}
 
 		[TestMethod]
 		public void BlogRepository_LoadListByDate_LoadByYearZeroMonth()
 		{
-			var persister = GetPersister();
+			repository.DataContext.Insert(new Blog { PkID = 1, Title = "first", DatePublished = DateTime.Parse("2009/10/12") });
+			repository.DataContext.Insert(new Blog { PkID = 2, Title = "second", DatePublished = DateTime.Parse("2009/10/13") });
+			repository.DataContext.Insert(new Blog { PkID = 3, Title = "third", DatePublished = DateTime.Parse("2009/11/12") });
+			repository.DataContext.Insert(new Blog { PkID = 4, Title = "fourth", DatePublished = DateTime.Parse("2010/08/02") });
+			repository.DataContext.Insert(new Blog { PkID = 5, Title = "fifth", DatePublished = DateTime.Parse("2010/08/03") });
 
-			// Arrange
-			persister.DataContext.Insert(new Blog { PkID = 1, Title = "first", DatePublished = DateTime.Parse("2009/10/12") });
-			persister.DataContext.Insert(new Blog { PkID = 2, Title = "second", DatePublished = DateTime.Parse("2009/10/13") });
-			persister.DataContext.Insert(new Blog { PkID = 3, Title = "third", DatePublished = DateTime.Parse("2009/11/12") });
-			persister.DataContext.Insert(new Blog { PkID = 4, Title = "fourth", DatePublished = DateTime.Parse("2010/08/02") });
-			persister.DataContext.Insert(new Blog { PkID = 5, Title = "fifth", DatePublished = DateTime.Parse("2010/08/03") });
+			var blogs = repository.LoadList(new BlogFilter { Date = "2010/08" });
 
-			// Act
-			var blogs = persister.LoadList(new BlogFilter { Date = "2010/08" });
-
-			// Assert
 			Assert.AreEqual(2, blogs.BlogEntries.Count());
 		}
 
 		[TestMethod]
 		public void BlogRepository_LoadListByDate_LoadByYearMonthDay()
 		{
-			var persister = GetPersister();
+			repository.DataContext.Insert(new Blog { PkID = 1, Title = "first", DatePublished = DateTime.Parse("2009/10/12") });
+			repository.DataContext.Insert(new Blog { PkID = 2, Title = "second", DatePublished = DateTime.Parse("2009/10/13") });
+			repository.DataContext.Insert(new Blog { PkID = 3, Title = "third", DatePublished = DateTime.Parse("2009/11/12") });
+			repository.DataContext.Insert(new Blog { PkID = 4, Title = "fourth", DatePublished = DateTime.Parse("2010/08/02") });
+			repository.DataContext.Insert(new Blog { PkID = 5, Title = "fifth", DatePublished = DateTime.Parse("2010/08/03") });
 
-			// Arrange
-			persister.DataContext.Insert(new Blog { PkID = 1, Title = "first", DatePublished = DateTime.Parse("2009/10/12") });
-			persister.DataContext.Insert(new Blog { PkID = 2, Title = "second", DatePublished = DateTime.Parse("2009/10/13") });
-			persister.DataContext.Insert(new Blog { PkID = 3, Title = "third", DatePublished = DateTime.Parse("2009/11/12") });
-			persister.DataContext.Insert(new Blog { PkID = 4, Title = "fourth", DatePublished = DateTime.Parse("2010/08/02") });
-			persister.DataContext.Insert(new Blog { PkID = 5, Title = "fifth", DatePublished = DateTime.Parse("2010/08/03") });
+			var blogs = repository.LoadList(new BlogFilter { Date = "2009/10/12" });
 
-			// Act
-			var blogs = persister.LoadList(new BlogFilter { Date = "2009/10/12" });
-
-			// Assert
 			Assert.AreEqual(1, blogs.BlogEntries.Count());
 		}
 
 		[TestMethod]
 		public void BlogRepository_LoadListByDate_LoadByYearMonthZeroDay()
 		{
-			var persister = GetPersister();
+			repository.DataContext.Insert(new Blog { PkID = 1, Title = "first", DatePublished = DateTime.Parse("2009/10/12") });
+			repository.DataContext.Insert(new Blog { PkID = 2, Title = "second", DatePublished = DateTime.Parse("2009/10/13") });
+			repository.DataContext.Insert(new Blog { PkID = 3, Title = "third", DatePublished = DateTime.Parse("2009/11/02") });
+			repository.DataContext.Insert(new Blog { PkID = 4, Title = "fourth", DatePublished = DateTime.Parse("2010/08/02") });
+			repository.DataContext.Insert(new Blog { PkID = 5, Title = "fifth", DatePublished = DateTime.Parse("2010/08/03") });
 
-			// Arrange
-			persister.DataContext.Insert(new Blog { PkID = 1, Title = "first", DatePublished = DateTime.Parse("2009/10/12") });
-			persister.DataContext.Insert(new Blog { PkID = 2, Title = "second", DatePublished = DateTime.Parse("2009/10/13") });
-			persister.DataContext.Insert(new Blog { PkID = 3, Title = "third", DatePublished = DateTime.Parse("2009/11/02") });
-			persister.DataContext.Insert(new Blog { PkID = 4, Title = "fourth", DatePublished = DateTime.Parse("2010/08/02") });
-			persister.DataContext.Insert(new Blog { PkID = 5, Title = "fifth", DatePublished = DateTime.Parse("2010/08/03") });
+			var blogs = repository.LoadList(new BlogFilter { Date = "2010/08/02" });
 
-			// Act
-			var blogs = persister.LoadList(new BlogFilter { Date = "2010/08/02" });
-
-			// Assert
 			Assert.AreEqual(1, blogs.BlogEntries.Count());
 		}
 		#endregion
@@ -499,16 +437,11 @@ namespace WilliamsonFamily.Models.Data.Tests
 		public void BlogRepository_LoadListByTags_LoadListOfBlogsWithSingleTagFromSingleTag()
 		{
 			string tag = "first";
-			 var persister = GetPersister();
+			repository.DataContext.Insert(new Blog { PkID = 1, Tags = tag });
+			repository.DataContext.Insert(new Blog { PkID = 2, Tags = "second", });
 
-			// Arrange
-			persister.DataContext.Insert(new Blog { PkID = 1, Tags = tag });
-			persister.DataContext.Insert(new Blog { PkID = 2, Tags = "second", });
+			var blogs = repository.LoadList(new BlogFilter { Tags = tag });
 
-			// Act
-			var blogs = persister.LoadList(new BlogFilter { Tags = tag });
-
-			// Assert
 			Assert.AreEqual(1, blogs.BlogEntries.Count(), "Count");
 			Assert.AreEqual(1, blogs.BlogEntries.FirstOrDefault().UniqueKey, "UniqueKey");
 		}
@@ -517,16 +450,11 @@ namespace WilliamsonFamily.Models.Data.Tests
 		public void BlogRepository_LoadListByTags_LoadListOfBlogsWithMultipleTagFromSingleTag()
 		{
 			string tag = "first";
-			var persister = GetPersister();
+			repository.DataContext.Insert(new Blog { PkID = 1, Tags = tag + " second" });
+			repository.DataContext.Insert(new Blog { PkID = 2, Tags = "second", });
 
-			// Arrange
-			persister.DataContext.Insert(new Blog { PkID = 1, Tags = tag + " second" });
-			persister.DataContext.Insert(new Blog { PkID = 2, Tags = "second", });
+			var blogs = repository.LoadList(new BlogFilter { Tags = tag });
 
-			// Act
-			var blogs = persister.LoadList(new BlogFilter { Tags = tag });
-
-			// Assert
 			Assert.AreEqual(1, blogs.BlogEntries.Count(), "Count");
 			Assert.AreEqual(1, blogs.BlogEntries.FirstOrDefault().UniqueKey, "UniqueKey");
 		}
@@ -534,16 +462,11 @@ namespace WilliamsonFamily.Models.Data.Tests
 		[TestMethod]
 		public void BlogRepository_LoadListByTags_CaseDoesNotMatter()
 		{
-			var persister = GetPersister();
+			repository.DataContext.Insert(new Blog { PkID = 1, Tags = "first" });
+			repository.DataContext.Insert(new Blog { PkID = 2, Tags = "second", });
 
-			// Arrange
-			persister.DataContext.Insert(new Blog { PkID = 1, Tags = "first" });
-			persister.DataContext.Insert(new Blog { PkID = 2, Tags = "second", });
+			var blogs = repository.LoadList(new BlogFilter { Tags = "FIRST" });
 
-			// Act
-			var blogs = persister.LoadList(new BlogFilter { Tags = "FIRST" });
-
-			// Assert
 			Assert.AreEqual(1, blogs.BlogEntries.Count(), "Count");
 			Assert.AreEqual(1, blogs.BlogEntries.FirstOrDefault().UniqueKey, "UniqueKey");
 		}
@@ -551,35 +474,25 @@ namespace WilliamsonFamily.Models.Data.Tests
 		[TestMethod]
 		public void BlogRepository_LoadListByTags_LoadListOfBlogsWithMultipleTagFromMultipsTag()
 		{
-			var persister = GetPersister();
+			repository.DataContext.Insert(new Blog { PkID = 1, Tags = "first second" });
+			repository.DataContext.Insert(new Blog { PkID = 2, Tags = "second third" });
+			repository.DataContext.Insert(new Blog { PkID = 3, Tags = "first third" });
 
-			// Arrange
-			persister.DataContext.Insert(new Blog { PkID = 1, Tags = "first second" });
-			persister.DataContext.Insert(new Blog { PkID = 2, Tags = "second third" });
-			persister.DataContext.Insert(new Blog { PkID = 3, Tags = "first third" });
+			var blogs = repository.LoadList(new BlogFilter { Tags = "second first" });
 
-			// Act
-			var blogs = persister.LoadList(new BlogFilter { Tags = "second first" });
-
-			// Assert
 			Assert.AreEqual(1, blogs.BlogEntries.Count(), "Count");
 			Assert.AreEqual(1, blogs.BlogEntries.FirstOrDefault().UniqueKey, "UniqueKey");
 		}
-		
+
 		[TestMethod]
 		public void BlogRepository_LoadListByTags_OrderOfTagsDoesNotMatter()
 		{
-			var persister = GetPersister();
+			repository.DataContext.Insert(new Blog { PkID = 1, Tags = "first second" });
+			repository.DataContext.Insert(new Blog { PkID = 2, Tags = "second third", });
+			repository.DataContext.Insert(new Blog { PkID = 3, Tags = "second first", });
 
-			// Arrange
-			persister.DataContext.Insert(new Blog { PkID = 1, Tags = "first second" });
-			persister.DataContext.Insert(new Blog { PkID = 2, Tags = "second third", });
-			persister.DataContext.Insert(new Blog { PkID = 3, Tags = "second first", });
+			var blogs = repository.LoadList(new BlogFilter { Tags = "second first" });
 
-			// Act
-			var blogs = persister.LoadList(new BlogFilter { Tags = "second first" });
-
-			// Assert
 			Assert.AreEqual(2, blogs.BlogEntries.Count(), "Count");
 		}
 		#endregion
@@ -592,22 +505,17 @@ namespace WilliamsonFamily.Models.Data.Tests
 			string familyName = "family";
 			string firstPerson = "2";
 			string secondPerson = "3";
-			var persister = GetPersister();
+			repository.DataContext.Insert(new Family { PkID = familiyID, FamilyName = familyName });
+			repository.DataContext.Insert(new User { PkID = firstPerson });
+			repository.DataContext.Insert(new User { PkID = secondPerson });
+			repository.DataContext.Insert(new UserFamily { FamilyID = familiyID, UserID = firstPerson });
+			repository.DataContext.Insert(new UserFamily { FamilyID = familiyID, UserID = secondPerson });
+			repository.DataContext.Insert(new Blog { AuthorID = "none", PkID = 3 });
+			repository.DataContext.Insert(new Blog { AuthorID = firstPerson, PkID = 1 });
+			repository.DataContext.Insert(new Blog { AuthorID = secondPerson, PkID = 2 });
 
-			// Arrange
-			persister.DataContext.Insert(new Family { PkID = familiyID, FamilyName = familyName });
-			persister.DataContext.Insert(new User { PkID = firstPerson });
-			persister.DataContext.Insert(new User { PkID = secondPerson });
-			persister.DataContext.Insert(new UserFamily { FamilyID = familiyID, UserID = firstPerson });
-			persister.DataContext.Insert(new UserFamily { FamilyID = familiyID, UserID = secondPerson });
-			persister.DataContext.Insert(new Blog { AuthorID = "none", PkID = 3 });
-			persister.DataContext.Insert(new Blog { AuthorID = firstPerson, PkID = 1 });
-			persister.DataContext.Insert(new Blog { AuthorID = secondPerson, PkID = 2 });
+			var blogs = repository.LoadList(new BlogFilter { LoadBlogBy = LoadBlogBy.Family, AuthorName = familyName });
 
-			// Act
-			var blogs = persister.LoadList(new BlogFilter { LoadBlogBy = LoadBlogBy.Family, AuthorName = familyName });
-
-			// Assert
 			Assert.AreEqual(2, blogs.BlogEntries.Count());
 		}
 
@@ -618,22 +526,17 @@ namespace WilliamsonFamily.Models.Data.Tests
 			string familyName = "family";
 			string firstPerson = "2";
 			string secondPerson = "3";
-			var persister = GetPersister();
+			repository.DataContext.Insert(new Family { PkID = familiyID, FamilyName = familyName });
+			repository.DataContext.Insert(new User { PkID = firstPerson });
+			repository.DataContext.Insert(new User { PkID = secondPerson });
+			repository.DataContext.Insert(new UserFamily { FamilyID = familiyID, UserID = firstPerson });
+			repository.DataContext.Insert(new UserFamily { FamilyID = familiyID, UserID = secondPerson });
+			repository.DataContext.Insert(new Blog { AuthorID = "none", PkID = 3 });
+			repository.DataContext.Insert(new Blog { AuthorID = firstPerson, PkID = 1 });
+			repository.DataContext.Insert(new Blog { AuthorID = secondPerson, PkID = 2 });
 
-			// Arrange
-			persister.DataContext.Insert(new Family { PkID = familiyID, FamilyName = familyName });
-			persister.DataContext.Insert(new User { PkID = firstPerson });
-			persister.DataContext.Insert(new User { PkID = secondPerson });
-			persister.DataContext.Insert(new UserFamily { FamilyID = familiyID, UserID = firstPerson });
-			persister.DataContext.Insert(new UserFamily { FamilyID = familiyID, UserID = secondPerson });
-			persister.DataContext.Insert(new Blog { AuthorID = "none", PkID = 3 });
-			persister.DataContext.Insert(new Blog { AuthorID = firstPerson, PkID = 1 });
-			persister.DataContext.Insert(new Blog { AuthorID = secondPerson, PkID = 2 });
+			var blogs = repository.LoadList(new BlogFilter { LoadBlogBy = LoadBlogBy.Family, AuthorName = familyName.ToUpper() });
 
-			// Act
-			var blogs = persister.LoadList(new BlogFilter { LoadBlogBy = LoadBlogBy.Family, AuthorName = familyName.ToUpper() });
-
-			// Assert
 			Assert.AreEqual(2, blogs.BlogEntries.Count());
 		}
 
@@ -643,16 +546,11 @@ namespace WilliamsonFamily.Models.Data.Tests
 			string familyName = "family";
 			string firstPerson = "2";
 			string secondPerson = "3";
-			var persister = GetPersister();
+			repository.DataContext.Insert(new Blog { AuthorID = firstPerson, PkID = 1 });
+			repository.DataContext.Insert(new Blog { AuthorID = secondPerson, PkID = 2 });
 
-			// Arrange
-			persister.DataContext.Insert(new Blog { AuthorID = firstPerson, PkID = 1 });
-			persister.DataContext.Insert(new Blog { AuthorID = secondPerson, PkID = 2 });
+			var blogs = repository.LoadList(new BlogFilter { LoadBlogBy = LoadBlogBy.Family, AuthorName = familyName });
 
-			// Act
-			var blogs = persister.LoadList(new BlogFilter { LoadBlogBy = LoadBlogBy.Family, AuthorName = familyName });
-
-			// Assert
 			Assert.AreEqual(0, blogs.BlogEntries.Count());
 		}
 		#endregion
@@ -663,12 +561,11 @@ namespace WilliamsonFamily.Models.Data.Tests
 		public void BlogRespository_LoadPagedList_NullPageSize_ReturnsFullList()
 		{
 			string authorId = "1";
-			var persister = GetPersister();
-			persister.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 1 });
-			persister.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 2 });
-			persister.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 3 });
+			repository.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 1 });
+			repository.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 2 });
+			repository.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 3 });
 
-			var blogs = persister.LoadList(new BlogFilter { AuthorName = authorId, LoadBlogBy = LoadBlogBy.User });
+			var blogs = repository.LoadList(new BlogFilter { AuthorName = authorId, LoadBlogBy = LoadBlogBy.User });
 
 			Assert.AreEqual(3, blogs.BlogEntries.Count(), "Number of Blogs");
 		}
@@ -678,12 +575,11 @@ namespace WilliamsonFamily.Models.Data.Tests
 		public void BlogRespository_LoadPagedList_ExplicitPageCount_ReturnsPagedList()
 		{
 			string authorId = "1";
-			var persister = GetPersister();
-			persister.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 1 });
-			persister.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 2 });
-			persister.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 3 });
+			repository.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 1 });
+			repository.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 2 });
+			repository.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 3 });
 
-			var blogs = persister.LoadList(new BlogFilter { AuthorName = authorId, LoadBlogBy = LoadBlogBy.User, PageSize = 2 });
+			var blogs = repository.LoadList(new BlogFilter { AuthorName = authorId, LoadBlogBy = LoadBlogBy.User, PageSize = 2 });
 
 			Assert.AreEqual(2, blogs.BlogEntries.Count(), "Number of Blogs");
 		}
@@ -693,12 +589,11 @@ namespace WilliamsonFamily.Models.Data.Tests
 		public void BlogRespository_LoadPagedList_ExplicitPageCountWithIndex_ReturnsPagedList()
 		{
 			string authorId = "1";
-			var persister = GetPersister();
-			persister.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 1 });
-			persister.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 2 });
-			persister.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 3 });
+			repository.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 1 });
+			repository.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 2 });
+			repository.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 3 });
 
-			var blogs = persister.LoadList(new BlogFilter { AuthorName = authorId, LoadBlogBy = LoadBlogBy.User, PageSize = 2, PageIndex = 2 });
+			var blogs = repository.LoadList(new BlogFilter { AuthorName = authorId, LoadBlogBy = LoadBlogBy.User, PageSize = 2, PageIndex = 2 });
 
 			Assert.AreEqual(1, blogs.BlogEntries.Count(), "Number of Blogs");
 			Assert.AreEqual(3, blogs.BlogEntries.FirstOrDefault().UniqueKey, "Key");
@@ -709,12 +604,11 @@ namespace WilliamsonFamily.Models.Data.Tests
 		public void BlogRespository_LoadPagedList_ExplicitPageCountWithIndex_ReturnsPageCount()
 		{
 			string authorId = "1";
-			var persister = GetPersister();
-			persister.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 1 });
-			persister.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 2 });
-			persister.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 3 });
+			repository.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 1 });
+			repository.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 2 });
+			repository.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 3 });
 
-			var blogs = persister.LoadList(new BlogFilter { AuthorName = authorId, LoadBlogBy = LoadBlogBy.User, PageSize = 2, PageIndex = 2 });
+			var blogs = repository.LoadList(new BlogFilter { AuthorName = authorId, LoadBlogBy = LoadBlogBy.User, PageSize = 2, PageIndex = 2 });
 
 			Assert.AreEqual(2, blogs.PageCount);
 		}
@@ -724,100 +618,94 @@ namespace WilliamsonFamily.Models.Data.Tests
 		public void BlogRespository_LoadPagedList_ExplicitPageCountWithIndex_ReturnsPageIndex()
 		{
 			string authorId = "1";
-			var persister = GetPersister();
-			persister.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 1 });
-			persister.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 2 });
-			persister.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 3 });
+			repository.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 1 });
+			repository.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 2 });
+			repository.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 3 });
 
-			var blogs = persister.LoadList(new BlogFilter { AuthorName = authorId, LoadBlogBy = LoadBlogBy.User, PageSize = 2, PageIndex = 2 });
+			var blogs = repository.LoadList(new BlogFilter { AuthorName = authorId, LoadBlogBy = LoadBlogBy.User, PageSize = 2, PageIndex = 2 });
 
 			Assert.AreEqual(2, blogs.PageIndex);
 		}
 
-        // Total Count from cache 
-        [TestMethod]
-        public void BlogRespository_LoadPagedList_PreviousCacheBlogCount_ReturnsPageCount()
-        {
-            // Arraing
-            string authorId = "1";
-            var persister = GetPersister();
-            persister.Cache.Insert(new BlogListCountCacheKey().GenerateKey(authorId), 2);
-            persister.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 1 });
-            persister.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 2 });
-            persister.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 3 });
+		// Total Count from cache 
+		[TestMethod]
+		public void BlogRespository_LoadPagedList_PreviousCacheBlogCount_ReturnsPageCount()
+		{
+			string authorId = "1";
+			repository.Cache.Insert(new BlogListCountCacheKey().GenerateKey(authorId), 2);
+			repository.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 1 });
+			repository.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 2 });
+			repository.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 3 });
 
-            var blogs = persister.LoadList(new BlogFilter { AuthorName = authorId, LoadBlogBy = LoadBlogBy.User, PageSize = 2, PageIndex = 1 });
+			var blogs = repository.LoadList(new BlogFilter { AuthorName = authorId, LoadBlogBy = LoadBlogBy.User, PageSize = 2, PageIndex = 1 });
 
-            Assert.AreEqual(1, blogs.PageCount);
-        }
-		
-	// Default to page index 1
+			Assert.AreEqual(1, blogs.PageCount);
+		}
+
+		// Default to page index 1
 		[TestMethod]
 		public void BlogRespository_LoadPagedList_NoPageIndexDefined_DefaultsTo1()
 		{
 			string authorId = "1";
-			var persister = GetPersister();
-			persister.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 1 });
-			persister.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 2 });
-			persister.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 3 });
+			repository.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 1 });
+			repository.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 2 });
+			repository.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 3 });
 
-			var blogs = persister.LoadList(new BlogFilter { AuthorName = authorId, LoadBlogBy = LoadBlogBy.User, PageSize = 2 });
+			var blogs = repository.LoadList(new BlogFilter { AuthorName = authorId, LoadBlogBy = LoadBlogBy.User, PageSize = 2 });
 
 			Assert.AreEqual(1, blogs.PageIndex);
 		}
-		
+
 		// Large List page count
 		[TestMethod]
 		public void BlogRespository_LoadPagedList_LargeList_CorrectlyDefinesPageCount()
 		{
 			string authorId = "1";
-			var persister = GetPersister();
-			persister.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 1 });
-			persister.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 2 });
-			persister.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 3 });
-			persister.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 4 });
-			persister.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 5 });
-			persister.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 6 });
-			persister.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 7 });
-			persister.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 9 });
-			persister.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 9 });
-			persister.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 10 });
-			persister.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 11 });
-			persister.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 12 });
-			persister.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 13 });
-			persister.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 14 });
-			persister.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 15 });
-			persister.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 16 });
+			repository.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 1 });
+			repository.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 2 });
+			repository.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 3 });
+			repository.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 4 });
+			repository.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 5 });
+			repository.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 6 });
+			repository.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 7 });
+			repository.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 9 });
+			repository.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 9 });
+			repository.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 10 });
+			repository.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 11 });
+			repository.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 12 });
+			repository.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 13 });
+			repository.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 14 });
+			repository.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 15 });
+			repository.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 16 });
 
-			var blogs = persister.LoadList(new BlogFilter { AuthorName = authorId, LoadBlogBy = LoadBlogBy.User, PageSize = 3 });
+			var blogs = repository.LoadList(new BlogFilter { AuthorName = authorId, LoadBlogBy = LoadBlogBy.User, PageSize = 3 });
 
 			Assert.AreEqual(6, blogs.PageCount);
 		}
-		
+
 		// Large List page count again
 		[TestMethod]
 		public void BlogRespository_LoadPagedList_AnotherLargeList_CorrectlyDefinesPageCount()
 		{
 			string authorId = "1";
-			var persister = GetPersister();
-			persister.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 1 });
-			persister.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 2 });
-			persister.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 3 });
-			persister.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 4 });
-			persister.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 5 });
-			persister.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 6 });
-			persister.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 7 });
-			persister.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 9 });
-			persister.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 9 });
-			persister.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 10 });
-			persister.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 11 });
-			persister.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 12 });
-			persister.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 13 });
-			persister.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 14 });
-			persister.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 15 });
-			persister.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 16 });
+			repository.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 1 });
+			repository.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 2 });
+			repository.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 3 });
+			repository.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 4 });
+			repository.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 5 });
+			repository.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 6 });
+			repository.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 7 });
+			repository.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 9 });
+			repository.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 9 });
+			repository.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 10 });
+			repository.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 11 });
+			repository.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 12 });
+			repository.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 13 });
+			repository.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 14 });
+			repository.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 15 });
+			repository.DataContext.Insert(new Blog { AuthorID = authorId, PkID = 16 });
 
-			var blogs = persister.LoadList(new BlogFilter { AuthorName = authorId, LoadBlogBy = LoadBlogBy.User, PageSize = 6 });
+			var blogs = repository.LoadList(new BlogFilter { AuthorName = authorId, LoadBlogBy = LoadBlogBy.User, PageSize = 6 });
 
 			Assert.AreEqual(3, blogs.PageCount);
 		}
@@ -827,36 +715,32 @@ namespace WilliamsonFamily.Models.Data.Tests
 		[TestMethod]
 		public void DeleteUnpublished_Unpublished_DeletesEntry()
 		{
-			// Arrange
-			var persister = GetPersister();
-			persister.DataContext.Insert(new Blog { AuthorID = "none", PkID = 3, Entry = "entry", IsPublished = false });
-			
-			// Act
-			persister.DeleteUnpublished(3);
+			repository.DataContext.Insert(new Blog { AuthorID = "none", PkID = 3, Entry = "entry", IsPublished = false });
 
-			// Assert
-			Assert.AreEqual(0, persister.DataContext.Repository<Blog>().Count());
+			repository.DeleteUnpublished(3);
+
+			Assert.AreEqual(0, repository.DataContext.Repository<Blog>().Count());
 		}
 
 		[TestMethod]
 		public void DeleteUnpublished_Published_DoesNotDeleteEntry()
 		{
-			// Arrange
-			var persister = GetPersister();
-			persister.DataContext.Insert(new Blog { AuthorID = "none", PkID = 3, Entry = "entry", IsPublished = true });
+			repository.DataContext.Insert(new Blog { AuthorID = "none", PkID = 3, Entry = "entry", IsPublished = true });
 
-			// Act
-			persister.DeleteUnpublished(3);
+			repository.DeleteUnpublished(3);
 
-			// Assert
-			Assert.AreEqual(1, persister.DataContext.Repository<Blog>().Count());
+			Assert.AreEqual(1, repository.DataContext.Repository<Blog>().Count());
 		}
-
 
 		#endregion
 
-		#region Helpers
-		#region Provider
+		BlogRepository repository;
+		[TestInitialize]
+		public void Init()
+		{
+			repository = GetPersister();
+		}
+
 		private BlogRepository GetPersister()
 		{
 			var dc = new InMemoryDataContext();
@@ -864,9 +748,7 @@ namespace WilliamsonFamily.Models.Data.Tests
 			var titleCleaner = MockRepository.GenerateMock<ITitleCleaner>();
 			return new BlogRepository { DataContext = dc, DataContextFactory = dcf, TitleCleaner = titleCleaner, Cache = new InMemoryCache() };
 		}
-		#endregion
 
-		#region OtherBlog
 		public class OtherBlog : IBlog
 		{
 			public string AuthorID { get; set; }
@@ -879,8 +761,5 @@ namespace WilliamsonFamily.Models.Data.Tests
 			public string AuthorName { get; set; }
 			public bool IsPublished { get; set; }
 		}
-
-		#endregion
-		#endregion
 	}
 }
