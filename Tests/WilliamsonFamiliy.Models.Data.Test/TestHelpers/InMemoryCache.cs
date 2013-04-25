@@ -10,8 +10,6 @@ namespace WilliamsonFamily.Models.Data.Tests.TestHelpers
     {
         private readonly Dictionary<string, object> _inMemoryCache = new Dictionary<string, object>();
         
-        #region ICache Members
-
         public T Get<T>(string key, Func<T> initializeIfNull)
         {
             var item = _inMemoryCache.ContainsKey(key) ? _inMemoryCache[key] : null; // default(T);
@@ -39,7 +37,5 @@ namespace WilliamsonFamily.Models.Data.Tests.TestHelpers
         {
             _inMemoryCache.Remove(key);
         }
-
-        #endregion
     }
 }
