@@ -30,12 +30,12 @@ namespace WilliamsonFamily.Web.Tests.Controllers
         public void List_InvalidUserAndFamily_RedirectsToHomeIndex()
         {
             // Assert
-            _controller.List("")
+            controller.List("")
                 .AssertActionRedirect()
                 .ToController("Home")
                 .ToAction("Index");
                 
-            _controller
+            controller
                 .TempData["Message"]
                 .ShouldBe("Invalid User or Family");
         }
@@ -46,18 +46,18 @@ namespace WilliamsonFamily.Web.Tests.Controllers
         //    string username = "sgwill";
 
         //    // Arrange
-        //    _controller.UserRepository
+        //    controller.UserRepository
         //        .Expect(u => u.Load(Arg<string>.Is.Anything))
         //        .Return(MockRepository.GenerateStub<IUser>());
-        //    _controller.BlogRepository
+        //    controller.BlogRepository
         //        .Expect(b => b.LoadList(Arg<BlogFilter>.Is.Anything))
         //        .Return(MockRepository.GenerateStub<IBlogList>());
 
         //    // Act
-        //    _controller.List(username, "");
+        //    controller.List(username, "");
             
         //    // Assert
-        //    Assert.IsInstanceOfType(_controller.ViewData.Model, typeof(BlogListModel));
+        //    Assert.IsInstanceOfType(controller.ViewData.Model, typeof(BlogListModel));
         //}
 
 //        [TestMethod]
@@ -66,15 +66,15 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 //            string username = "sgwill";
 
 //            // Arrange
-//            _controller.UserRepository
+//            controller.UserRepository
 //                .Expect(u => u.Load(Arg<string>.Is.Anything))
 //                .Return(MockRepository.GenerateStub<IUser>());
-//            _controller.BlogRepository
+//            controller.BlogRepository
 //                .Expect(b => b.LoadList(Arg<BlogFilter>.Is.Anything))
 //                .Return(MockRepository.GenerateStub<IEnumerable<IBlog>>());
 
 //            // Assert
-//            _controller.List(username, "")
+//            controller.List(username, "")
 //                .AssertViewRendered()
 //                .ForView("List");
 //        }
@@ -90,10 +90,10 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 //            user
 //                .Expect(u => u.UniqueKey)
 //                .Return(uniqueKey);
-//            _controller.UserRepository
+//            controller.UserRepository
 //                .Expect(u => u.Load(username))
 //                .Return(user);
-//            _controller.BlogRepository
+//            controller.BlogRepository
 //                .Expect(u => u.LoadList(
 //                    Arg<BlogFilter>.Matches(b =>
 //                        b.LoadBlogBy == LoadBlogBy.User
@@ -101,13 +101,13 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 //                .Return(new List<IBlog>());
 
 //            // Act
-//            var result = _controller.List(username, "");
+//            var result = controller.List(username, "");
 
 //            // Assert
 //            result
 //                .AssertViewRendered()
 //                .ForView("List");
-//            Assert.AreEqual(0, ((BlogListModel)_controller.ViewData.Model).BlogEntries.Count());
+//            Assert.AreEqual(0, ((BlogListModel)controller.ViewData.Model).BlogEntries.Count());
 //        }
 
 //        [TestMethod]
@@ -121,7 +121,7 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 //            user
 //                .Expect(u => u.UniqueKey)
 //                .Return(uniqueKey);
-//            _controller.UserRepository
+//            controller.UserRepository
 //                .Expect(u => u.Load(username))
 //                .Return(user);
             
@@ -130,7 +130,7 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 //            blogentry
 //                .Expect(b => b.DatePublished)
 //                .Return(DateTime.Now);
-//            _controller.BlogRepository
+//            controller.BlogRepository
 //                .Expect(u => u.LoadList(
 //                    Arg<BlogFilter>.Matches(b =>
 //                        b.LoadBlogBy == LoadBlogBy.User
@@ -138,14 +138,14 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 //                .Return(new List<IBlog> { blogentry });
 
 //            // Act
-//            var result = _controller.List(username, "");
+//            var result = controller.List(username, "");
 
 //            // Assert
 //            result
 //                .AssertViewRendered()
 //                .ForView("List");
-//            Assert.AreEqual(1, ((BlogListModel)_controller.ViewData.Model).BlogEntries.Count());
-//            Assert.AreEqual(blogentry, ((BlogListModel)_controller.ViewData.Model).BlogEntries.FirstOrDefault());
+//            Assert.AreEqual(1, ((BlogListModel)controller.ViewData.Model).BlogEntries.Count());
+//            Assert.AreEqual(blogentry, ((BlogListModel)controller.ViewData.Model).BlogEntries.FirstOrDefault());
 //        }
 
 //        [TestMethod]
@@ -155,10 +155,10 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 
 //            // Arrange
 //            var family = MockRepository.GenerateStub<IFamily>();
-//            _controller.FamilyRepository
+//            controller.FamilyRepository
 //                .Expect(u => u.Load(familyName))
 //                .Return(family);
-//            _controller.BlogRepository
+//            controller.BlogRepository
 //                .Expect(u => u.LoadList(
 //                    Arg<BlogFilter>.Matches(b =>
 //                        b.LoadBlogBy == LoadBlogBy.Family
@@ -166,13 +166,13 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 //                .Return(new List<IBlog>());
 
 //            // Act
-//            var result = _controller.List(familyName, "");
+//            var result = controller.List(familyName, "");
 
 //            // Assert
 //            result
 //                .AssertViewRendered()
 //                .ForView("List");
-//            Assert.AreEqual(0, ((BlogListModel)_controller.ViewData.Model).BlogEntries.Count());
+//            Assert.AreEqual(0, ((BlogListModel)controller.ViewData.Model).BlogEntries.Count());
 //        }
 
 //        [TestMethod]
@@ -183,7 +183,7 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 
 //            // Arrange
 //            var family = MockRepository.GenerateStub<IFamily>();
-//            _controller.FamilyRepository
+//            controller.FamilyRepository
 //                .Expect(u => u.Load(familyName))
 //                .Return(family);
 
@@ -193,7 +193,7 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 //            blogentry
 //                .Expect(b => b.DatePublished)
 //                .Return(time);
-//            _controller.BlogRepository
+//            controller.BlogRepository
 //                .Expect(u => u.LoadList(
 //                    Arg<BlogFilter>.Matches(b =>
 //                        b.LoadBlogBy == LoadBlogBy.Family
@@ -201,13 +201,13 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 //                .Return(new List<IBlog> { blogentry });
 
 //            // Act
-//            var result = _controller.List(familyName, "");
+//            var result = controller.List(familyName, "");
 
 //            // Assert
 //            result
 //                .AssertViewRendered()
 //                .ForView("List");
-//            Assert.AreEqual(blogentry, ((BlogListModel)_controller.ViewData.Model).BlogEntries.FirstOrDefault());
+//            Assert.AreEqual(blogentry, ((BlogListModel)controller.ViewData.Model).BlogEntries.FirstOrDefault());
 //        }
 
 //        [TestMethod]
@@ -221,7 +221,7 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 //            user
 //                .Expect(u => u.UniqueKey)
 //                .Return(uniqueKey);
-//            _controller.UserRepository
+//            controller.UserRepository
 //                .Expect(u => u.Load(username))
 //                .Return(user);
 
@@ -237,7 +237,7 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 //                .Expect(b => b.DatePublished)
 //                .Return(DateTime.Now);
 //            blogentry2.Title = "title2";
-//            _controller.BlogRepository
+//            controller.BlogRepository
 //                .Expect(u => u.LoadList(
 //                    Arg<BlogFilter>.Matches(b =>
 //                        b.LoadBlogBy == LoadBlogBy.User
@@ -245,10 +245,10 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 //                .Return(new List<IBlog> { blogentry, blogentry2 });
 
 //            // Act
-//            var result = _controller.List(username, "");
+//            var result = controller.List(username, "");
 
 //            // Assert
-//            var viewData = _controller.ViewData.Model as BlogListModel;
+//            var viewData = controller.ViewData.Model as BlogListModel;
 //            Assert.AreEqual("title2", viewData.BlogEntries.FirstOrDefault().Title);
 //        }
 
@@ -263,7 +263,7 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 //            user
 //                .Expect(u => u.UniqueKey)
 //                .Return(uniqueKey);
-//            _controller.UserRepository
+//            controller.UserRepository
 //                .Expect(u => u.Load(username))
 //                .Return(user);
 
@@ -281,7 +281,7 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 //                .Return(DateTime.Now);
 //            blogentry2.Title = "title2";
 //            blogentry.IsPublished = false;
-//            _controller.BlogRepository
+//            controller.BlogRepository
 //                .Expect(u => u.LoadList(
 //                    Arg<BlogFilter>.Matches(b =>
 //                        b.LoadBlogBy == LoadBlogBy.User
@@ -290,10 +290,10 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 //                .Return(new List<IBlog> { blogentry });
 
 //            // Act
-//            var result = _controller.List(username, "");
+//            var result = controller.List(username, "");
 
 //            // Assert
-//            var viewData = _controller.ViewData.Model as BlogListModel;
+//            var viewData = controller.ViewData.Model as BlogListModel;
 //            Assert.AreEqual(1, viewData.BlogEntries.Count());
 //        }
 
@@ -305,7 +305,7 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 
 //            // Arrange
 //            var family = MockRepository.GenerateStub<IFamily>();
-//            _controller.FamilyRepository
+//            controller.FamilyRepository
 //                .Expect(u => u.Load(familyName))
 //                .Return(family);
 
@@ -321,7 +321,7 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 //                .Expect(b => b.DatePublished)
 //                .Return(DateTime.Now);
 //            blogentry2.Title = "title2";
-//            _controller.BlogRepository
+//            controller.BlogRepository
 //                .Expect(u => u.LoadList(
 //                    Arg<BlogFilter>.Matches(b =>
 //                        b.LoadBlogBy == LoadBlogBy.Family
@@ -329,10 +329,10 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 //                .Return(new List<IBlog> { blogentry, blogentry2 });
 
 //            // Act
-//            var result = _controller.List(familyName, "");
+//            var result = controller.List(familyName, "");
 
 //            // Assert
-//            var viewData = _controller.ViewData.Model as BlogListModel;
+//            var viewData = controller.ViewData.Model as BlogListModel;
 //            Assert.AreEqual("title2", viewData.BlogEntries.FirstOrDefault().Title);
 //        }
 
@@ -344,10 +344,10 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 
 //            // Arrange
 //            var family = MockRepository.GenerateStub<IFamily>();
-//            _controller.FamilyRepository
+//            controller.FamilyRepository
 //                .Expect(u => u.Load(familyName))
 //                .Return(family);
-//            _controller.BlogRepository
+//            controller.BlogRepository
 //                .Expect(u => u.LoadList(
 //                    Arg<BlogFilter>.Matches(b =>
 //                        b.LoadBlogBy == LoadBlogBy.Family
@@ -355,10 +355,10 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 //                .Return(new List<IBlog> { MockRepository.GenerateStub<IBlog>() });
 
 //            // Act
-//            var result = _controller.List(familyName, "");
+//            var result = controller.List(familyName, "");
 
 //            // Assert
-//            _controller.BlogRepository
+//            controller.BlogRepository
 //                .AssertWasCalled(b => b.LoadList(
 //                        Arg<BlogFilter>.Matches(c =>
 //                        c.LoadBlogBy == LoadBlogBy.Family
@@ -372,17 +372,17 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 
 //            // Arrange
 //            var family = MockRepository.GenerateStub<IFamily>();
-//            _controller.FamilyRepository
+//            controller.FamilyRepository
 //                .Expect(u => u.Load(familyName))
 //                .Return(family);
 //            ICacheKey cacheKey = new BlogListCacheKey();
-//            _controller.Cache.Insert(cacheKey.GenerateKey(""), new List<IBlog> { MockRepository.GenerateStub<IBlog>() });
+//            controller.Cache.Insert(cacheKey.GenerateKey(""), new List<IBlog> { MockRepository.GenerateStub<IBlog>() });
 
 //            // Act
-//            var result = _controller.List(familyName, "");
+//            var result = controller.List(familyName, "");
 
 //            // Assert
-//            _controller.BlogRepository
+//            controller.BlogRepository
 //                .AssertWasNotCalled(b => b.LoadList(Arg<BlogFilter>.Is.Anything));
 //        }
 
@@ -396,7 +396,7 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 //            // Arrange
 //            var family = MockRepository.GenerateStub<IFamily>();
 //            family.Description = familyDesc;
-//            _controller.FamilyRepository
+//            controller.FamilyRepository
 //                .Expect(u => u.Load(familyName))
 //                .Return(family);
 //            var blogentry = MockRepository.GenerateStub<IBlog>();
@@ -405,7 +405,7 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 //            blogentry
 //                .Expect(b => b.DatePublished)
 //                .Return(time);
-//            _controller.BlogRepository
+//            controller.BlogRepository
 //                .Expect(u => u.LoadList(
 //                    Arg<BlogFilter>.Matches(b =>
 //                        b.LoadBlogBy == LoadBlogBy.Family
@@ -413,11 +413,11 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 //                .Return(new List<IBlog> { blogentry });
 
 //            // Act
-//            var result = _controller.List(familyName, "");
+//            var result = controller.List(familyName, "");
 
 //            // Assert
-//            Assert.AreEqual(familyDesc, ((BlogListModel)_controller.ViewData.Model).Author.FirstName);
-//            Assert.AreEqual(familyName, ((BlogListModel)_controller.ViewData.Model).Author.UrlName);
+//            Assert.AreEqual(familyDesc, ((BlogListModel)controller.ViewData.Model).Author.FirstName);
+//            Assert.AreEqual(familyName, ((BlogListModel)controller.ViewData.Model).Author.UrlName);
 //        }
 
 //        [TestMethod]
@@ -434,7 +434,7 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 //                .Return(uniqueKey);
 //            user.FirstName = firstname;
 //            user.Username = username;
-//            _controller.UserRepository
+//            controller.UserRepository
 //                .Expect(u => u.Load(username))
 //                .Return(user);
 
@@ -443,7 +443,7 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 //            blogentry
 //                .Expect(b => b.DatePublished)
 //                .Return(DateTime.Now);
-//            _controller.BlogRepository
+//            controller.BlogRepository
 //                .Expect(u => u.LoadList(
 //                    Arg<BlogFilter>.Matches(b =>
 //                        b.LoadBlogBy == LoadBlogBy.User
@@ -451,10 +451,10 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 //                .Return(new List<IBlog> { blogentry });
 
 //            // Act
-//            var result = _controller.List(username, "");
+//            var result = controller.List(username, "");
 //            // Assert
-//            Assert.AreEqual(firstname, ((BlogListModel)_controller.ViewData.Model).Author.FirstName);
-//            Assert.AreEqual(username, ((BlogListModel)_controller.ViewData.Model).Author.UrlName);
+//            Assert.AreEqual(firstname, ((BlogListModel)controller.ViewData.Model).Author.FirstName);
+//            Assert.AreEqual(username, ((BlogListModel)controller.ViewData.Model).Author.UrlName);
 //        }
         #endregion
 
@@ -476,12 +476,12 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 //            // Arrange
 //            var user = MockRepository.GenerateStub<IUser>();
 //            user.Expect(u => u.UniqueKey).Return(uniqueKey);
-//            _controller.UserRepository.Expect(u => u.Load(username)).Return(user);
+//            controller.UserRepository.Expect(u => u.Load(username)).Return(user);
 
 //            var blogentry = MockRepository.GenerateStub<IBlog>();
 //            blogentry.AuthorID = uniqueKey;
 //            blogentry.Expect(b => b.DatePublished).Return(DateTime.Now);
-//            _controller.BlogRepository
+//            controller.BlogRepository
 //                .Expect(u => u.LoadList(
 //                    Arg<BlogFilter>.Matches(b =>
 //                        b.LoadBlogBy == LoadBlogBy.User
@@ -490,11 +490,11 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 //                .Return(new List<IBlog> { blogentry });
 
 //            // Act
-//            var result = _controller.List(username, dateRange);
+//            var result = controller.List(username, dateRange);
 
 //            // Assert
 //            result.AssertViewRendered().ForView("List");
-//            Assert.AreEqual(blogentry, ((BlogListModel)_controller.ViewData.Model).BlogEntries.FirstOrDefault());
+//            Assert.AreEqual(blogentry, ((BlogListModel)controller.ViewData.Model).BlogEntries.FirstOrDefault());
 //        }
 
         #endregion
@@ -504,11 +504,11 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 //        public void BlogController_UserList_InvalidUser_RedirectsToAccountIndex()
 //        {
 //            // Assert
-//            _controller.UserList("")
+//            controller.UserList("")
 //                .AssertActionRedirect()
 //                .ToAction("Index")
 //                .ToController("Account");
-//            _controller
+//            controller
 //                .TempData["Message"]
 //                .ShouldBe("Invalid User or Family");
 //        }
@@ -519,18 +519,18 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 //            string username = "sgwill";
 
 //            // Arrange
-//            _controller.UserRepository
+//            controller.UserRepository
 //                .Expect(u => u.Load(Arg<string>.Is.Anything))
 //                .Return(MockRepository.GenerateStub<IUser>());
-//            _controller.BlogRepository
+//            controller.BlogRepository
 //                .Expect(b => b.LoadList(Arg<BlogFilter>.Is.Anything))
 //                .Return(MockRepository.GenerateStub<IEnumerable<IBlog>>());
 
 //            // Act
-//            _controller.UserList(username);
+//            controller.UserList(username);
 
 //            // Assert
-//            Assert.IsInstanceOfType(_controller.ViewData.Model, typeof(BlogListModel));
+//            Assert.IsInstanceOfType(controller.ViewData.Model, typeof(BlogListModel));
 //        }
 
 //        [TestMethod]
@@ -539,15 +539,15 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 //            string username = "sgwill";
 
 //            // Arrange
-//            _controller.UserRepository
+//            controller.UserRepository
 //                .Expect(u => u.Load(Arg<string>.Is.Anything))
 //                .Return(MockRepository.GenerateStub<IUser>());
-//            _controller.BlogRepository
+//            controller.BlogRepository
 //                .Expect(b => b.LoadList(Arg<BlogFilter>.Is.Anything))
 //                .Return(MockRepository.GenerateStub<IEnumerable<IBlog>>());
 
 //            // Assert
-//            _controller.UserList(username)
+//            controller.UserList(username)
 //                .AssertViewRendered()
 //                .ForView("UserList");
 //        }
@@ -563,7 +563,7 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 //            user
 //                .Expect(u => u.UniqueKey)
 //                .Return(uniqueKey);
-//            _controller.UserRepository
+//            controller.UserRepository
 //                .Expect(u => u.Load(username))
 //                .Return(user);
 
@@ -572,7 +572,7 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 //            blogentry
 //                .Expect(b => b.DatePublished)
 //                .Return(DateTime.Now);
-//            _controller.BlogRepository
+//            controller.BlogRepository
 //                .Expect(u => u.LoadList(
 //                    Arg<BlogFilter>.Matches(b =>
 //                        b.LoadBlogBy == LoadBlogBy.User
@@ -580,11 +580,11 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 //                .Return(new List<IBlog> { blogentry });
 
 //            // Act
-//            var result = _controller.UserList(username);
+//            var result = controller.UserList(username);
 
 //            // Assert
-//            Assert.AreEqual(1, ((BlogListModel)_controller.ViewData.Model).BlogEntries.Count());
-//            Assert.AreEqual(blogentry, ((BlogListModel)_controller.ViewData.Model).BlogEntries.FirstOrDefault());
+//            Assert.AreEqual(1, ((BlogListModel)controller.ViewData.Model).BlogEntries.Count());
+//            Assert.AreEqual(blogentry, ((BlogListModel)controller.ViewData.Model).BlogEntries.FirstOrDefault());
 //        }
 
 //        [TestMethod]
@@ -598,7 +598,7 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 //            user
 //                .Expect(u => u.UniqueKey)
 //                .Return(uniqueKey);
-//            _controller.UserRepository
+//            controller.UserRepository
 //                .Expect(u => u.Load(username))
 //                .Return(user);
 
@@ -623,7 +623,7 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 //                .Return(DateTime.Now.AddDays(-4));
 //            blogentry3.Title = "title3";
 //            blogentry3.IsPublished = false;
-//            _controller.BlogRepository
+//            controller.BlogRepository
 //            .Expect(u => u.LoadList(
 //                Arg<BlogFilter>.Matches(b =>
 //                    b.LoadBlogBy == LoadBlogBy.User
@@ -631,10 +631,10 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 //                    .Return(new List<IBlog> { blogentry, blogentry2, blogentry3 });
 
 //            // Act
-//            var result = _controller.UserList(username);
+//            var result = controller.UserList(username);
 
 //            // Assert
-//            var viewData = _controller.ViewData.Model as BlogListModel;
+//            var viewData = controller.ViewData.Model as BlogListModel;
 //            Assert.AreEqual("title3", viewData.BlogEntries.FirstOrDefault().Title);
 //            //
 //            // NOTE: This will fail because of rhino mocks; eh
@@ -652,7 +652,7 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 //            user
 //                .Expect(u => u.UniqueKey)
 //                .Return(uniqueKey);
-//            _controller.UserRepository
+//            controller.UserRepository
 //                .Expect(u => u.Load(username))
 //                .Return(user);
 
@@ -677,7 +677,7 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 //                .Return(DateTime.Now.AddDays(-4));
 //            blogentry3.Title = "title3";
 //            blogentry3.IsPublished = false;
-//            _controller.BlogRepository
+//            controller.BlogRepository
 //            .Expect(u => u.LoadList(
 //                Arg<BlogFilter>.Matches(b =>
 //                    b.LoadBlogBy == LoadBlogBy.User
@@ -685,10 +685,10 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 //                    .Return(new List<IBlog> { blogentry, blogentry2, blogentry3 });
 
 //            // Act
-//            var result = _controller.UserList(username);
+//            var result = controller.UserList(username);
 
 //            // Assert
-//            var viewData = _controller.ViewData.Model as BlogListModel;
+//            var viewData = controller.ViewData.Model as BlogListModel;
 //            Assert.AreEqual(3, viewData.BlogEntries.Count());
 //        }
 
@@ -706,7 +706,7 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 //                .Return(uniqueKey);
 //            user.FirstName = firstname;
 //            user.Username = username;
-//            _controller.UserRepository
+//            controller.UserRepository
 //                .Expect(u => u.Load(username))
 //                .Return(user);
 
@@ -715,7 +715,7 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 //            blogentry
 //                .Expect(b => b.DatePublished)
 //                .Return(DateTime.Now);
-//            _controller.BlogRepository
+//            controller.BlogRepository
 //                .Expect(u => u.LoadList(
 //                    Arg<BlogFilter>.Matches(b =>
 //                        b.LoadBlogBy == LoadBlogBy.User
@@ -723,10 +723,10 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 //                .Return(new List<IBlog> { blogentry });
 
 //            // Act
-//            var result = _controller.UserList(username);
+//            var result = controller.UserList(username);
 //            // Assert
-//            Assert.AreEqual(firstname, ((BlogListModel)_controller.ViewData.Model).Author.FirstName);
-//            Assert.AreEqual(username, ((BlogListModel)_controller.ViewData.Model).Author.UrlName);
+//            Assert.AreEqual(firstname, ((BlogListModel)controller.ViewData.Model).Author.FirstName);
+//            Assert.AreEqual(username, ((BlogListModel)controller.ViewData.Model).Author.UrlName);
 //        }
 
         #endregion
@@ -745,7 +745,7 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 				.Return(title);
             entry.AuthorName = author;
 			entry.AuthorID = author;
-			_controller.BlogRepository
+			controller.BlogRepository
 				.Expect(b => b.LoadBySlug(title))
 				.Return(entry);
 
@@ -759,10 +759,10 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 			Setup_Detail_Blog("blog");
 
 			// Act
-			_controller.Detail("blog");
+			controller.Detail("blog");
 
 			// Assert
-			Assert.IsInstanceOfType(_controller.ViewData.Model, typeof(BlogModel));
+			Assert.IsInstanceOfType(controller.ViewData.Model, typeof(BlogModel));
 		}
 
 		[TestMethod]
@@ -772,7 +772,7 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 			Setup_Detail_Blog("blog");
 
 			// Act
-			var result = _controller.Detail("blog");
+			var result = controller.Detail("blog");
 
 			// Assert
 			result
@@ -784,7 +784,7 @@ namespace WilliamsonFamily.Web.Tests.Controllers
         public void Detail_EmptyTitle_RedirectsToList()
         {
             // Assert
-            _controller.Detail("")
+            controller.Detail("")
                 .AssertActionRedirect()
                 .ToAction("List");
         }
@@ -796,10 +796,10 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 			Setup_Detail_Blog("blog");
 
 			// Act
-			var result = _controller.Detail("blog");
+			var result = controller.Detail("blog");
 
 			// Assert
-			Assert.IsNotNull(((BlogModel)_controller.ViewData.Model).Author);
+			Assert.IsNotNull(((BlogModel)controller.ViewData.Model).Author);
 		}
 
 		[TestMethod]
@@ -810,16 +810,16 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 			IUser user = MockRepository.GenerateStub<IUser>();
 			user.Username = "user";
 			user.FirstName = "sam";
-			_controller.UserRepository
+			controller.UserRepository
 				.Expect(u => u.Load("user"))
 				.Return(user);
 
 			// Act
-			var result = _controller.Detail("blog");
+			var result = controller.Detail("blog");
 
 			// Assert
-			Assert.AreEqual("sam", ((BlogModel)_controller.ViewData.Model).Author.FirstName);
-			Assert.AreEqual("user", ((BlogModel)_controller.ViewData.Model).Author.UrlName);
+			Assert.AreEqual("sam", ((BlogModel)controller.ViewData.Model).Author.FirstName);
+			Assert.AreEqual("user", ((BlogModel)controller.ViewData.Model).Author.UrlName);
 		}
 
 		[TestMethod]
@@ -831,10 +831,10 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 			var entry = Setup_Detail_Blog(title, "user");
 
 			// Act
-			_controller.Detail(title);
+			controller.Detail(title);
 
 			// Assert
-			Assert.AreEqual(entry, ((BlogModel)_controller.ViewData.Model).BlogEntry);
+			Assert.AreEqual(entry, ((BlogModel)controller.ViewData.Model).BlogEntry);
 		}
 
 //        [TestMethod]
@@ -848,29 +848,29 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 //                .Expect(e => e.Slug)
 //                .Return(title);
 //            entry.AuthorID = "blah";
-//            _controller.BlogRepository
+//            controller.BlogRepository
 //                .Expect(b => b.LoadBySlug(title))
 //                .Return(entry);
 //            ICacheKey cacheKey = new BlogListCacheKey();
-//            _controller.Cache
+//            controller.Cache
 //                .Expect(c => c.Get<IEnumerable<IBlog>>(cacheKey.GenerateKey(""), null))
 //                .Return(new List<IBlog> { MockRepository.GenerateStub<IBlog>() });
 
 //            // Act
-//            _controller.Detail(title);
+//            controller.Detail(title);
 
 //            // Assert
-//            Assert.IsNotNull(((BlogModel)_controller.ViewData.Model).FamilyEntries);
+//            Assert.IsNotNull(((BlogModel)controller.ViewData.Model).FamilyEntries);
             
 //        }
 
         [TestMethod]
         public void Detail_InvalidTitle_RedirectsToList()
         {
-            _controller.Detail("title")
+            controller.Detail("title")
                 .AssertActionRedirect()
                 .ToAction("List");
-            _controller
+            controller
                 .TempData["Message"]
                 .ShouldBe("No Blog");
         }
@@ -892,18 +892,18 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 //            user
 //                .Stub(u => u.Identity)
 //                .Return(identity);
-//            _controller.HttpContext.User = user;
+//            controller.HttpContext.User = user;
 //            var dbUser = MockRepository.GenerateStub<IUser>();
 //            dbUser.Username = userName;
 //            dbUser
 //                .Stub(u => u.UniqueKey)
 //                .Return(id);
-//            _controller.UserRepository
+//            controller.UserRepository
 //                .Expect(u => u.Load(userName))
 //                .Return(dbUser);
 
 //            // Act
-//            var result = _controller.Create(userName);
+//            var result = controller.Create(userName);
 
 //            // Assert
 //            result.AssertViewRendered()
@@ -925,21 +925,21 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 //            user
 //                .Stub(u => u.Identity)
 //                .Return(identity);
-//            _controller.HttpContext.User = user;
+//            controller.HttpContext.User = user;
 //            var dbUser = MockRepository.GenerateStub<IUser>();
 //            dbUser.Username = userName;
 //            dbUser
 //                .Stub(u => u.UniqueKey)
 //                .Return(id);
-//            _controller.UserRepository
+//            controller.UserRepository
 //                .Expect(u => u.Load(userName))
 //                .Return(dbUser);
 
 //            // Act
-//            _controller.Create(userName);
+//            controller.Create(userName);
 
 //            // Assert
-//            Assert.IsInstanceOfType(_controller.ViewData.Model, typeof(BlogCreateModel));
+//            Assert.IsInstanceOfType(controller.ViewData.Model, typeof(BlogCreateModel));
 //        }
 
 //        [TestMethod]
@@ -957,21 +957,21 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 //            user
 //                .Stub(u => u.Identity)
 //                .Return(identity);
-//            _controller.HttpContext.User = user;
+//            controller.HttpContext.User = user;
 //            var dbUser = MockRepository.GenerateStub<IUser>();
 //            dbUser.Username = userName;
 //            dbUser
 //                .Stub(u => u.UniqueKey)
 //                .Return(id);
-//            _controller.UserRepository
+//            controller.UserRepository
 //                .Expect(u => u.Load(userName))
 //                .Return(dbUser);
 
 //            // Act
-//            _controller.Create(userName);
+//            controller.Create(userName);
 
 //            // Assert
-//            Assert.AreEqual(dbUser.UniqueKey, ((BlogCreateModel)_controller.ViewData.Model).AuthorID);
+//            Assert.AreEqual(dbUser.UniqueKey, ((BlogCreateModel)controller.ViewData.Model).AuthorID);
 //        }
 
 //        [TestMethod]
@@ -989,10 +989,10 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 //            user
 //                .Stub(u => u.Identity)
 //                .Return(identity);
-//            _controller.HttpContext.User = user;
+//            controller.HttpContext.User = user;
             
 //            // Act
-//            var result = _controller.Create(secondUser);
+//            var result = controller.Create(secondUser);
 
 //            // Assert
 //            result.AssertActionRedirect().ToAction("Create").WithParameter("user", firstUser);
@@ -1012,10 +1012,10 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 //            user
 //                .Stub(u => u.Identity)
 //                .Return(identity);
-//            _controller.HttpContext.User = user;
+//            controller.HttpContext.User = user;
 
 //            // Act
-//            var result = _controller.Create(userName);
+//            var result = controller.Create(userName);
 
 //            // Assert
 //            result.AssertActionRedirect().ToAction("Index").ToController("Home");
@@ -1036,18 +1036,18 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 //            user
 //                .Stub(u => u.Identity)
 //                .Return(identity);
-//            _controller.HttpContext.User = user;
+//            controller.HttpContext.User = user;
 //            var family = MockRepository.GenerateStub<IFamily>();
-//            _controller.FamilyRepository
+//            controller.FamilyRepository
 //                .Expect(u => u.Load(userName))
 //                .Return(family);
 
 //            // Act
-//            var result = _controller.Create(userName);
+//            var result = controller.Create(userName);
 
 //            // Assert
 //            result.AssertActionRedirect().ToAction("Index").ToController("Home");
-//            _controller.TempData["Message"].ShouldBe("Cannot create blog entries as Family");
+//            controller.TempData["Message"].ShouldBe("Cannot create blog entries as Family");
 //        }
 
 //        [TestMethod]
@@ -1065,21 +1065,21 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 //            user
 //                .Stub(u => u.Identity)
 //                .Return(identity);
-//            _controller.HttpContext.User = user;
+//            controller.HttpContext.User = user;
 //            var dbUser = MockRepository.GenerateStub<IUser>();
 //            dbUser.Username = userName;
 //            dbUser
 //                .Stub(u => u.UniqueKey)
 //                .Return(id);
-//            _controller.UserRepository
+//            controller.UserRepository
 //                .Expect(u => u.Load(userName))
 //                .Return(dbUser);
 
 //            // Act
-//            var result = _controller.Create(userName);
+//            var result = controller.Create(userName);
 
 //            // Assert
-//            Assert.IsFalse(((BlogCreateModel)_controller.ViewData.Model).IsPublished);
+//            Assert.IsFalse(((BlogCreateModel)controller.ViewData.Model).IsPublished);
 //        }
         #endregion
 
@@ -1092,15 +1092,15 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 //            model.Title = "title";
 //            model.Entry = "entry";
 //            model.AuthorID = "author";
-//            _controller.BlogRepository
+//            controller.BlogRepository
 //                .Expect(b => b.New())
 //                .Return(MockRepository.GenerateStub<IBlog>());
 
 //            // Act
-//            _controller.Create(model);
+//            controller.Create(model);
             
 //            // Assert
-//            _controller.BlogRepository
+//            controller.BlogRepository
 //                .AssertWasCalled(c => c.Save(Arg<IBlog>.Is.Anything));
 //        }
 
@@ -1112,12 +1112,12 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 //            model.Title = "title";
 //            model.Entry = "entry";
 //            model.AuthorID = "author";
-//            _controller.BlogRepository
+//            controller.BlogRepository
 //                .Expect(b => b.New())
 //                .Return(MockRepository.GenerateStub<IBlog>());
             
 //            // Act
-//            var result = _controller.Create(model);
+//            var result = controller.Create(model);
 
 //            // Assert
 //            result.AssertActionRedirect().ToAction("UserList");
@@ -1132,11 +1132,11 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 //            model.Title = "";
 
 //            // Assert
-//            _controller.Create(model)
+//            controller.Create(model)
 //                .AssertViewRendered()
 //                .ForView("Create");
-//            Assert.IsFalse(_controller.ModelState.IsValid);
-//            Assert.IsTrue(_controller.ModelState.ContainsKey("Title"));
+//            Assert.IsFalse(controller.ModelState.IsValid);
+//            Assert.IsTrue(controller.ModelState.ContainsKey("Title"));
 //        }
 
 //        [TestMethod]
@@ -1147,11 +1147,11 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 //            model.Title = "title";
 
 //            // Assert
-//            _controller.Create(model)
+//            controller.Create(model)
 //                .AssertViewRendered()
 //                .ForView("Create");
-//            Assert.IsFalse(_controller.ModelState.IsValid);
-//            Assert.IsTrue(_controller.ModelState.ContainsKey("Entry"));
+//            Assert.IsFalse(controller.ModelState.IsValid);
+//            Assert.IsTrue(controller.ModelState.ContainsKey("Entry"));
 //        }
 
 //        [TestMethod]
@@ -1160,14 +1160,14 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 //            // Arrange
 //            var model = MockRepository.GenerateStub<BlogCreateModel>();
 //            model.Title = "title";
-//            _controller.Request.Form["textEntry"] = "value";
+//            controller.Request.Form["textEntry"] = "value";
 //            model.AuthorID = "author";
-//            _controller.BlogRepository
+//            controller.BlogRepository
 //                .Expect(b => b.New())
 //                .Return(MockRepository.GenerateStub<IBlog>());
 
 //            // Act
-//            var result = _controller.Create(model);
+//            var result = controller.Create(model);
 
 //            // Assert
 //            result.AssertActionRedirect().ToAction("UserList");
@@ -1181,19 +1181,19 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 //            var model = MockRepository.GenerateStub<BlogCreateModel>();
 //            model.Title = title;
 //            model.Entry = "entry";
-//            _controller.BlogRepository
+//            controller.BlogRepository
 //                .Expect(b => b.LoadBySlug(model.Title))
 //                .Return(MockRepository.GenerateStub<IBlog>());
 
 //            // Act
-//            var result = _controller.Create(model);
+//            var result = controller.Create(model);
 
 //            // Assert
-//            _controller.Create(model)
+//            controller.Create(model)
 //                .AssertViewRendered()
 //                .ForView("Create");
-//            Assert.IsFalse(_controller.ModelState.IsValid);
-//            Assert.IsTrue(_controller.ModelState.ContainsKey("DuplicateTitle"));
+//            Assert.IsFalse(controller.ModelState.IsValid);
+//            Assert.IsTrue(controller.ModelState.ContainsKey("DuplicateTitle"));
 //        }
         #endregion
 
@@ -1201,7 +1201,7 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 //        [TestMethod]
 //        public void BlogController_EditGet_EmptySlug_RedirectsHome()
 //        {
-//            _controller.Edit("sam", "")
+//            controller.Edit("sam", "")
 //                .AssertActionRedirect()
 //                .ToAction("Index")
 //                .ToController("Home");
@@ -1213,11 +1213,11 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 //            // Arrange
 //            var blog = MockRepository.GenerateStub<IBlog>();
 //            blog.AuthorID = "sam";
-//            _controller.BlogRepository
+//            controller.BlogRepository
 //               .Expect(b => b.LoadBySlug(Arg<string>.Is.Anything))
 //               .Return(blog);
 
-//            _controller.Edit("sam", "blah")
+//            controller.Edit("sam", "blah")
 //                .AssertViewRendered()
 //                .ForView("Edit");
 //        }
@@ -1228,21 +1228,21 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 //            // Arrange
 //            var blog = MockRepository.GenerateStub<IBlog>();
 //            blog.AuthorID = "sam";
-//            _controller.BlogRepository
+//            controller.BlogRepository
 //               .Expect(b => b.LoadBySlug(Arg<string>.Is.Anything))
 //               .Return(blog);
 
 //            // Act
-//            _controller.Edit("sam", "blah");
+//            controller.Edit("sam", "blah");
 
 //            // Assert
-//            Assert.IsInstanceOfType(_controller.ViewData.Model, typeof(BlogCreateModel));
+//            Assert.IsInstanceOfType(controller.ViewData.Model, typeof(BlogCreateModel));
 //        }
 
 //        [TestMethod]
 //        public void BlogController_EditGet_InvalidBlogEntry_RedirectsHome()
 //        {
-//            _controller.Edit("sam", "blah")
+//            controller.Edit("sam", "blah")
 //                .AssertActionRedirect()
 //                .ToAction("Index")
 //                .ToController("Home");
@@ -1257,18 +1257,18 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 //            blog.Title = "title";
 //            blog.Tags = "tags";
 //            blog.AuthorID = "sam";
-//            _controller.BlogRepository
+//            controller.BlogRepository
 //               .Expect(b => b.LoadBySlug(Arg<string>.Is.Anything))
 //               .Return(blog);
 
 //            // Act
-//            _controller.Edit("sam", "blog");
+//            controller.Edit("sam", "blog");
 
 //            // Assert
-//            Assert.AreEqual(blog.Entry, ((BlogCreateModel)_controller.ViewData.Model).Entry);
-//            Assert.AreEqual(blog.Title, ((BlogCreateModel)_controller.ViewData.Model).Title);
-//            Assert.AreEqual(blog.Tags, ((BlogCreateModel)_controller.ViewData.Model).Tags);
-//            Assert.AreEqual(blog.AuthorID, ((BlogCreateModel)_controller.ViewData.Model).AuthorID);
+//            Assert.AreEqual(blog.Entry, ((BlogCreateModel)controller.ViewData.Model).Entry);
+//            Assert.AreEqual(blog.Title, ((BlogCreateModel)controller.ViewData.Model).Title);
+//            Assert.AreEqual(blog.Tags, ((BlogCreateModel)controller.ViewData.Model).Tags);
+//            Assert.AreEqual(blog.AuthorID, ((BlogCreateModel)controller.ViewData.Model).AuthorID);
 //        }
 
 //        [TestMethod]
@@ -1280,15 +1280,15 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 //            blog.Title = "title";
 //            blog.Tags = "tags";
 //            blog.AuthorID = "sam";
-//            _controller.BlogRepository
+//            controller.BlogRepository
 //               .Expect(b => b.LoadBySlug(Arg<string>.Is.Anything))
 //               .Return(blog);
 
 //            // Act
-//            _controller.Edit("sam", "blog");
+//            controller.Edit("sam", "blog");
 
 //            // Assert
-//            Assert.IsTrue(((BlogCreateModel)_controller.ViewData.Model).IsEdit);
+//            Assert.IsTrue(((BlogCreateModel)controller.ViewData.Model).IsEdit);
 //        }
 
 //        [TestMethod]
@@ -1301,15 +1301,15 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 //            blog.Tags = "tags";
 //            blog.AuthorID = "sam";
 //            blog.IsPublished = true;
-//            _controller.BlogRepository
+//            controller.BlogRepository
 //               .Expect(b => b.LoadBySlug(Arg<string>.Is.Anything))
 //               .Return(blog);
 
 //            // Act
-//            _controller.Edit("sam", "blog");
+//            controller.Edit("sam", "blog");
 
 //            // Assert
-//            Assert.IsTrue(((BlogCreateModel)_controller.ViewData.Model).IsPublished);
+//            Assert.IsTrue(((BlogCreateModel)controller.ViewData.Model).IsPublished);
 //        }
 
 //        //[TestMethod]
@@ -1321,12 +1321,12 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 //        //    blog.Title = "title";
 //        //    blog.Tags = "tags";
 //        //    blog.AuthorID = "sam";
-//        //    _controller.BlogRepository
+//        //    controller.BlogRepository
 //        //       .Expect(b => b.LoadBySlug(Arg<string>.Is.Anything))
 //        //       .Return(blog);
 
 //        //    // Assert
-//        //    _controller.Edit("d", "blog")
+//        //    controller.Edit("d", "blog")
 //        //        .AssertActionRedirect()
 //        //        .ToAction("Index")
 //        //        .ToController("Home");
@@ -1338,7 +1338,7 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 //        public void BlogController_EditPost_RendersUserList()
 //        {
 //            // Arrange
-//            _controller.BlogRepository
+//            controller.BlogRepository
 //                .Expect(b => b.LoadBySlug(Arg<string>.Is.Anything))
 //                .Return(MockRepository.GenerateStub<IBlog>());
 //            var viewData = MockRepository.GenerateStub<BlogCreateModel>();
@@ -1346,7 +1346,7 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 //            viewData.Title = "title";
             
 //            // Assert
-//            _controller.Edit(viewData)
+//            controller.Edit(viewData)
 //                .AssertActionRedirect()
 //                .ToAction("UserList");
 //        }
@@ -1358,19 +1358,19 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 //            var model = MockRepository.GenerateStub<BlogCreateModel>();
 
 //            // Assert
-//            _controller.Edit(model)
+//            controller.Edit(model)
 //                .AssertViewRendered()
 //                .ForView("Edit");
-//            Assert.IsFalse(_controller.ModelState.IsValid);
-//            Assert.IsTrue(_controller.ModelState.ContainsKey("Entry"));
+//            Assert.IsFalse(controller.ModelState.IsValid);
+//            Assert.IsTrue(controller.ModelState.ContainsKey("Entry"));
 //        }
 
 //        [TestMethod]
 //        public void BlogController_EditPost_EmptyEntryWithFormValue_SetsEntry()
 //        {
 //            // Arrange
-//            _controller.Request.Form["textEntry"] = "value";
-//            _controller.BlogRepository
+//            controller.Request.Form["textEntry"] = "value";
+//            controller.BlogRepository
 //               .Expect(b => b.LoadBySlug(Arg<string>.Is.Anything))
 //               .Return(MockRepository.GenerateStub<IBlog>());
 //            var viewData = MockRepository.GenerateStub<BlogCreateModel>();
@@ -1378,7 +1378,7 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 //            viewData.Title = "title";
 
 //            // Act
-//            var result = _controller.Edit(viewData);
+//            var result = controller.Edit(viewData);
 
 //            // Assert
 //            result
@@ -1393,7 +1393,7 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 //            var originalBlog = MockRepository.GenerateStub<IBlog>();
 //            originalBlog.Entry = "entry";
 //            originalBlog.Title = "the title";
-//            _controller.BlogRepository
+//            controller.BlogRepository
 //                .Expect(l => l.LoadBySlug("the-title"))
 //                .Return(originalBlog);
 //            var model = MockRepository.GenerateStub<BlogCreateModel>();
@@ -1401,10 +1401,10 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 //            model.Title = "the title";
 
 //            // Act
-//            var result = _controller.Edit(model);
+//            var result = controller.Edit(model);
 
 //            // Assert
-//            _controller.BlogRepository
+//            controller.BlogRepository
 //                .AssertWasCalled(b => b.Save(Arg<IBlog>
 //                    .Matches(a => a.Entry == model.Entry)));
 //        }
@@ -1417,7 +1417,7 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 //            originalBlog.Entry = "entry";
 //            originalBlog.Title = "the title";
 //            originalBlog.IsPublished = false;
-//            _controller.BlogRepository
+//            controller.BlogRepository
 //                .Expect(l => l.LoadBySlug("the-title"))
 //                .Return(originalBlog);
 //            var model = MockRepository.GenerateStub<BlogCreateModel>();
@@ -1426,10 +1426,10 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 //            model.IsPublished = true;
 
 //            // Act
-//            var result = _controller.Edit(model);
+//            var result = controller.Edit(model);
 
 //            // Assert
-//            _controller.BlogRepository
+//            controller.BlogRepository
 //                .AssertWasCalled(b => b.Save(Arg<IBlog>
 //                    .Matches(a => a.IsPublished == true)));
 //        }
@@ -1442,7 +1442,7 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 //            originalBlog.Entry = "entry";
 //            originalBlog.Title = "the title";
 //            originalBlog.IsPublished = true;
-//            _controller.BlogRepository
+//            controller.BlogRepository
 //                .Expect(l => l.LoadBySlug("the-title"))
 //                .Return(originalBlog);
 //            var model = MockRepository.GenerateStub<BlogCreateModel>();
@@ -1451,35 +1451,33 @@ namespace WilliamsonFamily.Web.Tests.Controllers
 //            model.IsPublished = false;
 
 //            // Act
-//            var result = _controller.Edit(model);
+//            var result = controller.Edit(model);
 
 //            // Assert
-//            _controller.BlogRepository
+//            controller.BlogRepository
 //                .AssertWasCalled(b => b.Save(Arg<IBlog>
 //                    .Matches(a => a.IsPublished == true)));
 //        }
         #endregion
 
-        #region Setup
-        private BlogController _controller;
-        private TestControllerBuilder _builder;
+        private BlogController controller;
+        private TestControllerBuilder builder;
 
         [TestInitialize]
         public void Setup()
         {
-            _controller = new BlogController();
+            controller = new BlogController();
 
-            _controller.BlogRepository = MockRepository.GenerateStub<IBlogRepository>();
-            _controller.BlogRepository.TitleCleaner = MockRepository.GenerateStub<ITitleCleaner>();
-            _controller.UserRepository = MockRepository.GenerateStub<IUserRepository>();
-            _controller.FamilyRepository = MockRepository.GenerateStub<IFamilyRepository>();
-            _controller.Cache = new InMemoryCache();
+            controller.BlogRepository = MockRepository.GenerateStub<IBlogRepository>();
+            controller.BlogRepository.TitleCleaner = MockRepository.GenerateStub<ITitleCleaner>();
+            controller.UserRepository = MockRepository.GenerateStub<IUserRepository>();
+            controller.FamilyRepository = MockRepository.GenerateStub<IFamilyRepository>();
+            controller.Cache = new InMemoryCache();
 
-            _builder = new TestControllerBuilder();
-            _builder.InitializeController(_controller);
+            builder = new TestControllerBuilder();
+            builder.InitializeController(controller);
 
-            _controller.Url = new UrlHelper(new RequestContext(_controller.HttpContext, new RouteData()));
+            controller.Url = new UrlHelper(new RequestContext(controller.HttpContext, new RouteData()));
         }
-        #endregion
     }
 }
