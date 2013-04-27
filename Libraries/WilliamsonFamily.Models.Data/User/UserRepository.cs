@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Linq;
+using StackExchange.Profiling;
 using WilliamsonFamily.Models.User;
-using MvcMiniProfiler;
 
 namespace WilliamsonFamily.Models.Data
 {

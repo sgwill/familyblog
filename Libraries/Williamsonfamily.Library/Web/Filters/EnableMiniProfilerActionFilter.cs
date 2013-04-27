@@ -1,5 +1,5 @@
 ﻿using System.Web.Mvc;
-using MvcMiniProfiler;
+using StackExchange.Profiling;
 
 namespace WilliamsonFamily.Library.Web.Filters
 {
@@ -10,7 +10,7 @@ namespace WilliamsonFamily.Library.Web.Filters
             if (filterContext.HttpContext.User != null && filterContext.HttpContext.User.Identity.IsAuthenticated && filterContext.HttpContext.User.Identity.Name == "sgwill")
             {
                 if (MiniProfiler.Current == null)
-                    MvcMiniProfiler.MiniProfiler.Start();
+                    MiniProfiler.Start();
             }
 
             base.OnActionExecuting(filterContext);

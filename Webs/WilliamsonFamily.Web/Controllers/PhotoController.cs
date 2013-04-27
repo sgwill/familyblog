@@ -6,7 +6,6 @@ using System.Web.Mvc;
 using WilliamsonFamily.Models.Photo;
 using WilliamsonFamily.Library.Exceptions;
 using WilliamsonFamily.Library.Web;
-using MvcMiniProfiler;
 using WilliamsonFamily.Library.Web.Routing;
 
 namespace WilliamsonFamily.Web.Controllers

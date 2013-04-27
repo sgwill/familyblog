@@ -3,7 +3,6 @@ using System.Web.Mvc;
 using WilliamsonFamily.Library.Web.Routing;
 using WilliamsonFamily.Web.Models.Admin;
 using WilliamsonFamily.Models.Log;
-using MvcMiniProfiler;
 
 namespace WilliamsonFamily.Web.Controllers
 {

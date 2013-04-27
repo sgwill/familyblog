@@ -34,6 +34,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WilliamsonFamily.Models.Ama
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WilliamsonFamily.Search.Lucene", "Libraries\WilliamsonFamily.Search.Lucene\WilliamsonFamily.Search.Lucene.csproj", "{B1376E23-1D37-44D1-A75E-44AEA6776E18}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WilliamsonFamily.Models.Data.Dapper", "Libraries\WilliamsonFamily.Models.Data.Dapper\WilliamsonFamily.Models.Data.Dapper.csproj", "{3397145D-75E7-4EAB-B0F8-D7B450BEAE25}"
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = WilliamsonFamily.vsmdi
@@ -157,6 +159,16 @@ Global
 		{B1376E23-1D37-44D1-A75E-44AEA6776E18}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{B1376E23-1D37-44D1-A75E-44AEA6776E18}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{B1376E23-1D37-44D1-A75E-44AEA6776E18}.Release|x86.ActiveCfg = Release|Any CPU
+		{3397145D-75E7-4EAB-B0F8-D7B450BEAE25}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3397145D-75E7-4EAB-B0F8-D7B450BEAE25}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3397145D-75E7-4EAB-B0F8-D7B450BEAE25}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{3397145D-75E7-4EAB-B0F8-D7B450BEAE25}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{3397145D-75E7-4EAB-B0F8-D7B450BEAE25}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{3397145D-75E7-4EAB-B0F8-D7B450BEAE25}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3397145D-75E7-4EAB-B0F8-D7B450BEAE25}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3397145D-75E7-4EAB-B0F8-D7B450BEAE25}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{3397145D-75E7-4EAB-B0F8-D7B450BEAE25}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{3397145D-75E7-4EAB-B0F8-D7B450BEAE25}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -169,6 +181,7 @@ Global
 		{E723202D-1421-4345-B2E5-EF1068111F12} = {A8C9DFA4-6807-4D60-A6F7-5BA0AB0FEE9E}
 		{BE75926D-54AE-419F-B665-310F8CD9E2DE} = {A8C9DFA4-6807-4D60-A6F7-5BA0AB0FEE9E}
 		{B1376E23-1D37-44D1-A75E-44AEA6776E18} = {A8C9DFA4-6807-4D60-A6F7-5BA0AB0FEE9E}
+		{3397145D-75E7-4EAB-B0F8-D7B450BEAE25} = {A8C9DFA4-6807-4D60-A6F7-5BA0AB0FEE9E}
 		{522141BB-B0BD-4F94-BA59-897F3D337DB7} = {6B3300B3-D243-4D8C-B7EC-A4B7C2D0A41D}
 		{41B07B14-54F7-4707-99F2-DFF9050CE77E} = {6B3300B3-D243-4D8C-B7EC-A4B7C2D0A41D}
 		{CCCB6BA5-F70E-49C7-8D85-D8A88B73DA6C} = {6B3300B3-D243-4D8C-B7EC-A4B7C2D0A41D}

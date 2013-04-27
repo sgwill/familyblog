@@ -4,9 +4,9 @@ using System.Linq;
 using WilliamsonFamily.Models.Blog;
 using WilliamsonFamily.Models.Web;
 using WilliamsonFamily.Library.Exceptions;
-using MvcMiniProfiler;
 using WilliamsonFamily.Models.Caching;
 using WilliamsonFamily.Library.Web.Caching;
+using StackExchange.Profiling;
 
 namespace WilliamsonFamily.Models.Data
 {

@@ -5,11 +5,11 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Routing;
 using WilliamsonFamily.Library.Web;
-using MvcMiniProfiler;
 using Elmah;
 using WilliamsonFamily.Library.Web.Routing;
 using SignalR.Hosting.AspNet.Routing;
 using WilliamsonFamily.Web.Connection;
+using StackExchange.Profiling;
 
 namespace WilliamsonFamily.Web
 {
@@ -77,7 +77,7 @@ namespace WilliamsonFamily.Web
         protected void Application_EndRequest()
         {
             MiniProfiler.Current.Step("Application_EndRequest");
-            MvcMiniProfiler.MiniProfiler.Stop();
+            MiniProfiler.Stop();
         }
 
         protected void ErrorMail_Filtering(object sender, ExceptionFilterEventArgs e)

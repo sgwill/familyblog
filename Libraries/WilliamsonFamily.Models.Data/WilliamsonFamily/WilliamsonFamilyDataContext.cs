@@ -4,8 +4,8 @@ using System.Configuration;
 using System.Data.SQLite;
 using System.Linq;
 using DbLinq.Data.Linq;
-using MvcMiniProfiler.Data;
-using MvcMiniProfiler;
+using StackExchange.Profiling;
+using StackExchange.Profiling.Data;
 
 namespace WilliamsonFamily.Models.Data.WilliamsonFamily
 {

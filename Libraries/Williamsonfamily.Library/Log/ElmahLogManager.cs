@@ -1,8 +1,8 @@
 ﻿using System;
 using WilliamsonFamily.Models.Log;
 using System.Data.SQLite;
-using MvcMiniProfiler;
 using System.Data;
+using StackExchange.Profiling;
 
 namespace WilliamsonFamily.Library.Log
 {

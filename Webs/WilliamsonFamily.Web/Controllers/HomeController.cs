@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Web.Mvc;
-using MvcMiniProfiler;
 using WilliamsonFamily.Library.Web.Routing;
 
 namespace WilliamsonFamily.Web.Controllers

@@ -1,7 +1,7 @@
 ﻿using System;
 using System.IO.Compression;
 using System.Web.Mvc;
-using MvcMiniProfiler;
+using StackExchange.Profiling;
 
 namespace WilliamsonFamily.Library.Web.Filters
 {

@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.ServiceModel.Syndication;
 using System.Web.Mvc;
-using MvcMiniProfiler;
 using WilliamsonFamily.Library.Exceptions;
 using WilliamsonFamily.Library.Web;
 using WilliamsonFamily.Library.Web.Caching;
@@ -15,6 +14,7 @@ using WilliamsonFamily.Models.User;
 using WilliamsonFamily.Web.Models.Blog;
 using WilliamsonFamily.Web.Web;
 using WilliamsonFamily.Library.Web.Routing;
+using StackExchange.Profiling;
 
 namespace WilliamsonFamily.Web.Controllers
 {

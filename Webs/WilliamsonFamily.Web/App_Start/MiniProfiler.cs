@@ -2,10 +2,10 @@ using System;
 using System.Web;
 using System.Web.Mvc;
 using System.Linq;
-using MvcMiniProfiler;
-using MvcMiniProfiler.MVCHelpers;
 using Microsoft.Web.Infrastructure;
 using Microsoft.Web.Infrastructure.DynamicModuleHelper;
+using StackExchange.Profiling.MVCHelpers;
+using StackExchange.Profiling;
 
 [assembly: WebActivator.PreApplicationStartMethod(
 	typeof(WilliamsonFamily.Web.App_Start.MiniProfilerPackage), "PreStart")]
@@ -21,7 +21,7 @@ namespace WilliamsonFamily.Web.App_Start
         public static void PreStart()
         {
             //TODO: Non SQL Server based installs can use other formatters like: new MvcMiniProfiler.SqlFormatters.InlineFormatter()
-            MiniProfiler.Settings.SqlFormatter = new MvcMiniProfiler.SqlFormatters.SqlServerFormatter();
+            MiniProfiler.Settings.SqlFormatter = new StackExchange.Profiling.SqlFormatters.InlineFormatter();
 
             //Make sure the MiniProfiler handles BeginRequest and EndRequest
             DynamicModuleUtility.RegisterModule(typeof(MiniProfilerStartupModule));
@@ -55,7 +55,7 @@ namespace WilliamsonFamily.Web.App_Start
             context.AuthenticateRequest += (sender, e) =>
             {
 				if (context.User == null || !context.User.Identity.IsAuthenticated || context.User.Identity.Name != "sgwill")
-                    MvcMiniProfiler.MiniProfiler.Stop(discardResults: true);
+                    MiniProfiler.Stop(discardResults: true);
             };
             
             context.EndRequest += (sender, e) =>

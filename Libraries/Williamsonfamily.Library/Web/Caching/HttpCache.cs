@@ -1,7 +1,7 @@
 ﻿using System;
 using WilliamsonFamily.Models.Caching;
 using System.Web;
-using MvcMiniProfiler;
+using StackExchange.Profiling;
 
 namespace WilliamsonFamily.Library.Web.Caching
 {
