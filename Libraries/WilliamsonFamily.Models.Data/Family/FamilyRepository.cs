@@ -7,8 +7,6 @@ namespace WilliamsonFamily.Models.Data
 {
     public class FamilyRepository : ContextPersisterBase, IFamilyRepository
     {
-        #region IModelLoader<IFamily,int> Members
-
         public IFamily Load(string key)
         {
             using (MiniProfiler.Current.Step("FamilyRepository.Load"))
@@ -21,6 +19,19 @@ namespace WilliamsonFamily.Models.Data
             }
         }
 
-        #endregion
+		public IFamily LoadFromUsername(string username)
+		{
+			using (MiniProfiler.Current.Step("FamilyRepository.LoadFromUsername"))
+			{
+				using (var dc = DataContextFactory.GetDataContext())
+				{
+					return (from f in dc.Repository<Family>()
+						   join uf in dc.Repository<UserFamily>() on f.PkID equals uf.FamilyID
+						   join u in dc.Repository<User>() on uf.UserID equals u.PkID
+						   where u.Username == username
+						   select f).FirstOrDefault();
+				}
+			}
+		}
     }
 }

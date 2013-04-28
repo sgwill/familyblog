@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using WilliamsonFamily.Web.Web;
+using Rhino.Mocks;
+using WilliamsonFamily.Models.Content;
 
 namespace WilliamsonFamily.Web.Tests.Web
 {
@@ -66,5 +68,37 @@ namespace WilliamsonFamily.Web.Tests.Web
             Assert.AreEqual(string.Format("{0:MMMM} {0:dd}, {0:yyyy}", DateTime.Today.AddYears(-1)), DateTime.Today.AddYears(-1).FriendlyDate());
         }
         #endregion
+
+		[TestClass]
+		public class ResolveToken
+		{
+			[TestMethod]
+			public void Extension_ResolveToken_EmptyString_ReturnsEmpty()
+			{
+				Extensions.ContentRepository = MockRepository.GenerateMock<IContentRepository>();
+				Assert.AreEqual("", Extensions.ResolveToken(null, ""));
+			}
+
+			[TestMethod]
+			public void Extension_ResolveToken_ValidToken_ReturnsValue()
+			{
+				Extensions.ContentRepository = MockRepository.GenerateMock<IContentRepository>();
+				var content = MockRepository.GenerateMock<IContent>();
+				content.Expect(c => c.Value).Return("value");
+				Extensions.ContentRepository
+					.Expect(c => c.Lookup("token"))
+					.Return(content);
+
+				Assert.AreEqual("value", Extensions.ResolveToken(null, "token"));
+			}
+
+			[TestMethod]
+			public void Extension_ResolveToken_NoContent_ReturnsEmpty()
+			{
+				Extensions.ContentRepository = MockRepository.GenerateMock<IContentRepository>();
+
+				Assert.AreEqual("", Extensions.ResolveToken(null, "token"));
+			}
+		}
     }
 }

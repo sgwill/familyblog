@@ -150,10 +150,18 @@ namespace WilliamsonFamily.Web.Tests
 //        //public void Routes_UsernameAccount_RoutesTo_AccountProfile()
 //        //{
 //        //    "~/sam.mvc.aspx/Account".ShouldMapTo<AccountController>(a => a.Profile("sam"));
-//        //}
+		//        //}
 
-        #region Setup
-        [TestInitialize]
+		#region Content Routes
+		[TestMethod]
+		public void Routes_UserContent_RoutesTo_UserContent()
+		{
+			"~/sam/content".ShouldMapTo<ContentController>(c => c.Index("sam"));
+		}
+		#endregion
+
+		#region Setup
+		[TestInitialize]
         public void Setup()
         {
             WilliamsonFamily.Web.MvcApplication.RegisterRoutes();

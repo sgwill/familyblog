@@ -1,0 +1,33 @@
+﻿@model WilliamsonFamily.Web.Models.Content.ContentIndexModel
+@{
+	ViewBag.Title = "Edit Content";
+}
+
+@section HeaderImage
+{
+	<div id="logo">
+		<h1>Content</h1>
+	</div>
+}
+
+	<h3>Edit Content</h3>
+	<br />
+
+    @if (!string.IsNullOrEmpty(Model.FamilyName))
+    {
+        <p>Family Sidebar Blurb</p>
+        <form method="post" action="@Url.Action("Edit", "Content", new { user = Model.Username })">
+            @Html.Hidden("ContentID", Model.BlogFamilySidebarBlurb.ContentID)
+            @Html.Hidden("Token", Model.BlogFamilySidebarBlurb.Token)
+            @Html.TextArea("Value", Model.BlogFamilySidebarBlurb.Value)
+            <input type="submit" value="Save" />
+        </form>
+    }
+
+    <p>Your Sidebar Blurb</p>
+    <form method="post" action="@Url.Action("Edit", "Content", new { user = Model.Username })">
+        @Html.Hidden("ContentID", Model.BlogSidebarBlurb.ContentID)
+        @Html.Hidden("Token", Model.BlogSidebarBlurb.Token)
+        @Html.TextArea("Value", Model.BlogSidebarBlurb.Value)
+        <input type="submit" value="Save" />
+    </form>

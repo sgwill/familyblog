@@ -6,11 +6,14 @@ using System.Web.Mvc;
 using System.Web.Routing;
 using WilliamsonFamily.Models.Web;
 using WilliamsonFamily.Library.Web;
+using WilliamsonFamily.Models.Content;
 
 namespace WilliamsonFamily.Web.Web
 {
     public static class Extensions
     {
+		public static IContentRepository ContentRepository { get; set; }
+
         static ITitleCleaner titleCleaner;
         public static ITitleCleaner TitleCleaner
         {
@@ -84,5 +87,14 @@ namespace WilliamsonFamily.Web.Web
 
             return sb.ToString();
         }
+
+		public static string ResolveToken(this HtmlHelper html, string token)
+		{
+			var content = ContentRepository.Lookup(token);
+			if (content == null)
+				return "";
+
+			return content.Value;
+		}
     }
 }

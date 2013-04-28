@@ -3,7 +3,8 @@
     <div id="userMenu">
         <div id="userNavigation">
             <a href="@Url.Action("UserList", "Blog", new { user = User.Identity.Name })">My Entries</a> | 
-            <a href="@Url.Action("Create", "Blog", new { user = User.Identity.Name })">New Entry</a>
+            <a href="@Url.Action("Create", "Blog", new { user = User.Identity.Name })">New Entry</a> |
+            <a href="@Url.Action("Index", "Content", new { user = User.Identity.Name })">Content</a>
 			@if (User.IsInRole("admin"))
 			{ 
 				@MvcHtmlString.Create("|")

@@ -59,6 +59,10 @@
       <Project>{BE75926D-54AE-419F-B665-310F8CD9E2DE}</Project>
       <Name>WilliamsonFamily.Models.AmazonS3Media</Name>
     </ProjectReference>
+    <ProjectReference Include="..\WilliamsonFamily.Models.Data.Dapper\WilliamsonFamily.Models.Data.Dapper.csproj">
+      <Project>{3397145d-75e7-4eab-b0f8-d7b450beae25}</Project>
+      <Name>WilliamsonFamily.Models.Data.Dapper</Name>
+    </ProjectReference>
     <ProjectReference Include="..\WilliamsonFamily.Models.Data\Williamsonfamily.Models.Data.csproj">
       <Project>{940ECCD3-8FD7-41CD-9ED3-CF511DD0393C}</Project>
       <Name>Williamsonfamily.Models.Data</Name>

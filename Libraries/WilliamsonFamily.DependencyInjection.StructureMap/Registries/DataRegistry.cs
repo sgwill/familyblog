@@ -6,6 +6,8 @@ using WilliamsonFamily.Models.FlickrPhoto;
 using WilliamsonFamily.Models.Photo;
 using WilliamsonFamily.Models.User;
 using WilliamsonFamily.Models.AmazonS3Media;
+using WilliamsonFamily.Models.Content;
+using WilliamsonFamily.Models.Data.Dapper.Content;
 
 namespace WilliamsonFamily.DependencyInjection.StructureMap.Registries
 {
@@ -18,6 +20,7 @@ namespace WilliamsonFamily.DependencyInjection.StructureMap.Registries
             For<IFamilyRepository>().Use<FamilyRepository>();
             For<IPhotoRepository>().Use<FlickrPhotoRepository>();
             //For<IPhotoRepository>().Use<S3PhotoRepository>();
+			For<IContentRepository>().Use<ContentRepository>();
 
             SetAllProperties(p =>
                 {
@@ -25,6 +28,7 @@ namespace WilliamsonFamily.DependencyInjection.StructureMap.Registries
                     p.OfType<IUserRepository>();
                     p.OfType<IFamilyRepository>();
                     p.OfType<IPhotoRepository>();
+					p.OfType<IContentRepository>();
                 });
         }
     }

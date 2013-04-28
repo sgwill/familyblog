@@ -79,15 +79,13 @@
     {
 				<li>
 					<h2>About Us</h2>
-					<p>Hi! We're Sam and Michele. We have a beautiful new baby boy, Luke. Welcome to our little spot in the world.</p>
+					<p>@Html.ResolveToken("sammichele.Blog.SidebarBlurb")</p>
 				</li>
     }
     else
     {
                 <li>
-                    <p>I'm living in Oregon for four months. No, it won't be a hunter/gatherer society. Yes, I do rely on wood-stove heat.</p>
-                    <p>&nbsp;</p>
-                    <p>Here are my stories.</p>
+                    <p>@Html.ResolveToken(Model.Author.UrlName + ".Blog.SidebarBlurb")</p>
                 </li>
     }
 

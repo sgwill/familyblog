@@ -57,6 +57,7 @@
       <HintPath>..\..\packages\xmlrpcnet.3.0.0.266\lib\net20\CookComputing.XmlRpcV2.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -78,6 +79,8 @@
     <Compile Include="Caching\ICacheKey.cs" />
     <Compile Include="Communication\IEmail.cs" />
     <Compile Include="Communication\IEmailSender.cs" />
+    <Compile Include="Content\IContent.cs" />
+    <Compile Include="Content\IContentRepository.cs" />
     <Compile Include="Family\IFamily.cs" />
     <Compile Include="Family\IFamilyRepository.cs" />
     <Compile Include="Family\IUserFamily.cs" />
