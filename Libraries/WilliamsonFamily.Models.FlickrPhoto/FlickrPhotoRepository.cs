@@ -6,7 +6,7 @@ using WilliamsonFamily.Models.Photo;
 using FlickrNet;
 using System.IO;
 using System.Configuration;
-using MvcMiniProfiler;
+using StackExchange.Profiling;
 
 namespace WilliamsonFamily.Models.FlickrPhoto
 {

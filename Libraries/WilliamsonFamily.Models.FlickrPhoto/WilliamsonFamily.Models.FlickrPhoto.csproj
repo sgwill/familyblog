@@ -56,9 +56,8 @@
     <Reference Include="FlickrNet">
       <HintPath>..\..\packages\FlickrNet.3.1.4000\lib\FlickrNet.dll</HintPath>
     </Reference>
-    <Reference Include="MvcMiniProfiler, Version=1.9.0.0, Culture=neutral, PublicKeyToken=b44f9351044011a3, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\..\packages\MiniProfiler.1.9\lib\net40\MvcMiniProfiler.dll</HintPath>
+    <Reference Include="MiniProfiler">
+      <HintPath>..\..\packages\MiniProfiler.2.1.0\lib\net40\MiniProfiler.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Configuration" />

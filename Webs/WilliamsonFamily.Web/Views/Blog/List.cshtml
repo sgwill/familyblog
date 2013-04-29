@@ -79,15 +79,16 @@
     {
 				<li>
 					<h2>About Us</h2>
-					<p>@Html.ResolveToken("sammichele.Blog.SidebarBlurb")</p>
+					<p>Hi! We're Sam and Michele. We have a beautiful new baby boy, Luke. Welcome to our little spot in the world.</p>
 				</li>
-    }
-    else
-    {
+	}
+	else
+	{
                 <li>
-                    <p>@Html.ResolveToken(Model.Author.UrlName + ".Blog.SidebarBlurb")</p>
+                    <p>I'm living in Oregon for four months. No, it won't be a hunter/gatherer society. Yes, I do rely on wood-stove heat.</p>
+					<p>Here are my stories.</p>
                 </li>
-    }
+	}
 
 				@{Html.RenderPartial("~/Views/Blog/BlogSidebarList.cshtml", Model.BlogTitles);}
 
@@ -149,15 +150,3 @@
         });
     </script>
 }
-
-@*@section AnalyticsSection
-{
-    <script type="text/javascript">
-        _gaq.push(['_setCustomVar',
-            1,                          // This custom var is set to slot #1.
-            'AuthorName',               // The top-level name for your online content categories.
-            '@Model.Author.UrlName',  // User or Family
-            3                           // Sets the scope to page-level.
-        ]);
-    </script>
-}*@
