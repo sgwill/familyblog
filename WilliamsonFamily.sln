@@ -36,6 +36,13 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WilliamsonFamily.Search.Luc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WilliamsonFamily.Models.Data.Dapper", "Libraries\WilliamsonFamily.Models.Data.Dapper\WilliamsonFamily.Models.Data.Dapper.csproj", "{3397145D-75E7-4EAB-B0F8-D7B450BEAE25}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{54E30EE3-244A-40FD-AB2D-AC2BB4B4F9EA}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(TestCaseManagementSettings) = postSolution
 		CategoryFile = WilliamsonFamily.vsmdi
